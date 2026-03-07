@@ -1,0 +1,179 @@
+﻿@model BookGate.Application.DTOs.RegisterDTO
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null; // Hoặc Layout = "_Layout" tùy cấu trúc dự án của bạn
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký - Book Gate</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        /* Giữ nguyên toàn bộ CSS bạn đã cung cấp */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .left-panel {
+            background-color: #b1bdc5;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .input-group-custom {
+            position: relative;
+        }
+
+            .input-group-custom label {
+                position: absolute;
+                top: -12px;
+                left: 15px;
+                background: white;
+                padding: 0 8px;
+                font-size: 0.85rem;
+                z-index: 1;
+                color: #333;
+            }
+
+            .input-group-custom .form-control {
+                border: 1.5px solid #333;
+                border-radius: 8px;
+                height: 48px;
+                box-shadow: none;
+            }
+
+                .input-group-custom .form-control:focus {
+                    border-color: #00a0ff;
+                    box-shadow: 0 0 0 0.2rem rgba(0, 160, 255, 0.25);
+                }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #666;
+            z-index: 10;
+        }
+
+        .btn-register {
+            background-color: #00a0ff;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            color: white;
+            transition: 0.3s;
+        }
+
+            .btn-register:hover {
+                background-color: #0087d8;
+                color: white;
+            }
+
+        .text-danger {
+            font-size: 0.8rem;
+        }
+
+        @@media (max-width: 768px) {
+            body {
+                overflow: auto;
+            }
+
+            .vh-100 {
+                height: auto !important;
+                min-height: 100vh;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid vh-100">
+        <div class="row h-100">
+            <div class="col-md-5 d-none d-md-flex left-panel flex-column p-4">
+                <div class="logo mb-auto">
+                    <i class="bi bi-book-half"></i> <strong>Book Gate</strong>
+                </div>
+                <div class="image-placeholder d-flex align-items-center justify-content-center flex-grow-1">
+                    <i class="bi bi-image" style="font-size: 10rem; color: #fff; opacity: 0.8;"></i>
+                </div>
+            </div>
+
+            <div class="col-md-7 d-flex align-items-center justify-content-center bg-white">
+                <div class="register-form w-75" style="max-width: 450px;">
+                    <h2 class="fw-bold mb-1">Đăng ký</h2>
+                    <p class="text-muted mb-4">Hãy đến và tạo một tài khoản</p>
+
+                    <form asp-action="Register" method="POST">
+                        @Html.AntiForgeryToken()
+
+                        <div class="input-group-custom mb-4">
+                            <label asp-for="FullName">Họ và tên</label>
+                            <input asp-for="FullName" class="form-control" />
+                            <span asp-validation-for="FullName" class="text-danger"></span>
+                        </div>
+
+                        <div class="input-group-custom mb-4">
+                            <label asp-for="Username">Tên tài khoản</label>
+                            <input asp-for="Username" class="form-control" />
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+
+                        <div class="input-group-custom mb-4">
+                            <label asp-for="Email">Email</label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="input-group-custom mb-4">
+                            <label asp-for="PhoneNumber">Số điện thoại</label>
+                            <input asp-for="PhoneNumber" class="form-control" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+
+                        <div class="input-group-custom mb-4">
+                            <label asp-for="Password">Mật khẩu</label>
+                            <div class="position-relative">
+                                <input asp-for="Password" id="passwordField" class="form-control" />
+                                <i class="bi bi-eye-slash password-toggle" id="toggleIcon"></i>
+                            </div>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 py-2 mt-2 btn-register">Đăng ký</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const toggleIcon = document.getElementById('toggleIcon');
+        const passwordField = document.getElementById('passwordField');
+
+        toggleIcon.addEventListener('click', function () {
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+            this.classList.toggle('bi-eye');
+            this.classList.toggle('bi-eye-slash');
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+
+</body>
+</html>

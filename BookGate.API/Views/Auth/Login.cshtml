@@ -1,0 +1,261 @@
+﻿@model BookGate.Application.DTOs.LoginDTO
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Gate - Đăng nhập</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Giữ nguyên toàn bộ CSS của bạn */
+        body {
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .login-sidebar {
+            background-color: #b2bec3;
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+            position: relative;
+        }
+
+        .brand-logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #2d3436;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .placeholder-image-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .placeholder-icon {
+            font-size: 200px;
+            color: #fff;
+        }
+
+        .login-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .login-box {
+            width: 100%;
+            max-width: 400px;
+        }
+
+            .login-box h2 {
+                font-weight: 700;
+                margin-bottom: 25px;
+            }
+
+        .btn-social {
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: background 0.2s;
+        }
+
+            .btn-social:hover {
+                background-color: #f8f9fa;
+            }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #adb5bd;
+            margin: 20px 0;
+        }
+
+            .divider::before, .divider::after {
+                content: '';
+                flex: 1;
+                border-bottom: 1px solid #dee2e6;
+            }
+
+            .divider span {
+                padding: 0 10px;
+                font-size: 0.9rem;
+            }
+
+        .form-label-group {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            border-radius: 8px;
+            padding: 12px 15px;
+            border: 1.5px solid #dee2e6;
+        }
+
+            .form-control:focus {
+                box-shadow: none;
+                border-color: #00a8ff;
+            }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #6c757d;
+        }
+
+        .btn-login {
+            background-color: #00a8ff;
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 10px;
+            color: white;
+        }
+
+            .btn-login:hover {
+                background-color: #0097e6;
+            }
+
+        .auth-footer-links {
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .auth-footer-links a {
+                color: #00a8ff;
+                text-decoration: none;
+                font-weight: 600;
+            }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+
+        .text-danger {
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid p-0 h-100">
+        <div class="row g-0 h-100">
+            <div class="col-lg-4 d-none d-lg-flex login-sidebar">
+                <a href="/" class="brand-logo">
+                    <i class="bi bi-book-half"></i> Book Gate
+                </a>
+                <div class="placeholder-image-container">
+                    <i class="bi bi-image placeholder-icon"></i>
+                </div>
+            </div>
+
+            <div class="col-lg-8 login-content">
+                <div class="login-box">
+                    <h2>Đăng nhập</h2>
+
+                    <div class="d-grid">
+                        <button class="btn btn-social btn-light">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" width="18" alt="Google">
+                            Đăng nhập bằng Google
+                        </button>
+                        <button class="btn btn-social btn-light">
+                            <i class="bi bi-apple"></i>
+                            Đăng nhập bằng Apple
+                        </button>
+                    </div>
+
+                    <div class="divider">
+                        <span>Hoặc</span>
+                    </div>
+
+                    <form asp-action="Login" method="post">
+                        @Html.AntiForgeryToken()
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label fw-semibold" style="font-size: 0.85rem;">Email</label>
+                            <input asp-for="Email" class="form-control" placeholder="Nhập email của bạn">
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label fw-semibold" style="font-size: 0.85rem;">Mật khẩu</label>
+                            <div class="form-label-group">
+                                <input asp-for="Password" id="passwordField" class="form-control" placeholder="••••••••">
+                                <i class="bi bi-eye-slash password-toggle" id="toggleIcon"></i>
+                            </div>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-options">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox">
+                                <label class="form-check-label text-muted">
+                                    Ghi nhớ đăng nhập
+                                </label>
+                            </div>
+                            <a href="#" class="text-decoration-none fw-semibold">Quên mật khẩu?</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-login">Đăng nhập</button>
+                    </form>
+
+                    <div class="auth-footer-links">
+                        <span class="text-muted">Chưa có tài khoản?</span>
+                        <a asp-action="Register" asp-controller="Auth">Đăng ký ngay</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JS xử lý ẩn/hiện mật khẩu
+        const toggleIcon = document.getElementById('toggleIcon');
+        const passwordField = document.getElementById('passwordField');
+
+        toggleIcon.addEventListener('click', function () {
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+            this.classList.toggle('bi-eye');
+            this.classList.toggle('bi-eye-slash');
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

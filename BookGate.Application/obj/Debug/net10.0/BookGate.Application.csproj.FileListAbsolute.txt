@@ -1,0 +1,15 @@
+C:\BookGate\BookGate.Application\bin\Debug\net10.0\BookGate.Application.deps.json
+C:\BookGate\BookGate.Application\bin\Debug\net10.0\BookGate.Application.dll
+C:\BookGate\BookGate.Application\bin\Debug\net10.0\BookGate.Application.pdb
+C:\BookGate\BookGate.Application\bin\Debug\net10.0\BookGate.Domain.dll
+C:\BookGate\BookGate.Application\bin\Debug\net10.0\BookGate.Domain.pdb
+C:\BookGate\BookGate.Application\obj\Debug\net10.0\BookGate.Application.csproj.AssemblyReference.cache
+C:\BookGate\BookGate.Application\obj\Debug\net10.0\BookGate.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\BookGate\BookGate.Application\obj\Debug\net10.0\BookGate.Application.AssemblyInfoInputs.cache
+C:\BookGate\BookGate.Application\obj\Debug\net10.0\BookGate.Application.AssemblyInfo.cs
+C:\BookGate\BookGate.Application\obj\Debug\net10.0\BookGate.Application.csproj.CoreCompileInputs.cache
+C:\BookGate\BookGate.Application\obj\Debug\net10.0\BookGate.A8A255B8.Up2Date
+C:\BookGate\BookGate.Application\obj\Debug\net10.0\BookGate.Application.dll
+C:\BookGate\BookGate.Application\obj\Debug\net10.0\refint\BookGate.Application.dll
+C:\BookGate\BookGate.Application\obj\Debug\net10.0\BookGate.Application.pdb
+C:\BookGate\BookGate.Application\obj\Debug\net10.0\ref\BookGate.Application.dll

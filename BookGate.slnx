@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="BookGate.API/BookGate.API.csproj" Id="00b10740-ede4-4a2c-8902-71c79971d736" />
+  <Project Path="BookGate.Application/BookGate.Application.csproj" />
+  <Project Path="BookGate.Domain/BookGate.Domain.csproj" />
+  <Project Path="BookGate.Infrastructure/BookGate.Infrastructure.csproj" />
+</Solution>

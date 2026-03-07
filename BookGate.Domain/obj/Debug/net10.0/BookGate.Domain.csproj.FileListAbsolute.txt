@@ -1,0 +1,11 @@
+C:\BookGate\BookGate.Domain\bin\Debug\net10.0\BookGate.Domain.deps.json
+C:\BookGate\BookGate.Domain\bin\Debug\net10.0\BookGate.Domain.dll
+C:\BookGate\BookGate.Domain\bin\Debug\net10.0\BookGate.Domain.pdb
+C:\BookGate\BookGate.Domain\obj\Debug\net10.0\BookGate.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\BookGate\BookGate.Domain\obj\Debug\net10.0\BookGate.Domain.AssemblyInfoInputs.cache
+C:\BookGate\BookGate.Domain\obj\Debug\net10.0\BookGate.Domain.AssemblyInfo.cs
+C:\BookGate\BookGate.Domain\obj\Debug\net10.0\BookGate.Domain.csproj.CoreCompileInputs.cache
+C:\BookGate\BookGate.Domain\obj\Debug\net10.0\BookGate.Domain.dll
+C:\BookGate\BookGate.Domain\obj\Debug\net10.0\refint\BookGate.Domain.dll
+C:\BookGate\BookGate.Domain\obj\Debug\net10.0\BookGate.Domain.pdb
+C:\BookGate\BookGate.Domain\obj\Debug\net10.0\ref\BookGate.Domain.dll

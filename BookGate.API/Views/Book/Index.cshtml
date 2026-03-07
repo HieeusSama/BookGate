@@ -1,0 +1,205 @@
+﻿@model IEnumerable<BookGate.Application.DTOs.BookDTO>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Gate - Quản lý sách</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f8f9fa; /* Thêm nền xám nhẹ để Card nổi bật hơn */
+        }
+
+        .btn-custom-blue {
+            background-color: #009dff;
+            color: white;
+            border: none;
+            padding: 8px 24px;
+            font-weight: 500;
+        }
+
+            .btn-custom-blue:hover {
+                background-color: #0081d6;
+                color: white;
+            }
+
+        .book-cover-placeholder {
+            width: 140px;
+            height: 190px;
+            background-color: #e2e8f0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            overflow: hidden;
+        }
+
+            .book-cover-placeholder i {
+                font-size: 3rem;
+            }
+
+        .search-input {
+            border: none;
+            outline: none;
+            box-shadow: none;
+            font-size: 0.9rem;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+        }
+
+        .btn-close-custom {
+            font-size: 1.5rem;
+            color: #000;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .text-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .text-value {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .footer-section {
+            margin-top: 100px;
+            padding-top: 50px;
+            border-top: 1px solid #eaeaea;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container my-4">
+        <header class="d-flex justify-content-between align-items-center py-2 mb-5">
+            <div class="search-container col-4">
+                <i class="bi bi-search text-muted me-2 fs-5"></i>
+                <input type="text" class="search-input w-100" placeholder="Tìm kiếm sách, tác giả...">
+            </div>
+            <div class="col-4 text-center">
+                <h5 class="mb-0 fw-bold text-primary">Book Gate</h5>
+            </div>
+            <div class="col-4 text-end">
+                <i class="bi bi-bell fs-5"></i>
+            </div>
+        </header>
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h5 class="fw-bold mb-0 text-uppercase">QUẢN LÝ SÁCH</h5>
+            <a asp-controller="Book" asp-action="Create" class="btn btn-custom-blue rounded-pill text-decoration-none shadow-sm">
+                <i class="bi bi-plus-lg me-1"></i> Thêm sách
+            </a>
+        </div>
+
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <div class="card border-0 shadow-sm mb-4 position-relative">
+                    <div class="card-body p-4 d-flex align-items-start">
+
+                        <div class="book-cover-placeholder me-4 flex-shrink-0 shadow-sm">
+                            @if (!string.IsNullOrEmpty(item.FileUrl))
+                            {
+                                <img src="@item.FileUrl" alt="Bìa sách" style="width: 100%; height: 100%; object-fit: cover;" />
+                            }
+                            else
+                            {
+                                <i class="bi bi-image text-secondary"></i>
+                            }
+                        </div>
+
+                        <div class="flex-grow-1 py-1">
+                            <h4 class="fw-bold mb-1">@item.Title</h4>
+
+                            <div class="mb-3 d-flex align-items-center text-muted" style="font-size: 0.9rem;">
+                                <span class="text-warning me-2 fw-bold">5.0</span>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <span class="ms-2">• 1 đánh giá</span>
+                            </div>
+
+                            <div class="row w-100 mb-4 pe-5">
+                                <div class="col-4 mb-3">
+                                    <div class="text-label">Tác giả</div>
+                                    <div class="text-value">@item.Author</div>
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <div class="text-label">Thể loại</div>
+                                    <div class="text-value">@item.Genre</div>
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <div class="text-label">Nhà xuất bản</div>
+                                    <div class="text-value">@item.PublisherName</div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="text-label">Ngày xuất bản</div>
+                                    <div class="text-value">@item.PublicationDate.ToString("dd/MM/yyyy")</div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="text-label">Giá bán</div>
+                                    <div class="text-value text-danger fw-bold fs-6">@item.SellingPrice.ToString("N0") đ</div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="text-label">Mã sách</div>
+                                    <div class="text-value text-muted">@item.BookId</div>
+                                </div>
+                            </div>
+
+                            <a asp-controller="Book" asp-action="Edit" asp-route-id="@item.BookId" class="btn btn-outline-primary btn-sm rounded-pill px-4 text-decoration-none fw-bold">Chỉnh sửa</a>
+                        </div>
+
+                        <div class="position-absolute end-0 top-0 mt-3 me-3">
+                            <form asp-controller="Book" asp-action="Delete" asp-route-id="@item.BookId" method="post" onsubmit="return confirm('Bạn có chắc chắn muốn xóa cuốn sách này không?');">
+                                <button type="submit" class="btn-close-custom text-danger" title="Xóa sách"><i class="bi bi-trash3-fill fs-5"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="text-center py-5 text-muted bg-white rounded shadow-sm">
+                <i class="bi bi-journal-x fs-1 mb-3 d-block text-secondary"></i>
+                <h5>Chưa có dữ liệu sách</h5>
+                <p>Hãy bấm nút "Thêm sách" ở góc trên bên phải để bắt đầu.</p>
+            </div>
+        }
+
+        <footer class="footer-section pb-4">
+            <div class="d-flex justify-content-between text-muted" style="font-size: 0.85rem;">
+                <div>Copyright © 2026. BookGate. All rights reserved.</div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
