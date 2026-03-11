@@ -23,6 +23,9 @@ namespace BookGate.Application.DTOs
         public DateTime PublicationDate { get; set; }
 
         [Required]
+        public int Quantity { get; set; }
+
+        [Required]
         public string Genre { get; set; } = string.Empty;
 
         public string? FileUrl { get; set; }

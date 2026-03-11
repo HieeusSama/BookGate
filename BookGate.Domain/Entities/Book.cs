@@ -18,6 +18,9 @@ namespace BookGate.Domain.Entities
         public string Author { get; set; } = string.Empty;
 
         [Required]
+        public int Quantity { get; set; }
+
+        [Required]
         public string PublisherId { get; set; } = string.Empty;
 
         [ForeignKey("PublisherId")]

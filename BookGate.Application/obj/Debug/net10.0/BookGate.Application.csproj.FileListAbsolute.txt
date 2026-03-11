@@ -13,3 +13,4 @@ C:\BookGate\BookGate.Application\obj\Debug\net10.0\BookGate.Application.dll
 C:\BookGate\BookGate.Application\obj\Debug\net10.0\refint\BookGate.Application.dll
 C:\BookGate\BookGate.Application\obj\Debug\net10.0\BookGate.Application.pdb
 C:\BookGate\BookGate.Application\obj\Debug\net10.0\ref\BookGate.Application.dll
+C:\BookGate\BookGate.Application\obj\Debug\net10.0\BookGate.Application.sourcelink.json

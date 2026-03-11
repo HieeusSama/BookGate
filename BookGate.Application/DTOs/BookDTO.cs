@@ -16,6 +16,9 @@ namespace BookGate.Application.DTOs
         [Required]
         public string Author { get; set; } = string.Empty;
 
+        [Required]
+        public int Quantity { get; set; }
+
         public string PublisherId { get; set; } = string.Empty;
 
         public string PublisherName { get; set; } = string.Empty;

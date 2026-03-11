@@ -9,3 +9,4 @@ C:\BookGate\BookGate.Domain\obj\Debug\net10.0\BookGate.Domain.dll
 C:\BookGate\BookGate.Domain\obj\Debug\net10.0\refint\BookGate.Domain.dll
 C:\BookGate\BookGate.Domain\obj\Debug\net10.0\BookGate.Domain.pdb
 C:\BookGate\BookGate.Domain\obj\Debug\net10.0\ref\BookGate.Domain.dll
+C:\BookGate\BookGate.Domain\obj\Debug\net10.0\BookGate.Domain.sourcelink.json
