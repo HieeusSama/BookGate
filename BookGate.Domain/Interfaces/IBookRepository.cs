@@ -5,12 +5,7 @@ using BookGate.Domain.Entities;
 
 namespace BookGate.Domain.Interfaces
 {
-    public interface IBookRepository
+    public interface IBookRepository : IRepository<Book>
     {
-        Task<List<Book>> GetAll();
-        Task Add(Book book);
-        Task Update(Book book);
-        Task Delete(string id);
-        Task<Book?> GetById(string id);
     }
 }

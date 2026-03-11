@@ -25,14 +25,9 @@ namespace BookGate.API.Controllers
                 ModelState.AddModelError("", "Sai tài khoản hoặc mật khẩu");
                 return View();
             }
-
-            // --- BẮT ĐẦU ĐOẠN CODE CẤP COOKIE ---
-
-            // 1. Ghi thông tin người dùng vào các Claim (như viết thẻ tên)
             var claims = new List<Claim>
             {
-                // Dòng này rất quan trọng: Nó sẽ gán tên vào biến @User.Identity.Name ngoài View
-                new Claim(ClaimTypes.Name, user.Username), // Nếu Entity có FullName thì dùng user.FullName
+                new Claim(ClaimTypes.Name, user.Username),
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.Role, user.Role == 0 ? "Admin" : "Member")
             };

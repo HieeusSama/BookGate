@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BookGate.Application.DTOs;
 using BookGate.Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,7 @@ using static System.Reflection.Metadata.BlobBuilder;
 
 namespace BookGate.API.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class BookController : Controller
     {
         private readonly BookService _service;
@@ -19,10 +21,8 @@ namespace BookGate.API.Controllers
             string folder = "uploads/books/";
             string serverFolder = Path.Combine(_webHostEnvironment.WebRootPath, folder);
 
-            // Tạo thư mục nếu chưa có
             if (!Directory.Exists(serverFolder)) Directory.CreateDirectory(serverFolder);
 
-            // Tạo tên file duy nhất để không bị trùng
             string fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
             string filePath = Path.Combine(serverFolder, fileName);
 
@@ -31,7 +31,7 @@ namespace BookGate.API.Controllers
                 await file.CopyToAsync(fileStream);
             }
 
-            return "/" + folder + fileName; // Trả về đường dẫn để lưu vào DB
+            return "/" + folder + fileName;
         }
 
         public BookController(BookService service, PublisherService publisherService, IWebHostEnvironment webHostEnvironment)

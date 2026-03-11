@@ -6,10 +6,8 @@ using System.Text;
 
 namespace BookGate.Domain.Interfaces
 {
-    public interface IAuthRepository
+    public interface IAuthRepository : IRepository<Auth>
     {
-        Task<List<Auth>> GetAll();
-        Task Add(Auth auth);
         Task<Auth?> Login(string email, string password);
     }
 }

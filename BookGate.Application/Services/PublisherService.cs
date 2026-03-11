@@ -14,7 +14,7 @@ namespace BookGate.Application.Services
         {
             _repo = repo;
         }
-        public Task<List<Publisher>> GetAll()
+        public Task<IEnumerable<Publisher>> GetAll()
         {
             return _repo.GetAll();
         }

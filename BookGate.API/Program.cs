@@ -17,13 +17,20 @@ builder.Services.AddAuthentication(Microsoft.AspNetCore.Authentication.Cookies.C
         options.LoginPath = "/Auth/Login"; // Đường dẫn bị đẩy về nếu chưa đăng nhập
         options.ExpireTimeSpan = TimeSpan.FromDays(7); // Giữ đăng nhập 7 ngày
     });
+
+//Repository
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IPublisherRepository, PublisherRepository>();
+
+
+//Service
 builder.Services.AddScoped<PublisherService>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<BookService>();
 builder.Services.AddScoped<MemberBookService>();
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddOpenApi();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

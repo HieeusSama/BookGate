@@ -20,12 +20,12 @@ namespace BookGate.Application.Services
             _mapper = mapper;
         }
 
-        public Task<List<Auth>> GetAll()
+        public Task<IEnumerable<Auth>> GetAll()
         {
             return _repo.GetAll();
         }
 
-        public async Task<Auth?> Login(LoginDTO auth) // Đổi bool thành Auth?
+        public async Task<Auth?> Login(LoginDTO auth)
         {
             var user = await _repo.Login(auth.Email, auth.Password);
             return user;

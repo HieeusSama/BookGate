@@ -5,8 +5,6 @@ using System.Text;
 
 namespace BookGate.Domain.Interfaces
 {
-    public interface IPublisherRepository
-    {
-        Task<List<Publisher>> GetAll();
-    }
+    public interface IPublisherRepository : IRepository<Publisher>
+    {}
 }

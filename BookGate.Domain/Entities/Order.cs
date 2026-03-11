@@ -9,13 +9,13 @@ namespace BookGate.Domain.Entities
     public class Order
     {
         [Key]
-        public int OrderId { get; set; }
+        public string OrderId { get; set; }
 
         [Required]
-        public int AuthId { get; set; }
+        public string AuthId { get; set; }
 
         [Required]
-        public int StatusId { get; set; }
+        public string StatusId { get; set; }
 
         public DateTime OrderDate { get; set; } = DateTime.Now;
         public DateTime? PaymentDate { get; set; }
@@ -31,19 +31,19 @@ namespace BookGate.Domain.Entities
 
         [Required]
         [StringLength(100)]
-        public string City { get; set; }
+        public string City { get; set; } = string.Empty;
 
         [Required]
         [StringLength(100)]
-        public string Ward { get; set; }
+        public string Ward { get; set; } = string.Empty;
 
         [Required]
         [StringLength(255)]
-        public string StreetAddress { get; set; }
+        public string StreetAddress { get; set; } = string.Empty;
 
         [Required]
         [StringLength(20)]
-        public string ReceiverPhone { get; set; }
+        public string ReceiverPhone { get; set; } = string.Empty;
 
         // Navigation properties
         [ForeignKey("AuthId")]

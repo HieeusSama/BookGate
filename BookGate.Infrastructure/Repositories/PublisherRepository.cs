@@ -7,16 +7,8 @@ using System.Text;
 
 namespace BookGate.Infrastructure.Repositories
 {
-    public class PublisherRepository : IPublisherRepository
+    public class PublisherRepository : Repository<Publisher>, IPublisherRepository
     {
-        private readonly ApplicationDbContext _context;
-
-        public PublisherRepository(ApplicationDbContext context)
-        {
-            _context = context;
-        }
-
-        public async Task<List<Publisher>> GetAll()
-       => _context.Publishers.ToList();
+        public PublisherRepository(ApplicationDbContext context) : base(context){}
     }
 }

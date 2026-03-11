@@ -9,10 +9,10 @@ namespace BookGate.Domain.Entities
     public class OrderDetail
     {
         [Key]
-        public int OrderDetailId { get; set; }
+        public string OrderDetailId { get; set; }
 
         [Required]
-        public int OrderId { get; set; }
+        public string OrderId { get; set; }
 
         [Required]
         public string BookId { get; set; } // Kiểu string để khớp với nvarchar(450) của bảng Books

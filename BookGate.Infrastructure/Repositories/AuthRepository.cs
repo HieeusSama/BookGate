@@ -8,23 +8,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookGate.Infrastructure.Repositories
 {
-    public class AuthRepository : IAuthRepository
+    public class AuthRepository : Repository<Auth>, IAuthRepository
     {
-        private readonly ApplicationDbContext _context;
+        public AuthRepository(ApplicationDbContext context) : base(context) { }
 
-        public AuthRepository(ApplicationDbContext context)
-        {
-            _context = context;
-        }
-
-        public async Task<List<Auth>> GetAll()
-       =>  _context.Auths.ToList();
-
-        public async Task Add(Auth auth)
-        {
-            _context.Auths.Add(auth);
-            _context.SaveChanges();
-        }
 
         public async Task<Auth?> Login(string email, string password)
         {

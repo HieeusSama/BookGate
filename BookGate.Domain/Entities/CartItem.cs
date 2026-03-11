@@ -9,10 +9,10 @@ namespace BookGate.Domain.Entities
     public class CartItem
     {
         [Key]
-        public int CartItemId { get; set; }
+        public string CartItemId { get; set; } 
 
         [Required]
-        public int AuthId { get; set; }
+        public int Id { get; set; } 
 
         [Required]
         public string BookId { get; set; }
@@ -20,8 +20,7 @@ namespace BookGate.Domain.Entities
         [Required]
         public int Quantity { get; set; } = 1;
 
-        // Navigation properties
-        [ForeignKey("AuthId")]
+        [ForeignKey("Id")]
         public Auth Auth { get; set; }
 
         [ForeignKey("BookId")]
