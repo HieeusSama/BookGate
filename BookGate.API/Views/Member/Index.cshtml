@@ -3,8 +3,6 @@
 @{
     Layout = null;
 }
-
-<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -239,10 +237,12 @@
 
             <div class="user-action">
                 <div class="d-flex align-items-center gap-2">
-                    <i class="bi bi-person-circle fs-4 text-secondary"></i>
-                    <span class ="d-none d-md-inline">Chào, @User.Identity!.Name</span>
+                    <i class="bi bi-person-circle fs-4"></i>
+                    <span class="d-none d-md-inline">Chào, @User.Identity!.Name</span>
                 </div>
-                <i class="bi bi-bag fs-5 ms-3"></i>
+                <a asp-controller="CartItem" asp-action="Index" class="text-dark">
+                    <i class="bi bi-bag fs-5 ms-3"></i>
+                </a>
             </div>
         </header>
 
@@ -292,13 +292,10 @@
 
                                         <div class="book-title" title="@book.Title">@book.Title</div>
                                         <div class="book-author">@book.Author</div>
-                                        <div class="book-publisher">NXB: @book.PublisherName</div>
                                         <div class="text-danger fw-bold mt-1 fs-6">@book.SellingPrice.ToString("N0") đ</div>
-                                    </a>
-
-                                    <button class="btn-buy w-100 mt-3 d-flex justify-content-center align-items-center gap-2">
-                                        <i class="bi bi-cart-plus"></i> Chọn mua
-                                    </button>
+                                        <a asp-controller="Member" asp-action="CreateCartItem" asp-route-bookId="@book.BookId" class="btn-buy w-100 mt-3 d-flex justify-content-center align-items-center gap-2 text-decoration-none">
+                                            <i class="bi bi-cart-plus"></i> Chọn mua
+                                        </a>
                                 </div>
                             </div>
                         }

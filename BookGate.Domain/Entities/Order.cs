@@ -9,19 +9,16 @@ namespace BookGate.Domain.Entities
     public class Order
     {
         [Key]
-        public string OrderId { get; set; }
+        public string OrderId { get; set; } = string.Empty;
 
         [Required]
-        public string AuthId { get; set; }
+        public int Id { get; set; }
 
         [Required]
-        public string StatusId { get; set; }
+        public string StatusId { get; set; } = string.Empty;
 
-        public DateTime OrderDate { get; set; } = DateTime.Now;
-        public DateTime? PaymentDate { get; set; }
-        public DateTime? ShippedDate { get; set; }
+        public DateTime OrderDate { get; set; }
         public DateTime? CompletedDate { get; set; }
-        public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
         [Column(TypeName = "decimal(18,2)")]
         public decimal TotalAmount { get; set; }
@@ -45,13 +42,12 @@ namespace BookGate.Domain.Entities
         [StringLength(20)]
         public string ReceiverPhone { get; set; } = string.Empty;
 
-        // Navigation properties
-        [ForeignKey("AuthId")]
-        public Auth Auth { get; set; } // Liên kết với bảng người dùng
+        [ForeignKey("Id")]
+        public Auth? Auth { get; set; }
 
         [ForeignKey("StatusId")]
-        public OrderStatus OrderStatus { get; set; } // Liên kết với bảng trạng thái
+        public OrderStatus? OrderStatus { get; set; }
 
-        public ICollection<OrderDetail> OrderDetails { get; set; }
+        public ICollection<OrderDetail>? OrderDetail { get; set; }
     }
 }

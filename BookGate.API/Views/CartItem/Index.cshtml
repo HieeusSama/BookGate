@@ -1,0 +1,396 @@
+﻿@model IEnumerable<BookGate.Application.DTOs.CartItemDTO>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = null;
+
+    // Tính toán tiền
+    decimal subTotal = Model?.Sum(x => x.SellingPrice * x.Quantity) ?? 0;
+    decimal shippingFee = 32000;
+    decimal total = Model != null && Model.Any() ? subTotal + shippingFee : 0;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Gate - Giỏ hàng</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* GIỮ NGUYÊN CSS TỪ TRANG CHỦ */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1e272e;
+        }
+
+        .navbar-custom {
+            padding: 20px 0;
+            background-color: #fff;
+        }
+
+        .search-box {
+            color: #808e9b;
+            font-size: 0.95rem;
+            cursor: text;
+        }
+
+        .brand-logo {
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: 0.5px;
+            color: #000;
+            text-decoration: none;
+        }
+
+        .user-action {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #1e272e;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        footer {
+            margin-top: 80px;
+            padding: 60px 0 30px;
+            border-top: 1px solid #f1f2f6;
+        }
+
+        .footer-logo i {
+            font-size: 2rem;
+            color: #1e272e;
+        }
+
+        .footer-title {
+            font-weight: 700;
+            color: #ff7675;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+            .footer-links li {
+                margin-bottom: 12px;
+            }
+
+            .footer-links a {
+                color: #1e272e;
+                text-decoration: none;
+                font-size: 0.9rem;
+            }
+
+                .footer-links a:hover {
+                    color: #ff7675;
+                }
+
+        /* CSS BỔ SUNG RIÊNG CHO TRANG GIỎ HÀNG */
+        .cart-header-bg {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+
+        .form-check-input:checked {
+            background-color: #0099ff;
+            border-color: #0099ff;
+        }
+
+        .btn-qty {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #dee2e6;
+            background: #fff;
+            border-radius: 4px;
+            color: #495057;
+        }
+
+            .btn-qty:hover {
+                background: #f8f9fa;
+            }
+
+        .input-qty {
+            width: 40px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            height: 32px;
+            font-size: 0.9rem;
+        }
+
+        .btn-remove i {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #212529;
+        }
+
+        .btn-remove:hover i {
+            color: #dc3545;
+        }
+
+        .checkout-box {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #f1f2f6;
+        }
+
+        .btn-checkout {
+            background-color: #0099ff;
+            color: white;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+            .btn-checkout:hover {
+                background-color: #0081d6;
+                color: white;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <header class="navbar-custom d-flex justify-content-between align-items-center">
+            <div class="search-box d-flex align-items-center gap-2">
+                <i class="bi bi-search fs-5"></i>
+                <span class="d-none d-md-inline">Tìm kiếm sách, tác giả...</span>
+            </div>
+
+            <a asp-controller="Member" asp-action="Index" class="brand-logo">Book Gate</a>
+
+            <div class="user-action">
+                <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-person-circle fs-4"></i>
+                    <span class="d-none d-md-inline">Chào, @User.Identity!.Name</span>
+                </div>
+                <a asp-controller="CartItem" asp-action="Index" class="text-dark">
+                    <i class="bi bi-bag fs-5 ms-3"></i>
+                </a>
+            </div>
+        </header>
+
+        <div class="mt-5 mb-5">
+            <h4 class="mb-4 fw-bold text-uppercase" style="letter-spacing: 1px; font-size: 1.1rem;">GIỎ HÀNG</h4>
+
+            <div class="row g-5">
+                <div class="col-lg-8">
+
+                    <div class="d-flex p-3 mb-4 cart-header-bg align-items-center fw-medium">
+                        <div style="width: 5%;">
+                            <input class="form-check-input shadow-none" type="checkbox" id="selectAll">
+                        </div>
+                        <div style="width: 45%;">Chọn sản phẩm</div>
+                        <div class="text-center" style="width: 20%;">Số lượng</div>
+                        <div class="text-center" style="width: 20%;">Thành tiền</div>
+                        <div style="width: 10%;"></div>
+                    </div>
+
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            var itemTotal = item.SellingPrice * item.Quantity;
+
+                            <div class="d-flex align-items-center mb-4 pb-4 border-bottom position-relative cart-item-row" data-price="@item.SellingPrice">
+                                <div style="width: 5%;">
+                                    <input class="form-check-input shadow-none item-check" type="checkbox" value="@item.CartItemId">
+                                </div>
+
+                                <div class="d-flex align-items-center" style="width: 45%;">
+                                    <div class="bg-light rounded d-flex justify-content-center align-items-center me-4" style="width: 80px; height: 110px; flex-shrink: 0;">
+                                        @if (!string.IsNullOrEmpty(item.FileUrl))
+                                        {
+                                            <img src="@item.FileUrl" alt="@item.Title" style="width: 100%; height: 100%; object-fit: cover;" />
+                                        }
+                                        else
+                                        {
+                                            <i class="bi bi-image"></i>
+                                        }
+                                    </div>
+                                    <div class="pe-3">
+                                        <h6 class="mb-2" style="font-size: 0.9rem; line-height: 1.4; font-weight: 500;">@item.Title</h6>
+                                        <span class="fw-bold fs-6">@item.SellingPrice.ToString("N0") đ</span>
+                                    </div>
+                                </div>
+
+                                <div class="text-center d-flex justify-content-center" style="width: 20%;">
+                                    <div class="d-flex gap-1">
+                                        <button class="btn btn-qty shadow-none" type="button">-</button>
+                                        <input type="text" class="input-qty shadow-none" value="@item.Quantity" readonly>
+                                        <button class="btn btn-qty shadow-none" type="button">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="text-center text-danger fw-bold item-total" style="width: 20%; font-size: 1.05rem;">
+                                    @itemTotal.ToString("N0") đ
+                                </div>
+
+                                <div class="text-center" style="width: 10%;">
+                                    <form asp-controller="CartItem" asp-action="Delete" asp-route-id="@item.CartItemId" method="post" class="m-0 p-0">
+                                        <button type="submit" class="btn btn-link text-decoration-none btn-remove shadow-none p-0" title="Xóa sản phẩm">
+                                            <i class="bi bi-x-lg"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="text-center py-5 text-muted">
+                            <i class="bi bi-cart-x" style="font-size: 4rem; color: #cbd5e1;"></i>
+                            <p class="mt-3">Giỏ hàng của bạn đang trống.</p>
+                            <a asp-controller="Member" asp-action="Index" class="btn btn-outline-primary mt-2">
+                                Tiếp tục mua sắm
+                            </a>
+                        </div>
+                    }
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="checkout-box">
+                        <div class="d-flex justify-content-between mb-3" style="font-size: 0.85rem; color: #495057;">
+                            <span>Thành tiền</span>
+                            <span class="fw-medium text-dark" id="sub-total">@subTotal.ToString("N0") đ</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-4 pb-3 border-bottom" style="font-size: 0.85rem; color: #495057;">
+                            <span class="pe-4">Phí vận chuyển (Giao hàng tiêu chuẩn)</span>
+                            <span class="fw-medium text-dark text-end">@((Model != null && Model.Any() ? shippingFee : 0).ToString("N0")) đ</span>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-end mb-4">
+                            <span class="fw-bold" style="font-size: 0.95rem;">Tổng Số Tiền <br> <span class="fw-normal text-muted" style="font-size: 0.8rem;">(gồm VAT)</span></span>
+                            <span class="text-danger fw-bold fs-5" id="final-total">@total.ToString("N0") đ</span>
+                        </div>
+
+                        <a asp-controller="Order" asp-action="Index" class="btn btn-checkout w-100 py-2 shadow-sm">
+                            Thanh toán
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="row g-4">
+                <div class="col-lg-4 pe-lg-5 mb-4 mb-lg-0">
+                    <div class="footer-logo mb-3"><i class="bi bi-book"></i></div>
+                    <p class="text-muted" style="font-size: 0.85rem; line-height: 1.6;">
+                        Book Gate là nền tảng đọc sách trực tuyến hàng đầu, mang đến cho bạn không gian khám phá tri thức vô tận.
+                    </p>
+                </div>
+                <div class="col-lg-2 d-none d-lg-block"></div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="footer-title">Khám phá</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Về chúng tôi</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="footer-title">Trợ giúp</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Hỗ trợ</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-lg-2 mt-4 mt-lg-0">
+                    <h6 class="footer-title">Theo dõi</h6>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="bi bi-facebook me-2"></i> Facebook</a></li>
+                        <li><a href="#"><i class="bi bi-instagram me-2"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-5 pt-4 border-top" style="font-size: 0.8rem; color: #a4b0be;">
+                <p class="mb-2 mb-md-0">Copyright © 2026 BookGate. All rights reserved.</p>
+                <div class="d-flex gap-3">
+                    <a href="#" class="text-decoration-none text-muted">Điều khoản</a>
+                    <a href="#" class="text-decoration-none text-muted">Bảo mật</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            function formatCurrency(number) {
+                return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " đ";
+            }
+
+            function updateCartTotals() {
+                let subTotal = 0;
+                const shippingFee = 32000;
+
+                document.querySelectorAll('.cart-item-row').forEach(row => {
+                    // Lấy giá và số lượng
+                    const price = parseFloat(row.getAttribute('data-price'));
+                    const qty = parseInt(row.querySelector('.input-qty').value);
+                    const itemTotal = price * qty;
+                    
+                    // Cập nhật tiền của từng món (Cột Thành tiền)
+                    row.querySelector('.item-total').innerText = formatCurrency(itemTotal);
+                    
+                    // Cộng dồn vào Tạm tính
+                    subTotal += itemTotal;
+                });
+
+                // Cập nhật hóa đơn bên phải
+                document.getElementById('sub-total').innerText = formatCurrency(subTotal);
+                
+                // Nếu giỏ hàng > 0 thì cộng thêm ship, bằng 0 thì tổng = 0
+                const finalTotal = subTotal > 0 ? subTotal + shippingFee : 0;
+                document.getElementById('final-total').innerText = formatCurrency(finalTotal);
+            }
+
+            // Tìm tất cả các nhóm nút tăng/giảm số lượng
+            const qtyGroups = document.querySelectorAll('.d-flex.gap-1');
+
+            qtyGroups.forEach(group => {
+                const btnMinus = group.querySelector('button:first-child');
+                const btnPlus = group.querySelector('button:last-child');
+                const inputQty = group.querySelector('.input-qty');
+
+                if (btnMinus && btnPlus && inputQty) {
+                    // Khi bấm nút CỘNG
+                    btnPlus.addEventListener('click', function () {
+                        let currentVal = parseInt(inputQty.value) || 1;
+                        inputQty.value = currentVal + 1;
+                        updateCartTotals(); // Gọi hàm cập nhật tiền
+                    });
+
+                    // Khi bấm nút TRỪ
+                    btnMinus.addEventListener('click', function () {
+                        let currentVal = parseInt(inputQty.value) || 1;
+                        if (currentVal > 1) { // Không cho giảm quá 1
+                            inputQty.value = currentVal - 1;
+                            updateCartTotals(); // Gọi hàm cập nhật tiền
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

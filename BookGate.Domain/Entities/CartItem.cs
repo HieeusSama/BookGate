@@ -9,21 +9,21 @@ namespace BookGate.Domain.Entities
     public class CartItem
     {
         [Key]
-        public string CartItemId { get; set; } 
+        public string CartItemId { get; set; } = string.Empty;
 
-        [Required]
+        [Required] // id book 
         public int Id { get; set; } 
 
         [Required]
-        public string BookId { get; set; }
+        public string BookId { get; set; } = string.Empty;
 
         [Required]
         public int Quantity { get; set; } = 1;
 
         [ForeignKey("Id")]
-        public Auth Auth { get; set; }
+        public Auth? Auth { get; set; }
 
         [ForeignKey("BookId")]
-        public Book Book { get; set; }
+        public Book? Book { get; set; }
     }
 }

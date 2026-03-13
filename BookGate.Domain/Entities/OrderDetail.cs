@@ -9,13 +9,13 @@ namespace BookGate.Domain.Entities
     public class OrderDetail
     {
         [Key]
-        public string OrderDetailId { get; set; }
+        public string OrderDetailId { get; set; } = string.Empty;
 
         [Required]
-        public string OrderId { get; set; }
+        public string OrderId { get; set; } = string.Empty;
 
         [Required]
-        public string BookId { get; set; } // Kiểu string để khớp với nvarchar(450) của bảng Books
+        public string BookId { get; set; } = string.Empty;
 
         [Required]
         public int Quantity { get; set; } = 1;
@@ -24,11 +24,10 @@ namespace BookGate.Domain.Entities
         [Column(TypeName = "decimal(18,2)")]
         public decimal UnitPrice { get; set; }
 
-        // Navigation properties
         [ForeignKey("OrderId")]
-        public Order Order { get; set; }
+        public Order? Order { get; set; }
 
         [ForeignKey("BookId")]
-        public Book Book { get; set; }
+        public Book? Book { get; set; }
     }
 }

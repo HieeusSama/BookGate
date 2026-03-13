@@ -9,11 +9,11 @@ namespace BookGate.Domain.Entities
     public class OrderStatus
     {
         [Key]
-        public int StatusId { get; set; }
+        public string StatusId { get; set; } = string.Empty;
 
         [Required]
         [StringLength(50)]
-        public string StatusName { get; set; }
+        public string StatusName { get; set; } = string.Empty;
 
         // Navigation property: Một trạng thái có thể có nhiều đơn hàng
         public ICollection<Order> Orders { get; set; }

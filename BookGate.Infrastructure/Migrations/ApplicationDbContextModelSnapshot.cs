@@ -100,6 +100,148 @@ namespace BookGate.Infrastructure.Migrations
                     b.ToTable("Books");
                 });
 
+            modelBuilder.Entity("BookGate.Domain.Entities.CartItem", b =>
+                {
+                    b.Property<string>("CartItemId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("BookId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("CartItemId");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("Id");
+
+                    b.ToTable("CartItems");
+                });
+
+            modelBuilder.Entity("BookGate.Domain.Entities.Order", b =>
+                {
+                    b.Property<string>("OrderId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime?>("CompletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ReceiverPhone")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<decimal>("ShippingFee")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("StatusId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("StreetAddress")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<decimal>("TotalAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Ward")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("OrderId");
+
+                    b.HasIndex("Id");
+
+                    b.HasIndex("StatusId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("BookGate.Domain.Entities.OrderDetail", b =>
+                {
+                    b.Property<string>("OrderDetailId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("BookId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("OrderId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("OrderDetailId");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("OrderDetails");
+                });
+
+            modelBuilder.Entity("BookGate.Domain.Entities.OrderStatus", b =>
+                {
+                    b.Property<string>("StatusId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("StatusName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("StatusId");
+
+                    b.ToTable("OrderStatuses");
+
+                    b.HasData(
+                        new
+                        {
+                            StatusId = "PENDING",
+                            StatusName = "Chờ xử lý"
+                        },
+                        new
+                        {
+                            StatusId = "SHIPPING",
+                            StatusName = "Đang giao hàng"
+                        },
+                        new
+                        {
+                            StatusId = "COMPLETED",
+                            StatusName = "Đã hoàn thành"
+                        },
+                        new
+                        {
+                            StatusId = "CANCELLED",
+                            StatusName = "Đã hủy"
+                        });
+                });
+
             modelBuilder.Entity("BookGate.Domain.Entities.Publisher", b =>
                 {
                     b.Property<string>("PublisherId")
@@ -132,6 +274,73 @@ namespace BookGate.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Publisher");
+                });
+
+            modelBuilder.Entity("BookGate.Domain.Entities.CartItem", b =>
+                {
+                    b.HasOne("BookGate.Domain.Entities.Book", "Book")
+                        .WithMany()
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BookGate.Domain.Entities.Auth", "Auth")
+                        .WithMany()
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Auth");
+
+                    b.Navigation("Book");
+                });
+
+            modelBuilder.Entity("BookGate.Domain.Entities.Order", b =>
+                {
+                    b.HasOne("BookGate.Domain.Entities.Auth", "Auth")
+                        .WithMany()
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BookGate.Domain.Entities.OrderStatus", "OrderStatus")
+                        .WithMany("Orders")
+                        .HasForeignKey("StatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Auth");
+
+                    b.Navigation("OrderStatus");
+                });
+
+            modelBuilder.Entity("BookGate.Domain.Entities.OrderDetail", b =>
+                {
+                    b.HasOne("BookGate.Domain.Entities.Book", "Book")
+                        .WithMany()
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BookGate.Domain.Entities.Order", "Order")
+                        .WithMany("OrderDetail")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+
+                    b.Navigation("Order");
+                });
+
+            modelBuilder.Entity("BookGate.Domain.Entities.Order", b =>
+                {
+                    b.Navigation("OrderDetail");
+                });
+
+            modelBuilder.Entity("BookGate.Domain.Entities.OrderStatus", b =>
+                {
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("BookGate.Domain.Entities.Publisher", b =>
