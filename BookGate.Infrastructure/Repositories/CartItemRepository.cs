@@ -24,5 +24,20 @@ namespace BookGate.Infrastructure.Repositories
             .Where(c => c.Id == id)
             .ToListAsync();
         }
+        public async Task<CartItem> UpdateQuantityAsync(string id, int quantity)
+        {
+            // 1. Tìm sản phẩm trong giỏ hàng
+            var cartItem = await _context.CartItems.FindAsync(id);
+
+            if (cartItem != null)
+            {
+                cartItem.Quantity = quantity;
+
+                _context.CartItems.Update(cartItem);
+                await _context.SaveChangesAsync();
+            }
+
+            return cartItem;
+        }
     }
 }

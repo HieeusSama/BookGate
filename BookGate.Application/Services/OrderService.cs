@@ -31,6 +31,12 @@ namespace BookGate.Application.Services
             return _mapper.Map<OrderDTO>(order);
         }
 
+        public async Task<IEnumerable<OrderDTO>> GetOrdersWithFilter(string searchId, string status)
+        {
+            var order = await _repo.GetOrdersWithFilter(searchId, status);
+            return _mapper.Map<IEnumerable<OrderDTO>>(order);
+        }
+
         public async Task<OrderDTO> Add(OrderDTO order)
         {
             var orderEntity = _mapper.Map<Order>(order);
@@ -38,9 +44,9 @@ namespace BookGate.Application.Services
             return _mapper.Map<OrderDTO>(orderEntity);
         }
 
-        public async Task<OrderDTO> Update(CartItemDTO cartIteam)
+        public async Task<OrderDTO> Update(OrderDTO order)
         {
-            var orderEntity = _mapper.Map<Order>(cartIteam);
+            var orderEntity = _mapper.Map<Order>(order);
             await _repo.Update(orderEntity);
             return _mapper.Map<OrderDTO>(orderEntity);
         }

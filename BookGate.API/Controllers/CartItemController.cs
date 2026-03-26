@@ -40,6 +40,25 @@ namespace BookGate.API.Controllers
         {
             return RedirectToAction("Index", "Order");
         }
+        [HttpPost]
+        public async Task<IActionResult> UpdateQuantity(string id, int quantity)
+        {
+            try
+            {
+                if (quantity < 1)
+                {
+                    return Json(new { success = false, message = "Số lượng không hợp lệ" });
+                }
 
+                await _service.UpdateQuantityCartItem(id, quantity);
+
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                // Trả về JSON chứa thông báo lỗi thay vì quăng lỗi màn hình vàng
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
     }
 }

@@ -209,7 +209,7 @@
                         {
                             var itemTotal = item.SellingPrice * item.Quantity;
 
-                            <div class="d-flex align-items-center mb-4 pb-4 border-bottom position-relative cart-item-row" data-price="@item.SellingPrice">
+                            <div class="d-flex align-items-center mb-4 pb-4 border-bottom position-relative cart-item-row" data-price="@item.SellingPrice" data-id="@item.CartItemId">
                                 <div style="width: 5%;">
                                     <input class="form-check-input shadow-none item-check" type="checkbox" value="@item.CartItemId">
                                 </div>
@@ -334,7 +334,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            
+
             function formatCurrency(number) {
                 return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " đ";
             }
@@ -344,27 +344,42 @@
                 const shippingFee = 32000;
 
                 document.querySelectorAll('.cart-item-row').forEach(row => {
-                    // Lấy giá và số lượng
                     const price = parseFloat(row.getAttribute('data-price'));
                     const qty = parseInt(row.querySelector('.input-qty').value);
                     const itemTotal = price * qty;
-                    
-                    // Cập nhật tiền của từng món (Cột Thành tiền)
+
                     row.querySelector('.item-total').innerText = formatCurrency(itemTotal);
-                    
-                    // Cộng dồn vào Tạm tính
                     subTotal += itemTotal;
                 });
 
-                // Cập nhật hóa đơn bên phải
                 document.getElementById('sub-total').innerText = formatCurrency(subTotal);
-                
-                // Nếu giỏ hàng > 0 thì cộng thêm ship, bằng 0 thì tổng = 0
                 const finalTotal = subTotal > 0 ? subTotal + shippingFee : 0;
                 document.getElementById('final-total').innerText = formatCurrency(finalTotal);
             }
 
-            // Tìm tất cả các nhóm nút tăng/giảm số lượng
+            // Hàm gọi lên server bằng JSON/AJAX
+            function updateQuantityOnServer(cartItemId, newQuantity) {
+                const formData = new FormData();
+                formData.append('id', cartItemId);
+                formData.append('quantity', newQuantity);
+
+                fetch('/CartItem/UpdateQuantity', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.success) {
+                        alert("Có lỗi xảy ra: " + data.message);
+                        // Tùy chọn: Tải lại trang nếu cập nhật thất bại để reset số lượng
+                        // location.reload();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            }
+
             const qtyGroups = document.querySelectorAll('.d-flex.gap-1');
 
             qtyGroups.forEach(group => {
@@ -372,20 +387,30 @@
                 const btnPlus = group.querySelector('button:last-child');
                 const inputQty = group.querySelector('.input-qty');
 
+                // Lấy ID sản phẩm từ thẻ div cha
+                const cartRow = group.closest('.cart-item-row');
+                const cartItemId = cartRow.getAttribute('data-id');
+
                 if (btnMinus && btnPlus && inputQty) {
-                    // Khi bấm nút CỘNG
+                    // Nút CỘNG
                     btnPlus.addEventListener('click', function () {
                         let currentVal = parseInt(inputQty.value) || 1;
-                        inputQty.value = currentVal + 1;
-                        updateCartTotals(); // Gọi hàm cập nhật tiền
+                        let newVal = currentVal + 1;
+
+                        inputQty.value = newVal;
+                        updateCartTotals();
+                        updateQuantityOnServer(cartItemId, newVal);
                     });
 
-                    // Khi bấm nút TRỪ
+                    // Nút TRỪ
                     btnMinus.addEventListener('click', function () {
                         let currentVal = parseInt(inputQty.value) || 1;
-                        if (currentVal > 1) { // Không cho giảm quá 1
-                            inputQty.value = currentVal - 1;
-                            updateCartTotals(); // Gọi hàm cập nhật tiền
+                        if (currentVal > 1) {
+                            let newVal = currentVal - 1;
+
+                            inputQty.value = newVal;
+                            updateCartTotals();
+                            updateQuantityOnServer(cartItemId, newVal);
                         }
                     });
                 }

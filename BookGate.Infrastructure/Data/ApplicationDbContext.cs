@@ -21,9 +21,10 @@ namespace BookGate.Infrastructure.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<OrderStatus>().HasData(
-                new OrderStatus { StatusId = "PENDING", StatusName = "Chờ xử lý" },
+                new OrderStatus { StatusId = "PENDING", StatusName = "Chờ xác nhận" },
+                new OrderStatus { StatusId = "AWAITING_SHIPMENT", StatusName = "Chờ giao hàng" },
                 new OrderStatus { StatusId = "SHIPPING", StatusName = "Đang giao hàng" },
-                new OrderStatus { StatusId = "COMPLETED", StatusName = "Đã hoàn thành" },
+                new OrderStatus { StatusId = "COMPLETED", StatusName = "Hoàn thành" },
                 new OrderStatus { StatusId = "CANCELLED", StatusName = "Đã hủy" }
             );
         }

@@ -223,7 +223,12 @@ namespace BookGate.Infrastructure.Migrations
                         new
                         {
                             StatusId = "PENDING",
-                            StatusName = "Chờ xử lý"
+                            StatusName = "Chờ xác nhận"
+                        },
+                        new
+                        {
+                            StatusId = "AWAITING_SHIPMENT",
+                            StatusName = "Chờ giao hàng"
                         },
                         new
                         {
@@ -233,7 +238,7 @@ namespace BookGate.Infrastructure.Migrations
                         new
                         {
                             StatusId = "COMPLETED",
-                            StatusName = "Đã hoàn thành"
+                            StatusName = "Hoàn thành"
                         },
                         new
                         {

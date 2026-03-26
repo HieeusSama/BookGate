@@ -8,5 +8,6 @@ namespace BookGate.Domain.Interfaces
     public interface ICartItemRepository : IRepository<CartItem>
     {
         Task<IEnumerable<CartItem>> GetCartItemById(int id);
+        Task<CartItem> UpdateQuantityAsync(string id, int quantity);
     }
 }

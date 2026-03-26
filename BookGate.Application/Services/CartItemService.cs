@@ -57,5 +57,17 @@ namespace BookGate.Application.Services
             var cartIteams = await _repo.GetCartItemById(id);
             return _mapper.Map<List<CartItemDTO>>(cartIteams);
         }
+
+        public async Task<CartItemDTO> UpdateQuantityCartItem(string id, int quantity)
+        {
+            var entity = await _repo.UpdateQuantityAsync(id, quantity);
+
+            if (entity == null)
+            {
+                return null;
+            }
+
+            return _mapper.Map<CartItemDTO>(entity);
+        }
     }
 }
