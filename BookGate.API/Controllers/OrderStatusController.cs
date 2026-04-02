@@ -50,7 +50,8 @@ namespace BookGate.API.Controllers
         public async Task<IActionResult> IndexMember(string? searchId, string? status)
         {
             var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (string.IsNullOrEmpty(userIdString) || !int.TryParse(userIdString, out int userId))
+            int userId = int.Parse(userIdString);
+            if (string.IsNullOrEmpty(userIdString))
             {
                 return RedirectToAction("Login", "Auth");
             }
@@ -58,7 +59,7 @@ namespace BookGate.API.Controllers
 
             if (string.IsNullOrEmpty(searchId) && string.IsNullOrEmpty(status))
             {
-                orders = await _service.GetAll();
+                orders = await _service.GetAllOrderById(userId);
             }
             else
             {

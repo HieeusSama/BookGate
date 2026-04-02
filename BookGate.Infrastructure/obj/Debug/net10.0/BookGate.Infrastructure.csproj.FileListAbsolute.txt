@@ -11,10 +11,10 @@ C:\BookGate\BookGate.Infrastructure\obj\Debug\net10.0\BookGate.Infrastructure.Ge
 C:\BookGate\BookGate.Infrastructure\obj\Debug\net10.0\BookGate.Infrastructure.AssemblyInfoInputs.cache
 C:\BookGate\BookGate.Infrastructure\obj\Debug\net10.0\BookGate.Infrastructure.AssemblyInfo.cs
 C:\BookGate\BookGate.Infrastructure\obj\Debug\net10.0\BookGate.Infrastructure.csproj.CoreCompileInputs.cache
+C:\BookGate\BookGate.Infrastructure\obj\Debug\net10.0\BookGate.Infrastructure.sourcelink.json
 C:\BookGate\BookGate.Infrastructure\obj\Debug\net10.0\BookGate.C627179C.Up2Date
 C:\BookGate\BookGate.Infrastructure\obj\Debug\net10.0\BookGate.Infrastructure.dll
 C:\BookGate\BookGate.Infrastructure\obj\Debug\net10.0\refint\BookGate.Infrastructure.dll
 C:\BookGate\BookGate.Infrastructure\obj\Debug\net10.0\BookGate.Infrastructure.pdb
 C:\BookGate\BookGate.Infrastructure\obj\Debug\net10.0\BookGate.Infrastructure.genruntimeconfig.cache
 C:\BookGate\BookGate.Infrastructure\obj\Debug\net10.0\ref\BookGate.Infrastructure.dll
-C:\BookGate\BookGate.Infrastructure\obj\Debug\net10.0\BookGate.Infrastructure.sourcelink.json

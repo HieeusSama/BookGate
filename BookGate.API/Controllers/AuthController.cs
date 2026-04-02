@@ -1,5 +1,6 @@
 ﻿using BookGate.Application.DTOs;
 using BookGate.Application.Services;
+using BookGate.Infrastructure.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +9,7 @@ namespace BookGate.API.Controllers
 {
     public class AuthController : Controller
     {
+
         private readonly AuthService _service;
         public IActionResult Register() => View();
         public IActionResult Login() => View();

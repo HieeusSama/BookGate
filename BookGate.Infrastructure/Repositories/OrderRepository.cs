@@ -40,5 +40,12 @@ namespace BookGate.Infrastructure.Repositories
         {
             return await _context.Orders.AsNoTracking().FirstOrDefaultAsync(x => x.OrderId == id);
         }
+        public async Task<IEnumerable<Order?>> GetAllOrderById(int id)
+        {
+            return await _context.Orders
+            .Include(c => c.OrderStatus)
+            .Where(c => c.Id == id)
+            .ToListAsync();
+        }
     }
 }
