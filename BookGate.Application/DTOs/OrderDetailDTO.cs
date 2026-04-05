@@ -11,7 +11,8 @@ namespace BookGate.Application.DTOs
     {
         [Key]
         public string OrderDetailId { get; set; } = string.Empty;
-
+        public string? FileUrl { get; set; }
+        public string Title { get; set; } = string.Empty;
         [Required]
         public string OrderId { get; set; } = string.Empty;
 

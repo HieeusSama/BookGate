@@ -1,0 +1,41 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<style>
+    /* Giữ nguyên các Style liên quan đến Header từ code của bạn */
+    .navbar-custom { padding: 20px 0; background-color: #fff; }
+    .brand-logo { font-weight: 800; font-size: 1.25rem; letter-spacing: 0.5px; color: #000; text-decoration: none; }
+    .user-action { display: flex; align-items: center; gap: 15px; color: #1e272e; font-size: 0.95rem; font-weight: 500; }
+    .search-form-container { background: #f8f9fa; border-radius: 50px; padding: 5px 20px; border: 1px solid #e2e8f0; }
+    .search-form-container input:focus { box-shadow: none; outline: none; }
+    .action-icon { text-decoration: none; }
+</style>
+
+<header class="navbar-custom d-flex justify-content-between align-items-center">
+    <form method="get" asp-controller="Member" asp-action="Index" class="m-0 col-12 col-md-2">
+        <div class="search-form-container d-flex align-items-center gap-2">
+            <i class="bi bi-search fs-5 text-muted"></i>
+            <input type="text" name="searchString" value="@ViewBag.SearchString" class="form-control border-0 bg-transparent p-1 shadow-none">
+        </div>
+    </form>
+    
+    <a asp-controller="Member" asp-action="Index" class="brand-logo mx-auto d-none d-md-block">
+        Book Gate
+    </a>
+
+    <div class="user-action">
+        <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-person-circle fs-4"></i>
+            <span class="d-none d-md-inline">@(User.Identity?.Name ?? "Khách")</span>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+            <a asp-controller="CartItem" asp-action="Index" class="action-icon text-dark" title="Giỏ hàng">
+                <i class="bi bi-cart2 fs-5"></i>
+            </a>
+            <a asp-controller="OrderStatus" asp-action="IndexMember" class="action-icon text-dark" title="Đơn hàng">
+                <i class="bi bi-truck fs-5 text-primary"></i>
+            </a>
+            <a asp-controller="Auth" asp-action="Login" class="action-icon text-dark" title="Đăng xuất">
+                <i class="bi bi-box-arrow-right fs-5"></i>
+            </a>
+        </div>
+    </div>
+</header>

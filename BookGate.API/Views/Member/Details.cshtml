@@ -1,0 +1,269 @@
+﻿@model BookGate.Application.DTOs.BookDTO
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+    var publisherName = string.IsNullOrEmpty(Model.PublisherName) ? "Đang cập nhật" : Model.PublisherName;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@(Model.Title ?? "Chi tiết sách") - Book Gate</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1e272e; }
+        
+        /* HEADER STYLE */
+        .navbar-custom { padding: 20px 0; background-color: #fff; }
+        .brand-logo { font-weight: 800; font-size: 1.25rem; letter-spacing: 0.5px; color: #000; text-decoration: none; }
+        .user-action { display: flex; align-items: center; gap: 15px; color: #1e272e; font-size: 0.95rem; font-weight: 500; }
+        .search-form-container { background: #f8f9fa; border-radius: 50px; padding: 5px 15px; border: 1px solid #e2e8f0; }
+        .search-form-container input:focus { box-shadow: none; outline: none; }
+
+        /* DETAIL PAGE STYLE */
+        .book-cover-detail { 
+            background-color: #e2e8f0; 
+            aspect-ratio: 3/4; 
+            border-radius: 8px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            overflow: hidden; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+        .book-cover-detail i { font-size: 5rem; color: #cbd5e1; }
+        
+        .text-custom-red { color: #ff4757; font-weight: 700; }
+        .btn-buy { font-size: 0.95rem; font-weight: 600; background-color: #009dff; color: white; border: none; padding: 10px 30px; border-radius: 6px; transition: background-color 0.2s; }
+        .btn-buy:hover { background-color: #0081d6; color: white; }
+        
+        .icon-action { font-size: 1.5rem; color: #1e272e; cursor: pointer; margin-left: 15px; transition: color 0.2s; }
+        .icon-action:hover { color: #009dff; }
+        .icon-action.heart:hover { color: #ff4757; }
+        
+        /* Quantity Box */
+        .qty-wrapper { display: inline-flex; align-items: center; border: 1px solid #e2e8f0; border-radius: 6px; overflow: hidden; background: #fff; }
+        .qty-btn { background: #f8f9fa; border: none; padding: 8px 15px; font-weight: 600; cursor: pointer; color: #1e272e; transition: background 0.2s; }
+        .qty-btn:hover { background: #e2e8f0; }
+        .qty-input { width: 50px; text-align: center; border: none; outline: none; font-weight: 600; color: #1e272e; }
+        
+        /* Meta Info */
+        .meta-title { font-size: 0.85rem; font-weight: 600; color: #808e9b; text-transform: uppercase; margin-bottom: 5px; letter-spacing: 0.5px; }
+        .meta-value { font-size: 0.95rem; font-weight: 500; color: #1e272e; }
+
+        /* Tabs */
+        .nav-tabs { border-bottom: 1px solid #e2e8f0; }
+        .nav-tabs .nav-link { color: #808e9b; font-weight: 600; border: none; border-bottom: 2px solid transparent; padding: 10px 20px; font-size: 0.95rem; margin-bottom: -1px; }
+        .nav-tabs .nav-link:hover { border-color: transparent; color: #1e272e; }
+        .nav-tabs .nav-link.active { border-bottom: 2px solid #1e272e; background: transparent; color: #1e272e; }
+        
+        .review-box { background-color: #f8f9fa; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-top: 20px; }
+        
+        /* FOOTER STYLE */
+        footer { margin-top: 80px; padding: 60px 0 30px; border-top: 1px solid #f1f2f6; }
+        .footer-logo i { font-size: 2rem; color: #1e272e; }
+        .footer-title { font-weight: 700; color: #ff7675; margin-bottom: 1.5rem; font-size: 0.9rem; text-transform: uppercase; }
+        .footer-links { list-style: none; padding: 0; margin: 0; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #1e272e; text-decoration: none; font-size: 0.9rem; }
+        .footer-links a:hover { color: #ff7675; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <partial name="_Header" />
+
+        <div class="row mb-5 mt-4">
+            <div class="col-md-5 col-lg-4 mb-4">
+                <div class="book-cover-detail">
+                    @if (!string.IsNullOrEmpty(Model.FileUrl))
+                    {
+                        <img src="@Model.FileUrl" alt="@Model.Title" style="width: 100%; height: 100%; object-fit: cover;" />
+                    }
+                    else
+                    {
+                        <i class="bi bi-image"></i>
+                    }
+                </div>
+            </div>
+
+            <div class="col-md-7 col-lg-8 ps-md-4 ps-lg-5">
+                <h2 class="fw-bold mb-3" style="font-size: 1.8rem;">@Model.Title</h2>
+                
+                <div class="d-flex align-items-center mb-4 text-warning">
+                    <span class="text-dark fw-bold me-2">5.0</span>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span class="ms-3 text-muted" style="font-size: 0.9rem;">• 1 đánh giá</span>
+                </div>
+
+                <div class="row g-4 mb-4">
+                    <div class="col-6 col-sm-4">
+                        <div class="meta-title">Tác giả</div>
+                        <div class="meta-value">@Model.Author</div>
+                    </div>
+                    <div class="col-6 col-sm-4">
+                        <div class="meta-title">Thể loại</div>
+                        <div class="meta-value">@Model.Genre</div>
+                    </div>
+                    <div class="col-6 col-sm-4">
+                        <div class="meta-title">Ngày xuất bản</div>
+                        <div class="meta-value">@Model.PublicationDate.ToString("dd/MM/yyyy")</div>
+                    </div>
+                    <div class="col-12 col-sm-12">
+                        <div class="meta-title">Nhà xuất bản</div>
+                        <div class="meta-value">@publisherName</div>
+                    </div>
+                </div>
+
+                <div class="mb-4 d-flex align-items-center">
+                    <span class="meta-title me-3 mb-0" style="font-size: 1rem;">Giá:</span>
+                    <span class="text-custom-red fs-2">@Model.SellingPrice.ToString("N0") đ</span>
+                </div>
+
+                <div class="mb-4 d-flex align-items-center">
+                    <span class="meta-title me-4 mb-0" style="font-size: 1rem;">Số lượng:</span>
+                    <div class="qty-wrapper">
+                        <button class="qty-btn" onclick="decrementQty()"><i class="bi bi-dash"></i></button>
+                        <input type="number" id="qtyInput" class="qty-input" value="1" min="1" max="@Model.Quantity" />
+                        <button class="qty-btn" onclick="incrementQty()"><i class="bi bi-plus"></i></button>
+                    </div>
+                    <span class="ms-3 text-muted" style="font-size: 0.85rem;">(@Model.Quantity sản phẩm có sẵn)</span>
+                </div>
+
+                <div class="d-flex align-items-center mt-5">
+                    <a href="javascript:void(0);" onclick="muaNgay('@Model.BookId')" class="btn-buy d-flex align-items-center gap-2 text-decoration-none">
+                        Mua ngay
+                    </a>
+                    <a asp-controller="Member" asp-action="CreateCartItem" asp-route-bookId="@Model.BookId" class="bi bi-cart-plus icon-action ms-4" title="Thêm vào giỏ hàng"></a>
+                    <i class="bi bi-heart icon-action heart" title="Thêm vào yêu thích"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-12">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="comment-tab" data-bs-toggle="tab" data-bs-target="#comment" type="button" role="tab">Bình luận (1)</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review" type="button" role="tab">Đánh giá & Nhận xét (0)</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="comment" role="tabpanel">
+                        <div class="review-box d-flex justify-content-between align-items-start">
+                            <div class="d-flex">
+                                <i class="bi bi-person-circle text-secondary me-3" style="font-size: 2.5rem; line-height: 1;"></i>
+                                <div>
+                                    <div class="fw-bold mb-1" style="font-size: 0.95rem;">Username</div>
+                                    <div class="text-muted" style="font-size: 0.9rem;">AMAZING!!! Cuốn sách rất hay.</div>
+                                </div>
+                            </div>
+                            <div class="text-muted" style="font-size: 0.8rem; font-weight: 600;">11:22 PM</div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="review" role="tabpanel">
+                        <p class="mt-4 text-muted">Chưa có đánh giá chi tiết nào cho sản phẩm này.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 pe-lg-5 mb-4 mb-lg-0">
+                    <div class="footer-logo mb-3">
+                        <i class="bi bi-book"></i>
+                    </div>
+                    <p class="text-muted" style="font-size: 0.85rem; line-height: 1.6;">
+                        Book Gate là nền tảng đọc sách trực tuyến hàng đầu, mang đến cho bạn không gian khám phá tri thức vô tận.
+                    </p>
+                </div>
+                <div class="col-lg-2 d-none d-lg-block"></div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="footer-title">Khám phá</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Về chúng tôi</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="footer-title">Trợ giúp</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Hỗ trợ</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-lg-2 mt-4 mt-lg-0">
+                    <h6 class="footer-title">Theo dõi</h6>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="bi bi-facebook me-2"></i> Facebook</a></li>
+                        <li><a href="#"><i class="bi bi-instagram me-2"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-5 pt-4 border-top" style="font-size: 0.8rem; color: #a4b0be;">
+                <p class="mb-2 mb-md-0">Copyright © 2026 BookGate. All rights reserved.</p>
+                <div class="d-flex gap-3">
+                    <a href="#" class="text-decoration-none text-muted">Điều khoản</a>
+                    <a href="#" class="text-decoration-none text-muted">Bảo mật</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const maxQty = @Model.Quantity;
+
+        function decrementQty() {
+            let input = document.getElementById('qtyInput');
+            let val = parseInt(input.value);
+            if (val > 1) {
+                input.value = val - 1;
+            }
+        }
+
+        function incrementQty() {
+            let input = document.getElementById('qtyInput');
+            let val = parseInt(input.value);
+            if (val < maxQty) { 
+                input.value = val + 1;
+            } else {
+                alert("Số lượng yêu cầu vượt quá số lượng hiện có trong kho!");
+            }
+        }
+
+        document.getElementById('qtyInput').addEventListener('input', function (e) {
+            let val = parseInt(e.target.value);
+            if (isNaN(val) || val < 1) e.target.value = 1;
+            if (val > maxQty) e.target.value = maxQty;
+        });
+
+        function muaNgay(idSach) {
+        // 1. Lấy con số hiện tại ở trong ô nhập số lượng
+            let soLuong = document.getElementById('qtyInput').value;
+        
+            // 2. Chuyển hướng trình duyệt sang trang Order kèm theo id sách và số lượng
+            window.location.href = `/Order/Index?bookId=${idSach}&quantity=${soLuong}`;
+    }
+    </script>
+</body>
+</html>

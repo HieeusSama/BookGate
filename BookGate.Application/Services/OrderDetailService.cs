@@ -50,5 +50,11 @@ namespace BookGate.Application.Services
             await _repo.Delete(id);
             return true;
         }
+        async public Task<IEnumerable<OrderDetailDTO>> GetOrderDetailById(string id)
+        {
+            var orderDetail = await _repo.GetOrderDetailById(id);
+            return _mapper.Map<IEnumerable<OrderDetailDTO>>(orderDetail);
+
+        }
     }
 }

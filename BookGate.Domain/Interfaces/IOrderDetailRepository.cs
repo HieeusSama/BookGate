@@ -7,5 +7,6 @@ namespace BookGate.Domain.Interfaces
 {
     public interface IOrderDetailRepository : IRepository<OrderDetail>
     {
+        Task<IEnumerable<OrderDetail>> GetOrderDetailById(string id);
     }
 }

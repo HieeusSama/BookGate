@@ -16,5 +16,13 @@ namespace BookGate.Infrastructure.Repositories
             .Include(b => b.Order)
             .Include(b => b.Book)
             .ToListAsync();
+        public async Task<IEnumerable<OrderDetail>> GetOrderDetailById(string id)
+        {
+            return await _context.OrderDetails
+            .Include(c => c.Order)
+            .Include(c => c.Book)
+            .Where(c => c.OrderId == id)
+            .ToListAsync();
+        }
     }
 }

@@ -23,11 +23,14 @@
 
     <style>
         /* GIỮ NGUYÊN CSS TỪ TRANG CHỦ */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #ffffff;
-            color: #1e272e;
-        }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1e272e; }
+        .navbar-custom { padding: 20px 0; background-color: #fff; }
+        .brand-logo { font-weight: 800; font-size: 1.25rem; letter-spacing: 0.5px; color: #000; text-decoration: none; }
+        .user-action { display: flex; align-items: center; gap: 15px; color: #1e272e; font-size: 0.95rem; font-weight: 500; }
+        .hero-banner { background-color: #e2e8f0; height: 280px; border-radius: 4px; display: flex; align-items: center; justify-content: center; margin-bottom: 50px; margin-top: 10px; }
+        .section-header { display: flex; align-items: baseline; margin-bottom: 20px; }
+        .section-header h5 { font-weight: 700; font-size: 1rem; text-transform: uppercase; margin-bottom: 0; letter-spacing: 0.5px; }
+        .section-header small { color: #808e9b; margin-left: 8px; font-size: 0.85rem; }
 
         .navbar-custom {
             padding: 20px 0;
@@ -168,24 +171,7 @@
 <body>
     <div class="container">
 
-        <header class="navbar-custom d-flex justify-content-between align-items-center">
-            <div class="search-box d-flex align-items-center gap-2">
-                <i class="bi bi-search fs-5"></i>
-                <span class="d-none d-md-inline">Tìm kiếm sách, tác giả...</span>
-            </div>
-
-            <a asp-controller="Member" asp-action="Index" class="brand-logo">Book Gate</a>
-
-            <div class="user-action">
-                <div class="d-flex align-items-center gap-2">
-                    <i class="bi bi-person-circle fs-4"></i>
-                    <span class="d-none d-md-inline">Chào, @User.Identity!.Name</span>
-                </div>
-                <a asp-controller="CartItem" asp-action="Index" class="text-dark">
-                    <i class="bi bi-bag fs-5 ms-3"></i>
-                </a>
-            </div>
-        </header>
+        <partial name="_Header" />
 
         <div class="mt-5 mb-5">
             <h4 class="mb-4 fw-bold text-uppercase" style="letter-spacing: 1px; font-size: 1.1rem;">GIỎ HÀNG</h4>

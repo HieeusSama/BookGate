@@ -66,7 +66,25 @@ namespace BookGate.API.Controllers
                 Quantity = 1,
             };
             await _cartItemService.Add(cartItem);
+            string referer = Request.Headers["Referer"].ToString();
+
+            if (!string.IsNullOrEmpty(referer))
+            {
+                return Redirect(referer);
+            }
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(string bookId)
+        {
+            var Id = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(Id))
+            {
+                return RedirectToAction("Login", "Auth");
+            }
+            var book = await _service.GetById(bookId);
+            return View(book);
         }
     }
 }

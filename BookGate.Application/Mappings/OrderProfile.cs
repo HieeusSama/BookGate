@@ -15,7 +15,9 @@ namespace BookGate.Application.Mappings
             CreateMap<Order, OrderDTO>()
             .ForMember(dest => dest.StatusName, opt => opt.MapFrom(src => src.OrderStatus!.StatusName));
             CreateMap<OrderDTO, Order>();
-            CreateMap<OrderDetail, OrderDetailDTO>();
+            CreateMap<OrderDetail, OrderDetailDTO>()
+            .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Book != null ? src.Book.Title : "Sách không xác định"))
+            .ForMember(dest => dest.FileUrl, opt => opt.MapFrom(src => src.Book != null ? src.Book.FileUrl : string.Empty));
             CreateMap<OrderDetailDTO, OrderDetail>();
             CreateMap<OrderStatus, OrderStatusDTO>();
             CreateMap<OrderStatusDTO, OrderStatus>();
