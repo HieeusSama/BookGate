@@ -12,12 +12,14 @@ namespace BookGate.API.Controllers
     {
         private readonly OrderService _service;
         private readonly OrderDetailService _orderDetailService;
+        private readonly MemberBookService _memberBookService;
 
 
-        public OrderStatusController(OrderService service, OrderDetailService orderDetailService)
+        public OrderStatusController(OrderService service, OrderDetailService orderDetailService, MemberBookService memberBookService)
         {
             _service = service;
             _orderDetailService = orderDetailService;
+            _memberBookService = memberBookService;
         }
         [Authorize(Roles = "Admin")]
         [HttpGet]
@@ -29,17 +31,15 @@ namespace BookGate.API.Controllers
                 return RedirectToAction("Login", "Auth");
             }
             IEnumerable<OrderDTO> orders;
-
             if (string.IsNullOrEmpty(searchId) && string.IsNullOrEmpty(status))
             {
                 orders = await _service.GetAll();
             }
             else
             {
-                orders = await _service.GetOrdersWithFilter(searchId, status);
+                orders = await _service.GetOrdersWithFilter(null, searchId, status);
             }
 
-            // 4. Giữ lại giá trị để hiển thị lên Form lọc (Search Box & Select)
             ViewBag.SearchId = searchId;
             ViewBag.CurrentStatus = status;
 
@@ -50,13 +50,11 @@ namespace BookGate.API.Controllers
         public async Task<IActionResult> IndexMember(string? searchId, string? status)
         {
             var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            
-            if (string.IsNullOrEmpty(userIdString))
+            if (string.IsNullOrEmpty(userIdString) || !int.TryParse(userIdString, out int userId))
             {
                 return RedirectToAction("Login", "Auth");
             }
             IEnumerable<OrderDTO> orders;
-            int userId = int.Parse(userIdString);
 
             if (string.IsNullOrEmpty(searchId) && string.IsNullOrEmpty(status))
             {
@@ -64,7 +62,7 @@ namespace BookGate.API.Controllers
             }
             else
             {
-                orders = await _service.GetOrdersWithFilter(searchId, status);
+                orders = await _service.GetOrdersWithFilter(userId, searchId, status);
             }
 
             // 4. Giữ lại giá trị để hiển thị lên Form lọc (Search Box & Select)
@@ -74,7 +72,7 @@ namespace BookGate.API.Controllers
             return View(orders);
         }
         [Authorize(Roles = "Admin")]
-        [HttpPost] // Phải có attribute này vì form gửi lên bằng method="post"
+        [HttpPost]
         public async Task<IActionResult> UpdateStatus(string orderId, string newStatus)
         {
             var order = await _service.GetById(orderId);
@@ -82,11 +80,30 @@ namespace BookGate.API.Controllers
             {
                 order.StatusId = newStatus;
                 await _service.Update(order);
+                if (newStatus == "CANCELED")
+                {
+                    var orderDetails = await _orderDetailService.GetOrderDetailById(orderId);
+
+                    if (orderDetails != null)
+                    {
+                        foreach (var item in orderDetails)
+                        {
+                            // Tìm cuốn sách trong kho dựa vào BookId
+                            var book = await _memberBookService.GetById(item.BookId);
+                            if (book != null)
+                            {
+                                // Cộng lại số lượng và cập nhật vào Database
+                                book.Quantity += item.Quantity;
+                                await _memberBookService.Update(book);
+                            }
+                        }
+                    }
+                }
             }
             return RedirectToAction("IndexAdmin");
         }
 
-        [HttpPost] // Phải có attribute này vì form gửi lên bằng method="post"
+        [HttpPost]
         public async Task<IActionResult> UpdateStatusMember(string orderId, string newStatus)
         {
             var order = await _service.GetById(orderId);
@@ -94,9 +111,27 @@ namespace BookGate.API.Controllers
             {
                 order.StatusId = newStatus;
                 await _service.Update(order);
-            }
-            return RedirectToAction("IndexAdmin");
-        }
+                if (newStatus == "CANCELED")
+                {
+                    var orderDetails = await _orderDetailService.GetOrderDetailById(orderId);
 
+                    if (orderDetails != null)
+                    {
+                        foreach (var item in orderDetails)
+                        {
+                            // Tìm cuốn sách trong kho dựa vào BookId
+                            var book = await _memberBookService.GetById(item.BookId);
+                            if (book != null)
+                            {
+                                // Cộng lại số lượng và cập nhật vào Database
+                                book.Quantity += item.Quantity;
+                                await _memberBookService.Update(book);
+                            }
+                        }
+                    }
+                }
+            }
+            return RedirectToAction("IndexMember");
+        }
     }
 }

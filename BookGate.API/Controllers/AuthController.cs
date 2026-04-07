@@ -24,7 +24,7 @@ namespace BookGate.API.Controllers
             var user = await _service.Login(auth);
             if (user == null)
             {
-                ModelState.AddModelError("", "Sai tài khoản hoặc mật khẩu");
+                ModelState.AddModelError("", "Sai tai khoan hoac mat khau");
                 return View();
             }
             var claims = new List<Claim>

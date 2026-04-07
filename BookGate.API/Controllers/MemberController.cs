@@ -20,29 +20,21 @@ namespace BookGate.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(string searchString, int page = 1)
         {
-            //var books = await _service.GetAll();
-            //return View(books);
             var allBooks = await _service.GetAll();
 
-            // 1. Xử lý tìm kiếm (Tìm gần đúng, không phân biệt hoa thường)
             if (!string.IsNullOrEmpty(searchString))
             {
                 allBooks = allBooks.Where(b => b.Title.ToLower().Contains(searchString.ToLower())).ToList();
             }
 
-            // 2. Xử lý phân trang
-            int pageSize = 12; // Số lượng sách hiển thị trên 1 trang (bạn có thể tự điều chỉnh)
+            int pageSize = 12;
             int totalItems = allBooks.Count();
             int totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
 
-            // Đảm bảo số trang luôn hợp lệ
             page = page < 1 ? 1 : page;
             page = page > totalPages && totalPages > 0 ? totalPages : page;
-
-            // Lấy dữ liệu của trang hiện tại
             var pagedBooks = allBooks.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            // 3. Truyền dữ liệu phân trang và từ khóa tìm kiếm sang View
             ViewBag.CurrentPage = page;
             ViewBag.TotalPages = totalPages;
             ViewBag.SearchString = searchString;

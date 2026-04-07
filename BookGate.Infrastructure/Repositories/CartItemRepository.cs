@@ -26,7 +26,6 @@ namespace BookGate.Infrastructure.Repositories
         }
         public async Task<CartItem> UpdateQuantityAsync(string id, int quantity)
         {
-            // 1. Tìm sản phẩm trong giỏ hàng
             var cartItem = await _context.CartItems.FindAsync(id);
 
             if (cartItem != null)

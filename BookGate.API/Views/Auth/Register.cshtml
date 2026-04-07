@@ -12,14 +12,86 @@
     <title>Đăng ký - Book Gate</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         /* Giữ nguyên toàn bộ CSS bạn đã cung cấp */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
+       body {
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
             margin: 0;
             overflow: hidden;
+        }
+
+        .login-sidebar {
+    /* Thiết lập hình ảnh nền lấp đầy toàn bộ */
+    background-image: url('/uploads/banner/522977464_1151409953685292_4950967811551467365_n.jpg');
+    background-size: cover; /* Hình ảnh sẽ co giãn để che phủ toàn bộ vùng chứa */
+    background-position: center; /* Căn giữa hình ảnh */
+    background-repeat: no-repeat; /* Không lặp lại hình ảnh */
+
+    /* Giữ nguyên các thuộc tính khác để định vị logo */
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    position: relative;
+    height: 100vh; /* Đảm bảo chiều cao lấp đầy màn hình */
+}
+
+/* Xóa hoặc ẩn thẻ <img> trong HTML vì chúng ta đã dùng background-image */
+.placeholder-image-container {
+    display: none; /* Hoặc xóa hoàn toàn khỏi HTML */
+}
+
+/* Đảm bảo logo "Book Gate" hiển thị rõ ràng trên nền ảnh */
+.brand-logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #fff; /* Đổi màu chữ thành trắng để nổi bật trên nền ảnh */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 10; /* Đảm bảo logo nằm trên cùng */
+}lign-items: center;
+        }
+
+        .placeholder-icon {
+            font-size: 200px;
+            color: #fff;
+        }
+
+        .login-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .login-box {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-box h2 {
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        /* Thêm các CSS khác của bạn ở đây... */
+        
+        .validation-summary-errors {
+            border-radius: 8px;
+        }
+        .validation-summary-errors ul {
+            list-style-type: none; 
+            padding: 0; 
+            margin: 0;
+            text-align: center; 
+        }
+        .validation-summary-errors li {
+            color: #dc3545;
+            font-weight: 500;
         }
 
         .left-panel {
@@ -100,15 +172,12 @@
 </head>
 <body>
 
-    <div class="container-fluid vh-100">
-        <div class="row h-100">
-            <div class="col-md-5 d-none d-md-flex left-panel flex-column p-4">
-                <div class="logo mb-auto">
-                    <i class="bi bi-book-half"></i> <strong>Book Gate</strong>
-                </div>
-                <div class="image-placeholder d-flex align-items-center justify-content-center flex-grow-1">
-                    <i class="bi bi-image" style="font-size: 10rem; color: #fff; opacity: 0.8;"></i>
-                </div>
+    <div class="container-fluid p-0 h-100">
+        <div class="row g-0 h-100">
+            <div class="col-lg-4 d-none d-lg-flex login-sidebar">
+                <a href="/" class="brand-logo">
+                    <i class="bi bi-book-half"></i> Book Gate
+                </a>
             </div>
 
             <div class="col-md-7 d-flex align-items-center justify-content-center bg-white">

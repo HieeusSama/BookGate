@@ -61,71 +61,99 @@ namespace BookGate.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CheckOut(OrderDTO order, string bookId, int quantity = 1)
         {
-            var Id = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            int userId = int.Parse(Id);
-
-            decimal shippingFee = 32000;
-            var newOrderId = Guid.NewGuid().ToString();
-
-            // 1. Gán các thông tin chung cho đơn hàng (Giữ nguyên của bạn)
-            order.OrderId = newOrderId;
-            order.Id = userId;
-            order.OrderDate = DateTime.Now;
-            order.ShippingFee = shippingFee;
-            order.StatusId = "PENDING";
-
-            // 2. TÁCH LUỒNG XỬ LÝ
-            if (!string.IsNullOrEmpty(bookId))
+            try
             {
-                // --- LUỒNG MUA NGAY ---
-                var book = await _memberBookService.GetById(bookId);
-
-                decimal subTotal = book.SellingPrice * quantity;
-                order.TotalAmount = subTotal + shippingFee;
-
-                await _service.Add(order);
-
-                // Chỉ tạo 1 OrderDetail cho cuốn sách vừa mua
-                OrderDetailDTO orderDetails = new OrderDetailDTO
+                var Id = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                if (string.IsNullOrEmpty(Id))
                 {
-                    OrderDetailId = Guid.NewGuid().ToString(),
-                    OrderId = newOrderId,
-                    BookId = book.BookId,
-                    Quantity = quantity,
-                    UnitPrice = book.SellingPrice
-                };
-                await _orderDetailService.Add(orderDetails);
-            }
-            else
-            {
-                // --- LUỒNG GIỎ HÀNG (Giữ nguyên 100% code cũ của bạn) ---
-                var cartItems = await _cartIteamService.GetCartItemById(userId);
+                    return RedirectToAction("Login", "Auth");
+                }
+                int userId = int.Parse(Id);
 
-                decimal subTotal = cartItems.Sum(x => x.SellingPrice * x.Quantity);
-                order.TotalAmount = subTotal + shippingFee;
+                decimal shippingFee = 32000;
+                var newOrderId = Guid.NewGuid().ToString();
 
-                await _service.Add(order);
+                order.OrderId = newOrderId;
+                order.Id = userId;
+                order.OrderDate = DateTime.Now;
+                order.ShippingFee = shippingFee;
+                order.StatusId = "PENDING"; // CHÚ Ý: Cột này rất hay gây lỗi khóa ngoại
 
-                foreach (var item in cartItems)
+                if (!string.IsNullOrEmpty(bookId))
                 {
+                    // --- LUỒNG MUA NGAY ---
+                    var book = await _memberBookService.GetById(bookId);
+
+                    if (book.Quantity < quantity)
+                    {
+                        TempData["Error"] = $"Sách '{book.Title}' chỉ còn {book.Quantity} quyển.";
+                        return RedirectToAction("Index");
+                    }
+
+                    decimal subTotal = book.SellingPrice * quantity;
+                    order.TotalAmount = subTotal + shippingFee;
+
+                    await _service.Add(order);
+
                     OrderDetailDTO orderDetails = new OrderDetailDTO
                     {
                         OrderDetailId = Guid.NewGuid().ToString(),
                         OrderId = newOrderId,
-                        BookId = item.BookId,
-                        Quantity = item.Quantity,
-                        UnitPrice = item.SellingPrice
+                        BookId = book.BookId,
+                        Quantity = quantity,
+                        UnitPrice = book.SellingPrice
                     };
                     await _orderDetailService.Add(orderDetails);
-                }
 
-                foreach (var item in cartItems)
+                    // Trừ kho
+                    book.Quantity -= quantity;
+                    await _memberBookService.Update(book);
+                }
+                else
                 {
-                    await _cartIteamService.Delete(item.CartItemId);
-                }
-            }
+                    // --- LUỒNG GIỎ HÀNG ---
+                    var cartItems = await _cartIteamService.GetCartItemById(userId);
 
-            return RedirectToAction("Index", "Member");
+                    decimal subTotal = cartItems.Sum(x => x.SellingPrice * x.Quantity);
+                    order.TotalAmount = subTotal + shippingFee;
+
+                    await _service.Add(order);
+
+                    foreach (var item in cartItems)
+                    {
+                        OrderDetailDTO orderDetails = new OrderDetailDTO
+                        {
+                            OrderDetailId = Guid.NewGuid().ToString(),
+                            OrderId = newOrderId,
+                            BookId = item.BookId,
+                            Quantity = item.Quantity,
+                            UnitPrice = item.SellingPrice
+                        };
+                        await _orderDetailService.Add(orderDetails);
+
+                        // Trừ kho
+                        var bookInCart = await _memberBookService.GetById(item.BookId);
+                        bookInCart.Quantity -= item.Quantity;
+                        await _memberBookService.Update(bookInCart);
+                    }
+
+                    foreach (var item in cartItems)
+                    {
+                        await _cartIteamService.Delete(item.CartItemId);
+                    }
+                }
+
+                return RedirectToAction("Index", "Member");
+            }
+            catch (Exception ex)
+            {
+                string errorMessage = "Bắt được lỗi: " + ex.Message;
+                if (ex.InnerException != null)
+                {
+                    errorMessage += " | Lỗi chi tiết (Database): " + ex.InnerException.Message;
+                }
+                return Content(errorMessage);
+            }
         }
 
         [HttpGet]

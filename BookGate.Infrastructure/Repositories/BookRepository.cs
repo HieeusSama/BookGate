@@ -12,13 +12,20 @@ namespace BookGate.Infrastructure.Repositories
         public BookRepository(ApplicationDbContext context) : base(context){}
 
         new public async Task<IEnumerable<Book>> GetAll()
-        => await _context.Books.Include(b => b.Publisher).ToListAsync();
+        => await _context.Books.Include(b => b.Publisher).AsNoTracking().ToListAsync();
 
         public async Task<Book?> GetById(string id)
         {
             return await _context.Books
                 .Include(b => b.Publisher)
+                .AsNoTracking()
                 .FirstOrDefaultAsync(b => b.BookId == id);
+        }
+        new public async Task Update(Book book)
+        {
+            _context.ChangeTracker.Clear();
+            _context.Update(book);
+            await _context.SaveChangesAsync();
         }
     }
 }

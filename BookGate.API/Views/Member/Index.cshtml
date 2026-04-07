@@ -53,6 +53,17 @@
         .footer-links li { margin-bottom: 12px; }
         .footer-links a { color: #1e272e; text-decoration: none; font-size: 0.9rem; }
         .footer-links a:hover { color: #ff7675; }
+        .hero-banner { 
+            background-color: #e2e8f0; 
+            height: 200px; /* Giảm chiều cao xuống còn 180px */
+            border-radius: 8px; /* Bo góc nhẹ cho hiện đại */
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin-bottom: 30px; /* Giảm khoảng cách dưới một chút */
+            margin-top: 10px; 
+            overflow: hidden; /* Quan trọng: Cắt bỏ phần ảnh thừa nếu ảnh quá to */
+        }
     </style>
 </head>
 <body>
@@ -60,7 +71,7 @@
         <partial name="_Header" />
 
         <div class="hero-banner">
-            <i class="bi bi-image" style="font-size: 4rem; color: #cbd5e1;"></i>
+            <img src="/uploads/banner/banner.png" alt="Main Banner" style="width: 100%; height: auto;">
         </div>
 
         <!-- DANH SÁCH SÁCH -->

@@ -16,13 +16,18 @@ namespace BookGate.Infrastructure.Repositories
             .Include(b => b.OrderDetail)
             .Include(b => b.OrderStatus)
             .ToListAsync();
-        public async Task<IEnumerable<Order>> GetOrdersWithFilter(string? orderId, string? statusId)
+        public async Task<IEnumerable<Order>> GetOrdersWithFilter(int? userId, string? orderId, string? statusId)
         {
             // Bắt đầu với truy vấn gốc
             var query = _context.Orders
                 .Include(o => o.OrderStatus)
                 .AsNoTracking()
                 .AsQueryable();
+
+            if (userId.HasValue)
+            {
+                query = query.Where(o => o.Id == userId.Value);
+            }
 
             if (!string.IsNullOrEmpty(orderId))
             {

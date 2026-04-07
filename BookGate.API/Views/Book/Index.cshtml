@@ -89,16 +89,39 @@
             padding-top: 50px;
             border-top: 1px solid #eaeaea;
         }
+            /* Custom Pagination */
+            .pagination .page-link {
+                color: #009dff;
+                border-radius: 4px;
+                margin: 0 4px;
+                border: 1px solid #dee2e6;
+            }
+
+                .pagination .page-link:hover {
+                    background-color: #e9ecef;
+                    color: #0081d6;
+                }
+
+            .pagination .page-item.active .page-link {
+                background-color: #009dff;
+                border-color: #009dff;
+                color: white;
+            }
+
+            .pagination .page-item.disabled .page-link {
+                color: #6c757d;
+            }
     </style>
 </head>
 <body>
 
     <div class="container my-4">
         <header class="d-flex justify-content-between align-items-center py-2 mb-5">
-            <div class="search-container col-4">
+            <form method="get" asp-action="Index" class="search-container col-4">
                 <i class="bi bi-search text-muted me-2 fs-5"></i>
-                <input type="text" class="search-input w-100" placeholder="Tìm kiếm sách, tác giả...">
-            </div>
+                <input type="text" name="searchTerm" value="@ViewBag.SearchTerm" class="search-input w-100" placeholder="Tìm kiếm sách, tác giả...">
+                <button type="submit" class="d-none"></button>
+            </form>
             <div class="col-4 text-center">
                 <h5 class="mb-0 fw-bold text-primary">Book Gate</h5>
             </div>
@@ -138,7 +161,7 @@
                         <div class="flex-grow-1 py-1">
                             <h4 class="fw-bold mb-1">@item.Title</h4>
 
-                            <div class="mb-3 d-flex align-items-center text-muted" style="font-size: 0.9rem;">
+                            @* <div class="mb-3 d-flex align-items-center text-muted" style="font-size: 0.9rem;">
                                 <span class="text-warning me-2 fw-bold">5.0</span>
                                 <i class="bi bi-star-fill text-warning"></i>
                                 <i class="bi bi-star-fill text-warning"></i>
@@ -146,7 +169,7 @@
                                 <i class="bi bi-star-fill text-warning"></i>
                                 <i class="bi bi-star-fill text-warning"></i>
                                 <span class="ms-2">• 1 đánh giá</span>
-                            </div>
+                            </div> *@
 
                             <div class="row w-100 mb-4 pe-5">
                                 <div class="col-3 mb-3">
@@ -199,7 +222,33 @@
                 <p>Hãy bấm nút "Thêm sách" ở góc trên bên phải để bắt đầu.</p>
             </div>
         }
+        @if (ViewBag.TotalPages > 1)
+        {
+            <nav aria-label="Page navigation" class="mt-4">
+                <ul class="pagination justify-content-center">
+                    
+                    <li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
+                        <a class="page-link" asp-action="Index" asp-route-page="@(ViewBag.CurrentPage - 1)" asp-route-searchTerm="@ViewBag.SearchTerm">
+                            <i class="bi bi-chevron-left"></i> Trước
+                        </a>
+                    </li>
 
+                    @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                    {
+                        <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                            <a class="page-link" asp-action="Index" asp-route-page="@i" asp-route-searchTerm="@ViewBag.SearchTerm">@i</a>
+                        </li>
+                    }
+
+                    <li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages || ViewBag.TotalPages == 0 ? "disabled" : "")">
+                        <a class="page-link" asp-action="Index" asp-route-page="@(ViewBag.CurrentPage + 1)" asp-route-searchTerm="@ViewBag.SearchTerm">
+                            Sau <i class="bi bi-chevron-right"></i>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </nav>
+        }
         <footer class="footer-section pb-4">
             <div class="d-flex justify-content-between text-muted" style="font-size: 0.85rem;">
                 <div>Copyright © 2026. BookGate. All rights reserved.</div>

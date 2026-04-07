@@ -30,5 +30,11 @@ namespace BookGate.Application.Services
             var book = await _repo.GetById(id);
             return _mapper.Map<BookDTO>(book);
         }
+        public async Task<BookDTO> Update(BookDTO book)
+        {
+            var bookEntity = _mapper.Map<Book>(book);
+            await _repo.Update(bookEntity);
+            return _mapper.Map<BookDTO>(bookEntity);
+        }
     }
 }

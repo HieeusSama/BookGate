@@ -37,9 +37,9 @@ namespace BookGate.Application.Services
             return _mapper.Map<IEnumerable<OrderDTO>>(order);
         }
 
-        public async Task<IEnumerable<OrderDTO>> GetOrdersWithFilter(string searchId, string status)
+        public async Task<IEnumerable<OrderDTO>> GetOrdersWithFilter(int? userId, string searchId, string status)
         {
-            var order = await _repo.GetOrdersWithFilter(searchId, status);
+            var order = await _repo.GetOrdersWithFilter(userId, searchId, status);
             return _mapper.Map<IEnumerable<OrderDTO>>(order);
         }
 

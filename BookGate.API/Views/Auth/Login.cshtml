@@ -15,31 +15,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* Giữ nguyên toàn bộ CSS của bạn */
         body {
             font-family: 'Inter', sans-serif;
             height: 100vh;
             margin: 0;
             overflow: hidden;
         }
-
+        /* Giữ nguyên toàn bộ CSS của bạn */
         .login-sidebar {
-            background-color: #b2bec3;
-            display: flex;
-            flex-direction: column;
-            padding: 40px;
-            position: relative;
-        }
+    /* Thiết lập hình ảnh nền lấp đầy toàn bộ */
+    background-image: url('/uploads/banner/522977464_1151409953685292_4950967811551467365_n.jpg');
+    background-size: cover; /* Hình ảnh sẽ co giãn để che phủ toàn bộ vùng chứa */
+    background-position: center; /* Căn giữa hình ảnh */
+    background-repeat: no-repeat; /* Không lặp lại hình ảnh */
 
-        .brand-logo {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: #2d3436;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    /* Giữ nguyên các thuộc tính khác để định vị logo */
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    position: relative;
+    height: 100vh; /* Đảm bảo chiều cao lấp đầy màn hình */
+}
+
+/* Xóa hoặc ẩn thẻ <img> trong HTML vì chúng ta đã dùng background-image */
+.placeholder-image-container {
+    display: none; /* Hoặc xóa hoàn toàn khỏi HTML */
+}
+
+/* Đảm bảo logo "Book Gate" hiển thị rõ ràng trên nền ảnh */
+.brand-logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #fff; /* Đổi màu chữ thành trắng để nổi bật trên nền ảnh */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 10; /* Đảm bảo logo nằm trên cùng */
+}
 
         .placeholder-image-container {
             flex-grow: 1;
@@ -169,6 +182,19 @@
         .text-danger {
             font-size: 0.8rem;
         }
+        .validation-summary-errors {
+            border-radius: 8px;
+        }
+                .validation-summary-errors ul {
+                    list-style-type: none; 
+                    padding: 0; 
+                    margin: 0;
+                    text-align: center; 
+                }
+                .validation-summary-errors li {
+                    color: #dc3545;
+                    font-weight: 500;
+                }
     </style>
 </head>
 <body>
@@ -176,19 +202,15 @@
     <div class="container-fluid p-0 h-100">
         <div class="row g-0 h-100">
             <div class="col-lg-4 d-none d-lg-flex login-sidebar">
-                <a href="/" class="brand-logo">
-                    <i class="bi bi-book-half"></i> Book Gate
-                </a>
-                <div class="placeholder-image-container">
-                    <i class="bi bi-image placeholder-icon"></i>
-                </div>
+            <a href="/" class="brand-logo">
+                <i class="bi bi-book-half"></i> Book Gate
+            </a>
             </div>
-
             <div class="col-lg-8 login-content">
                 <div class="login-box">
                     <h2>Đăng nhập</h2>
 
-                    <div class="d-grid">
+                    @* <div class="d-grid">
                         <button class="btn btn-social btn-light">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Google_Favicon_2025.svg/960px-Google_Favicon_2025.svg.png" width="18" alt="Google">
                             Đăng nhập bằng Google
@@ -201,11 +223,12 @@
 
                     <div class="divider">
                         <span>Hoặc</span>
-                    </div>
+                    </div> *@
 
                     <form asp-action="Login" method="post">
                         @Html.AntiForgeryToken()
-
+                        @* <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2 border-0 bg-danger bg-opacity-10" style="font-size: 0.85rem;" role="alert"></div> *@
+                        
                         <div class="mb-3">
                             <label asp-for="Email" class="form-label fw-semibold" style="font-size: 0.85rem;">Email</label>
                             <input asp-for="Email" class="form-control" placeholder="Nhập email của bạn">
@@ -244,7 +267,6 @@
     </div>
 
     <script>
-        // JS xử lý ẩn/hiện mật khẩu
         const toggleIcon = document.getElementById('toggleIcon');
         const passwordField = document.getElementById('passwordField');
 
@@ -255,7 +277,43 @@
             this.classList.toggle('bi-eye-slash');
         });
     </script>
-
+   
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        var errorMessages = ViewData.ModelState.Values
+            .SelectMany(x => x.Errors)
+            .Select(x => x.ErrorMessage)
+            .ToList();
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                // Lặp qua các lỗi (nếu có nhiều lỗi) và hiển thị
+                @foreach (var error in errorMessages)
+                {
+                    <text>
+                    Toastify({
+                        text: "@error",            // Lấy nội dung lỗi từ Controller (VD: "Sai tài khoản hoặc mật khẩu")
+                        duration: 3500,            // Thời gian hiển thị (3.5 giây)
+                        close: true,               // Hiển thị nút X để tắt
+                        gravity: "bottom",         // Hiển thị ở dưới (bottom) hoặc trên (top)
+                        position: "right",         // Hiển thị bên phải (right), trái (left), hoặc giữa (center)
+                        style: {
+                            background: "#dc3545", // Màu nền đỏ cảnh báo (chuẩn class danger của Bootstrap)
+                            borderRadius: "8px",   // Bo góc cho đồng bộ với form
+                            fontFamily: "Inter, sans-serif",
+                            fontSize: "14px",
+                            fontWeight: "500"
+                        }
+                    }).showToast();
+                    </text>
+                }
+            });
+        </script>
+    }
 </body>
 </html>
