@@ -15,7 +15,6 @@ namespace BookGate.Domain.Entities
         [StringLength(50)]
         public string StatusName { get; set; } = string.Empty;
 
-        // Navigation property: Một trạng thái có thể có nhiều đơn hàng
         public ICollection<Order> Orders { get; set; }
     }
 }

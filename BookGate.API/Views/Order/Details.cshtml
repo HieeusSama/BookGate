@@ -2,10 +2,11 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = null;
-    var orderDate = ViewBag.OrderDate != null ? ((DateTime)ViewBag.OrderDate).ToString("dd/MM/yyyy HH:mm") : DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+    var orderDate = ViewBag.OrderDate;
     decimal shippingFee = 32000;
     decimal subTotal = Model?.Sum(x => x.UnitPrice * x.Quantity) ?? 0;
     decimal totalAmount = subTotal + shippingFee;
+    string PaymentMethod = ViewBag.PaymentMethod ?? "Thanh toán khi nhận hàng (COD)";
 }
 
 <!DOCTYPE html>
@@ -142,7 +143,7 @@
                         </div>
                         <div class="summary-row">
                             <span>Phương thức</span>
-                            <span>Thanh toán khi nhận hàng (COD)</span>
+                            <span>@PaymentMethod</span>
                         </div>
 
                         <div class="summary-total">

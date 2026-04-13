@@ -3,36 +3,100 @@
   "WorkspaceRootPath": "C:\\BookGate\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|c:\\bookgate\\bookgate.api\\controllers\\orderstatuscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|solutionrelative:bookgate.api\\controllers\\orderstatuscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|c:\\bookgate\\bookgate.api\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|solutionrelative:bookgate.api\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{830BBEC2-7645-CE13-920E-7B5221F47C0B}|BookGate.Application\\BookGate.Application.csproj|c:\\bookgate\\bookgate.application\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{830BBEC2-7645-CE13-920E-7B5221F47C0B}|BookGate.Application\\BookGate.Application.csproj|solutionrelative:bookgate.application\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{830BBEC2-7645-CE13-920E-7B5221F47C0B}|BookGate.Application\\BookGate.Application.csproj|c:\\bookgate\\bookgate.application\\dtos\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{830BBEC2-7645-CE13-920E-7B5221F47C0B}|BookGate.Application\\BookGate.Application.csproj|solutionrelative:bookgate.application\\dtos\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F30D7144-FA88-AE5C-6D44-2DB685FFB2C3}|BookGate.Infrastructure\\BookGate.Infrastructure.csproj|c:\\bookgate\\bookgate.infrastructure\\repositories\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F30D7144-FA88-AE5C-6D44-2DB685FFB2C3}|BookGate.Infrastructure\\BookGate.Infrastructure.csproj|solutionrelative:bookgate.infrastructure\\repositories\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|c:\\bookgate\\bookgate.api\\views\\order\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|solutionrelative:bookgate.api\\views\\order\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|c:\\bookgate\\bookgate.domain\\interfaces\\iorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|solutionrelative:bookgate.domain\\interfaces\\iorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|c:\\bookgate\\bookgate.api\\views\\order\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|solutionrelative:bookgate.api\\views\\order\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F30D7144-FA88-AE5C-6D44-2DB685FFB2C3}|BookGate.Infrastructure\\BookGate.Infrastructure.csproj|c:\\bookgate\\bookgate.infrastructure\\repositories\\orderdetailrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F30D7144-FA88-AE5C-6D44-2DB685FFB2C3}|BookGate.Infrastructure\\BookGate.Infrastructure.csproj|solutionrelative:bookgate.infrastructure\\repositories\\orderdetailrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|c:\\bookgate\\bookgate.domain\\interfaces\\iorderdetailrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|solutionrelative:bookgate.domain\\interfaces\\iorderdetailrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{830BBEC2-7645-CE13-920E-7B5221F47C0B}|BookGate.Application\\BookGate.Application.csproj|c:\\bookgate\\bookgate.application\\services\\orderdetailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{830BBEC2-7645-CE13-920E-7B5221F47C0B}|BookGate.Application\\BookGate.Application.csproj|solutionrelative:bookgate.application\\services\\orderdetailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|c:\\bookgate\\bookgate.api\\controllers\\orderstatuscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|solutionrelative:bookgate.api\\controllers\\orderstatuscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|c:\\bookgate\\bookgate.api\\views\\member\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|solutionrelative:bookgate.api\\views\\member\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|c:\\bookgate\\bookgate.api\\views\\member\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|solutionrelative:bookgate.api\\views\\member\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|c:\\bookgate\\bookgate.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|solutionrelative:bookgate.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|c:\\bookgate\\bookgate.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|solutionrelative:bookgate.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|c:\\bookgate\\bookgate.domain\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|solutionrelative:bookgate.domain\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|c:\\bookgate\\bookgate.domain\\entities\\orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|solutionrelative:bookgate.domain\\entities\\orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|c:\\bookgate\\bookgate.domain\\interfaces\\iorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|solutionrelative:bookgate.domain\\interfaces\\iorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F30D7144-FA88-AE5C-6D44-2DB685FFB2C3}|BookGate.Infrastructure\\BookGate.Infrastructure.csproj|c:\\bookgate\\bookgate.infrastructure\\repositories\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F30D7144-FA88-AE5C-6D44-2DB685FFB2C3}|BookGate.Infrastructure\\BookGate.Infrastructure.csproj|solutionrelative:bookgate.infrastructure\\repositories\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F30D7144-FA88-AE5C-6D44-2DB685FFB2C3}|BookGate.Infrastructure\\BookGate.Infrastructure.csproj|c:\\bookgate\\bookgate.infrastructure\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F30D7144-FA88-AE5C-6D44-2DB685FFB2C3}|BookGate.Infrastructure\\BookGate.Infrastructure.csproj|solutionrelative:bookgate.infrastructure\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|c:\\bookgate\\bookgate.domain\\entities\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|solutionrelative:bookgate.domain\\entities\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|c:\\bookgate\\bookgate.domain\\entities\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|solutionrelative:bookgate.domain\\entities\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|c:\\bookgate\\bookgate.domain\\entities\\publisher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|solutionrelative:bookgate.domain\\entities\\publisher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{830BBEC2-7645-CE13-920E-7B5221F47C0B}|BookGate.Application\\BookGate.Application.csproj|c:\\bookgate\\bookgate.application\\services\\vnpaylibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{830BBEC2-7645-CE13-920E-7B5221F47C0B}|BookGate.Application\\BookGate.Application.csproj|solutionrelative:bookgate.application\\services\\vnpaylibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{830BBEC2-7645-CE13-920E-7B5221F47C0B}|BookGate.Application\\BookGate.Application.csproj|c:\\bookgate\\bookgate.application\\services\\publisherservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{830BBEC2-7645-CE13-920E-7B5221F47C0B}|BookGate.Application\\BookGate.Application.csproj|solutionrelative:bookgate.application\\services\\publisherservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|c:\\bookgate\\bookgate.api\\controllers\\membercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|solutionrelative:bookgate.api\\controllers\\membercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{830BBEC2-7645-CE13-920E-7B5221F47C0B}|BookGate.Application\\BookGate.Application.csproj|c:\\bookgate\\bookgate.application\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{830BBEC2-7645-CE13-920E-7B5221F47C0B}|BookGate.Application\\BookGate.Application.csproj|solutionrelative:bookgate.application\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|c:\\bookgate\\bookgate.api\\controllers\\bookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -79,10 +143,6 @@
       "RelativeMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|solutionrelative:bookgate.api\\controllers\\cartitemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{830BBEC2-7645-CE13-920E-7B5221F47C0B}|BookGate.Application\\BookGate.Application.csproj|c:\\bookgate\\bookgate.application\\services\\orderdetailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{830BBEC2-7645-CE13-920E-7B5221F47C0B}|BookGate.Application\\BookGate.Application.csproj|solutionrelative:bookgate.application\\services\\orderdetailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{830BBEC2-7645-CE13-920E-7B5221F47C0B}|BookGate.Application\\BookGate.Application.csproj|c:\\bookgate\\bookgate.application\\dtos\\bookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{830BBEC2-7645-CE13-920E-7B5221F47C0B}|BookGate.Application\\BookGate.Application.csproj|solutionrelative:bookgate.application\\dtos\\bookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -107,16 +167,8 @@
       "RelativeMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|solutionrelative:bookgate.api\\views\\shared\\_header.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|c:\\bookgate\\bookgate.api\\views\\member\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|solutionrelative:bookgate.api\\views\\member\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|c:\\bookgate\\bookgate.api\\views\\book\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|solutionrelative:bookgate.api\\views\\book\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|c:\\bookgate\\bookgate.api\\views\\member\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|solutionrelative:bookgate.api\\views\\member\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00B10740-EDE4-4A2C-8902-71C79971D736}|BookGate.API\\BookGate.API.csproj|c:\\bookgate\\bookgate.api\\views\\cartitem\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -147,10 +199,6 @@
       "RelativeMoniker": "D:0:0:{830BBEC2-7645-CE13-920E-7B5221F47C0B}|BookGate.Application\\BookGate.Application.csproj|solutionrelative:bookgate.application\\mappings\\authprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|c:\\bookgate\\bookgate.domain\\interfaces\\iorderdetailrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|solutionrelative:bookgate.domain\\interfaces\\iorderdetailrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{830BBEC2-7645-CE13-920E-7B5221F47C0B}|BookGate.Application\\BookGate.Application.csproj|c:\\bookgate\\bookgate.application\\services\\orderstatusservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{830BBEC2-7645-CE13-920E-7B5221F47C0B}|BookGate.Application\\BookGate.Application.csproj|solutionrelative:bookgate.application\\services\\orderstatusservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -167,10 +215,6 @@
       "RelativeMoniker": "D:0:0:{830BBEC2-7645-CE13-920E-7B5221F47C0B}|BookGate.Application\\BookGate.Application.csproj|solutionrelative:bookgate.application\\services\\cartitemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{830BBEC2-7645-CE13-920E-7B5221F47C0B}|BookGate.Application\\BookGate.Application.csproj|c:\\bookgate\\bookgate.application\\services\\publisherservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{830BBEC2-7645-CE13-920E-7B5221F47C0B}|BookGate.Application\\BookGate.Application.csproj|solutionrelative:bookgate.application\\services\\publisherservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|c:\\bookgate\\bookgate.domain\\interfaces\\iorderstatusrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|solutionrelative:bookgate.domain\\interfaces\\iorderstatusrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -179,28 +223,12 @@
       "RelativeMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|solutionrelative:bookgate.domain\\interfaces\\icartitemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|c:\\bookgate\\bookgate.domain\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|solutionrelative:bookgate.domain\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|c:\\bookgate\\bookgate.domain\\entities\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|solutionrelative:bookgate.domain\\entities\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|c:\\bookgate\\bookgate.domain\\entities\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|solutionrelative:bookgate.domain\\entities\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|c:\\bookgate\\bookgate.domain\\interfaces\\ipublisherrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|solutionrelative:bookgate.domain\\interfaces\\ipublisherrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|c:\\bookgate\\bookgate.domain\\interfaces\\ibookrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|solutionrelative:bookgate.domain\\interfaces\\ibookrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|c:\\bookgate\\bookgate.domain\\entities\\publisher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|solutionrelative:bookgate.domain\\entities\\publisher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9E35DD17-B3EE-E6CB-F1F6-C9A2583DDF26}|BookGate.Domain\\BookGate.Domain.csproj|c:\\bookgate\\bookgate.domain\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -226,362 +254,115 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "OrderStatusController.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Controllers\\OrderStatusController.cs",
-              "RelativeDocumentMoniker": "BookGate.API\\Controllers\\OrderStatusController.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.API\\Controllers\\OrderStatusController.cs",
-              "RelativeToolTip": "BookGate.API\\Controllers\\OrderStatusController.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAkwCkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-07T05:42:27.315Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "OrderRepository.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\OrderRepository.cs",
-              "RelativeDocumentMoniker": "BookGate.Infrastructure\\Repositories\\OrderRepository.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\OrderRepository.cs",
-              "RelativeToolTip": "BookGate.Infrastructure\\Repositories\\OrderRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T11:22:32.06Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "IOrderRepository.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.Domain\\Interfaces\\IOrderRepository.cs",
-              "RelativeDocumentMoniker": "BookGate.Domain\\Interfaces\\IOrderRepository.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.Domain\\Interfaces\\IOrderRepository.cs",
-              "RelativeToolTip": "BookGate.Domain\\Interfaces\\IOrderRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T08:05:44.624Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "OrderService.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.Application\\Services\\OrderService.cs",
-              "RelativeDocumentMoniker": "BookGate.Application\\Services\\OrderService.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.Application\\Services\\OrderService.cs",
-              "RelativeToolTip": "BookGate.Application\\Services\\OrderService.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAYwC0AAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T08:13:47.871Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "OrderController.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Controllers\\OrderController.cs",
-              "RelativeDocumentMoniker": "BookGate.API\\Controllers\\OrderController.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.API\\Controllers\\OrderController.cs",
-              "RelativeToolTip": "BookGate.API\\Controllers\\OrderController.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAADgvx8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-05T04:03:12.787Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "OrderDetailRepository.cs",
               "DocumentMoniker": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\OrderDetailRepository.cs",
               "RelativeDocumentMoniker": "BookGate.Infrastructure\\Repositories\\OrderDetailRepository.cs",
               "ToolTip": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\OrderDetailRepository.cs",
               "RelativeToolTip": "BookGate.Infrastructure\\Repositories\\OrderDetailRepository.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAhwBEAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAhwBwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-13T08:34:10.099Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Views\\Order\\Index.cshtml",
+              "RelativeDocumentMoniker": "BookGate.API\\Views\\Order\\Index.cshtml",
+              "ToolTip": "C:\\BookGate\\BookGate.API\\Views\\Order\\Index.cshtml",
+              "RelativeToolTip": "BookGate.API\\Views\\Order\\Index.cshtml",
+              "ViewState": "AgIAAOwAAAAAAAAAAAAwwAsBAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-13T05:38:26.379Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Views\\Order\\Details.cshtml",
+              "RelativeDocumentMoniker": "BookGate.API\\Views\\Order\\Details.cshtml",
+              "ToolTip": "C:\\BookGate\\BookGate.API\\Views\\Order\\Details.cshtml",
+              "RelativeToolTip": "BookGate.API\\Views\\Order\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-13T06:58:31.853Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "BookGate.API\\Controllers\\OrderController.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.API\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "BookGate.API\\Controllers\\OrderController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwB0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-05T04:03:12.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OrderDTO.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.Application\\DTOs\\OrderDTO.cs",
+              "RelativeDocumentMoniker": "BookGate.Application\\DTOs\\OrderDTO.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.Application\\DTOs\\OrderDTO.cs",
+              "RelativeToolTip": "BookGate.Application\\DTOs\\OrderDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T05:52:51.554Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IOrderDetailRepository.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.Domain\\Interfaces\\IOrderDetailRepository.cs",
+              "RelativeDocumentMoniker": "BookGate.Domain\\Interfaces\\IOrderDetailRepository.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.Domain\\Interfaces\\IOrderDetailRepository.cs",
+              "RelativeToolTip": "BookGate.Domain\\Interfaces\\IOrderDetailRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAkAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T08:34:22.329Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "Repository.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\Repository.cs",
-              "RelativeDocumentMoniker": "BookGate.Infrastructure\\Repositories\\Repository.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\Repository.cs",
-              "RelativeToolTip": "BookGate.Infrastructure\\Repositories\\Repository.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAAwCQAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-11T09:58:10.321Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "MemberController.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Controllers\\MemberController.cs",
-              "RelativeDocumentMoniker": "BookGate.API\\Controllers\\MemberController.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.API\\Controllers\\MemberController.cs",
-              "RelativeToolTip": "BookGate.API\\Controllers\\MemberController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-07T04:56:34.466Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "BookController.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Controllers\\BookController.cs",
-              "RelativeDocumentMoniker": "BookGate.API\\Controllers\\BookController.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.API\\Controllers\\BookController.cs",
-              "RelativeToolTip": "BookGate.API\\Controllers\\BookController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFkAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-07T04:59:24.699Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "BookGate.API\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.API\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "BookGate.API\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAqwCIAAABPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-07T05:26:27.171Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "CartItemRepository.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\CartItemRepository.cs",
-              "RelativeDocumentMoniker": "BookGate.Infrastructure\\Repositories\\CartItemRepository.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\CartItemRepository.cs",
-              "RelativeToolTip": "BookGate.Infrastructure\\Repositories\\CartItemRepository.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBMAAABIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-07T06:23:40.374Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "BookRepository.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\BookRepository.cs",
-              "RelativeDocumentMoniker": "BookGate.Infrastructure\\Repositories\\BookRepository.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\BookRepository.cs",
-              "RelativeToolTip": "BookGate.Infrastructure\\Repositories\\BookRepository.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAA/wBwAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-06T06:07:57.574Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "OrderStatusRepository.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\OrderStatusRepository.cs",
-              "RelativeDocumentMoniker": "BookGate.Infrastructure\\Repositories\\OrderStatusRepository.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\OrderStatusRepository.cs",
-              "RelativeToolTip": "BookGate.Infrastructure\\Repositories\\OrderStatusRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T11:12:49.465Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "AuthRepository.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\AuthRepository.cs",
-              "RelativeDocumentMoniker": "BookGate.Infrastructure\\Repositories\\AuthRepository.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\AuthRepository.cs",
-              "RelativeToolTip": "BookGate.Infrastructure\\Repositories\\AuthRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-06T06:08:40.74Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "BookGate.Infrastructure.csproj",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.Infrastructure\\BookGate.Infrastructure.csproj",
-              "RelativeDocumentMoniker": "BookGate.Infrastructure\\BookGate.Infrastructure.csproj",
-              "ToolTip": "C:\\BookGate\\BookGate.Infrastructure\\BookGate.Infrastructure.csproj",
-              "RelativeToolTip": "BookGate.Infrastructure\\BookGate.Infrastructure.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-03-30T14:47:53.407Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "BookGate.Application.csproj",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.Application\\BookGate.Application.csproj",
-              "RelativeDocumentMoniker": "BookGate.Application\\BookGate.Application.csproj",
-              "ToolTip": "C:\\BookGate\\BookGate.Application\\BookGate.Application.csproj",
-              "RelativeToolTip": "BookGate.Application\\BookGate.Application.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-03-30T15:50:09.929Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "MemberBookService.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.Application\\Services\\MemberBookService.cs",
-              "RelativeDocumentMoniker": "BookGate.Application\\Services\\MemberBookService.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.Application\\Services\\MemberBookService.cs",
-              "RelativeToolTip": "BookGate.Application\\Services\\MemberBookService.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAowCMAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-07T08:56:42.273Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "OrderStatusDTO.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.Application\\DTOs\\OrderStatusDTO.cs",
-              "RelativeDocumentMoniker": "BookGate.Application\\DTOs\\OrderStatusDTO.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.Application\\DTOs\\OrderStatusDTO.cs",
-              "RelativeToolTip": "BookGate.Application\\DTOs\\OrderStatusDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T08:45:16.793Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "CartItemController.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Controllers\\CartItemController.cs",
-              "RelativeDocumentMoniker": "BookGate.API\\Controllers\\CartItemController.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.API\\Controllers\\CartItemController.cs",
-              "RelativeToolTip": "BookGate.API\\Controllers\\CartItemController.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAABoAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-12T03:10:33.152Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
               "Title": "OrderDetailService.cs",
               "DocumentMoniker": "C:\\BookGate\\BookGate.Application\\Services\\OrderDetailService.cs",
               "RelativeDocumentMoniker": "BookGate.Application\\Services\\OrderDetailService.cs",
               "ToolTip": "C:\\BookGate\\BookGate.Application\\Services\\OrderDetailService.cs",
               "RelativeToolTip": "BookGate.Application\\Services\\OrderDetailService.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAIA9wDQAAABJAAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAAAlwDYAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-13T09:05:18.052Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "BookDTO.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.Application\\DTOs\\BookDTO.cs",
-              "RelativeDocumentMoniker": "BookGate.Application\\DTOs\\BookDTO.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.Application\\DTOs\\BookDTO.cs",
-              "RelativeToolTip": "BookGate.Application\\DTOs\\BookDTO.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAA1wCgAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "OrderStatusController.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Controllers\\OrderStatusController.cs",
+              "RelativeDocumentMoniker": "BookGate.API\\Controllers\\OrderStatusController.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.API\\Controllers\\OrderStatusController.cs",
+              "RelativeToolTip": "BookGate.API\\Controllers\\OrderStatusController.cs",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAowD8AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-05T09:20:31.472Z",
+              "WhenOpened": "2026-04-07T05:42:27.315Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "RegisterDTO.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.Application\\DTOs\\RegisterDTO.cs",
-              "RelativeDocumentMoniker": "BookGate.Application\\DTOs\\RegisterDTO.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.Application\\DTOs\\RegisterDTO.cs",
-              "RelativeToolTip": "BookGate.Application\\DTOs\\RegisterDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-05T09:20:35.065Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "LoginDTO.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.Application\\DTOs\\LoginDTO.cs",
-              "RelativeDocumentMoniker": "BookGate.Application\\DTOs\\LoginDTO.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.Application\\DTOs\\LoginDTO.cs",
-              "RelativeToolTip": "BookGate.Application\\DTOs\\LoginDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-07T05:27:36.013Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Views\\Book\\Index.cshtml",
-              "RelativeDocumentMoniker": "BookGate.API\\Views\\Book\\Index.cshtml",
-              "ToolTip": "C:\\BookGate\\BookGate.API\\Views\\Book\\Index.cshtml",
-              "RelativeToolTip": "BookGate.API\\Views\\Book\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHAAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-07T04:58:04.97Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "_Header.cshtml",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Views\\Shared\\_Header.cshtml",
-              "RelativeDocumentMoniker": "BookGate.API\\Views\\Shared\\_Header.cshtml",
-              "ToolTip": "C:\\BookGate\\BookGate.API\\Views\\Shared\\_Header.cshtml",
-              "RelativeToolTip": "BookGate.API\\Views\\Shared\\_Header.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAiwCgAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-07T05:21:35.353Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "Auth.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.Domain\\Entities\\Auth.cs",
-              "RelativeDocumentMoniker": "BookGate.Domain\\Entities\\Auth.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.Domain\\Entities\\Auth.cs",
-              "RelativeToolTip": "BookGate.Domain\\Entities\\Auth.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAiwA4AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-06T06:01:08.558Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Views\\Member\\Index.cshtml",
-              "RelativeDocumentMoniker": "BookGate.API\\Views\\Member\\Index.cshtml",
-              "ToolTip": "C:\\BookGate\\BookGate.API\\Views\\Member\\Index.cshtml",
-              "RelativeToolTip": "BookGate.API\\Views\\Member\\Index.cshtml",
-              "ViewState": "AgIAADYAAAAAAAAAAAAAAEYAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-07T05:03:05.286Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 8,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Views\\Member\\Details.cshtml",
               "RelativeDocumentMoniker": "BookGate.API\\Views\\Member\\Details.cshtml",
@@ -594,7 +375,406 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Views\\Member\\Index.cshtml",
+              "RelativeDocumentMoniker": "BookGate.API\\Views\\Member\\Index.cshtml",
+              "ToolTip": "C:\\BookGate\\BookGate.API\\Views\\Member\\Index.cshtml",
+              "RelativeToolTip": "BookGate.API\\Views\\Member\\Index.cshtml",
+              "ViewState": "AgIAALgAAAAAAAAAAAAmwNoAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-07T05:03:05.286Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.API\\appsettings.json",
+              "RelativeDocumentMoniker": "BookGate.API\\appsettings.json",
+              "ToolTip": "C:\\BookGate\\BookGate.API\\appsettings.json",
+              "RelativeToolTip": "BookGate.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-13T05:32:14.289Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Program.cs",
+              "RelativeDocumentMoniker": "BookGate.API\\Program.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.API\\Program.cs",
+              "RelativeToolTip": "BookGate.API\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T06:02:04.546Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.Domain\\Entities\\Order.cs",
+              "RelativeDocumentMoniker": "BookGate.Domain\\Entities\\Order.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.Domain\\Entities\\Order.cs",
+              "RelativeToolTip": "BookGate.Domain\\Entities\\Order.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwBwAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T03:45:23.003Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "OrderStatus.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.Domain\\Entities\\OrderStatus.cs",
+              "RelativeDocumentMoniker": "BookGate.Domain\\Entities\\OrderStatus.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.Domain\\Entities\\OrderStatus.cs",
+              "RelativeToolTip": "BookGate.Domain\\Entities\\OrderStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T05:45:58.589Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "OrderRepository.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\OrderRepository.cs",
+              "RelativeDocumentMoniker": "BookGate.Infrastructure\\Repositories\\OrderRepository.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\OrderRepository.cs",
+              "RelativeToolTip": "BookGate.Infrastructure\\Repositories\\OrderRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-02T11:22:32.06Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Repository.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\Repository.cs",
+              "RelativeDocumentMoniker": "BookGate.Infrastructure\\Repositories\\Repository.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\Repository.cs",
+              "RelativeToolTip": "BookGate.Infrastructure\\Repositories\\Repository.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAwCQAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T09:58:10.321Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "OrderDetail.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.Domain\\Entities\\OrderDetail.cs",
+              "RelativeDocumentMoniker": "BookGate.Domain\\Entities\\OrderDetail.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.Domain\\Entities\\OrderDetail.cs",
+              "RelativeToolTip": "BookGate.Domain\\Entities\\OrderDetail.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAA3wBQAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T03:45:54.607Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Publisher.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.Domain\\Entities\\Publisher.cs",
+              "RelativeDocumentMoniker": "BookGate.Domain\\Entities\\Publisher.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.Domain\\Entities\\Publisher.cs",
+              "RelativeToolTip": "BookGate.Domain\\Entities\\Publisher.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T06:42:35.826Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "IOrderRepository.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.Domain\\Interfaces\\IOrderRepository.cs",
+              "RelativeDocumentMoniker": "BookGate.Domain\\Interfaces\\IOrderRepository.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.Domain\\Interfaces\\IOrderRepository.cs",
+              "RelativeToolTip": "BookGate.Domain\\Interfaces\\IOrderRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T08:05:44.624Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "VnPayLibrary.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.Application\\Services\\VnPayLibrary.cs",
+              "RelativeDocumentMoniker": "BookGate.Application\\Services\\VnPayLibrary.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.Application\\Services\\VnPayLibrary.cs",
+              "RelativeToolTip": "BookGate.Application\\Services\\VnPayLibrary.cs",
+              "ViewState": "AgIAAE4AAAAAAAAAAADwv1kAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T05:33:41.331Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "UserRole.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.Domain\\Entities\\UserRole.cs",
+              "RelativeDocumentMoniker": "BookGate.Domain\\Entities\\UserRole.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.Domain\\Entities\\UserRole.cs",
+              "RelativeToolTip": "BookGate.Domain\\Entities\\UserRole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-07T08:16:27.163Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "OrderService.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.Application\\Services\\OrderService.cs",
+              "RelativeDocumentMoniker": "BookGate.Application\\Services\\OrderService.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.Application\\Services\\OrderService.cs",
+              "RelativeToolTip": "BookGate.Application\\Services\\OrderService.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwC0AAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T08:13:47.871Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "PublisherService.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.Application\\Services\\PublisherService.cs",
+              "RelativeDocumentMoniker": "BookGate.Application\\Services\\PublisherService.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.Application\\Services\\PublisherService.cs",
+              "RelativeToolTip": "BookGate.Application\\Services\\PublisherService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T09:41:27.94Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "MemberController.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Controllers\\MemberController.cs",
+              "RelativeDocumentMoniker": "BookGate.API\\Controllers\\MemberController.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.API\\Controllers\\MemberController.cs",
+              "RelativeToolTip": "BookGate.API\\Controllers\\MemberController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-07T04:56:34.466Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "BookController.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Controllers\\BookController.cs",
+              "RelativeDocumentMoniker": "BookGate.API\\Controllers\\BookController.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.API\\Controllers\\BookController.cs",
+              "RelativeToolTip": "BookGate.API\\Controllers\\BookController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-07T04:59:24.699Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "BookGate.API\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.API\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "BookGate.API\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAqwCIAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-07T05:26:27.171Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "CartItemRepository.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\CartItemRepository.cs",
+              "RelativeDocumentMoniker": "BookGate.Infrastructure\\Repositories\\CartItemRepository.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\CartItemRepository.cs",
+              "RelativeToolTip": "BookGate.Infrastructure\\Repositories\\CartItemRepository.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBMAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-07T06:23:40.374Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "BookRepository.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\BookRepository.cs",
+              "RelativeDocumentMoniker": "BookGate.Infrastructure\\Repositories\\BookRepository.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\BookRepository.cs",
+              "RelativeToolTip": "BookGate.Infrastructure\\Repositories\\BookRepository.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA/wBwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T06:07:57.574Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "OrderStatusRepository.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\OrderStatusRepository.cs",
+              "RelativeDocumentMoniker": "BookGate.Infrastructure\\Repositories\\OrderStatusRepository.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\OrderStatusRepository.cs",
+              "RelativeToolTip": "BookGate.Infrastructure\\Repositories\\OrderStatusRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-02T11:12:49.465Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 29,
+              "Title": "AuthRepository.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\AuthRepository.cs",
+              "RelativeDocumentMoniker": "BookGate.Infrastructure\\Repositories\\AuthRepository.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.Infrastructure\\Repositories\\AuthRepository.cs",
+              "RelativeToolTip": "BookGate.Infrastructure\\Repositories\\AuthRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T06:08:40.74Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "BookGate.Infrastructure.csproj",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.Infrastructure\\BookGate.Infrastructure.csproj",
+              "RelativeDocumentMoniker": "BookGate.Infrastructure\\BookGate.Infrastructure.csproj",
+              "ToolTip": "C:\\BookGate\\BookGate.Infrastructure\\BookGate.Infrastructure.csproj",
+              "RelativeToolTip": "BookGate.Infrastructure\\BookGate.Infrastructure.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-03-30T14:47:53.407Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "BookGate.Application.csproj",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.Application\\BookGate.Application.csproj",
+              "RelativeDocumentMoniker": "BookGate.Application\\BookGate.Application.csproj",
+              "ToolTip": "C:\\BookGate\\BookGate.Application\\BookGate.Application.csproj",
+              "RelativeToolTip": "BookGate.Application\\BookGate.Application.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-03-30T15:50:09.929Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "MemberBookService.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.Application\\Services\\MemberBookService.cs",
+              "RelativeDocumentMoniker": "BookGate.Application\\Services\\MemberBookService.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.Application\\Services\\MemberBookService.cs",
+              "RelativeToolTip": "BookGate.Application\\Services\\MemberBookService.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAowCMAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-07T08:56:42.273Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "OrderStatusDTO.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.Application\\DTOs\\OrderStatusDTO.cs",
+              "RelativeDocumentMoniker": "BookGate.Application\\DTOs\\OrderStatusDTO.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.Application\\DTOs\\OrderStatusDTO.cs",
+              "RelativeToolTip": "BookGate.Application\\DTOs\\OrderStatusDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T08:45:16.793Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "CartItemController.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Controllers\\CartItemController.cs",
+              "RelativeDocumentMoniker": "BookGate.API\\Controllers\\CartItemController.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.API\\Controllers\\CartItemController.cs",
+              "RelativeToolTip": "BookGate.API\\Controllers\\CartItemController.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABoAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-12T03:10:33.152Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "BookDTO.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.Application\\DTOs\\BookDTO.cs",
+              "RelativeDocumentMoniker": "BookGate.Application\\DTOs\\BookDTO.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.Application\\DTOs\\BookDTO.cs",
+              "RelativeToolTip": "BookGate.Application\\DTOs\\BookDTO.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAA1wCgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T09:20:31.472Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "RegisterDTO.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.Application\\DTOs\\RegisterDTO.cs",
+              "RelativeDocumentMoniker": "BookGate.Application\\DTOs\\RegisterDTO.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.Application\\DTOs\\RegisterDTO.cs",
+              "RelativeToolTip": "BookGate.Application\\DTOs\\RegisterDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T09:20:35.065Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "LoginDTO.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.Application\\DTOs\\LoginDTO.cs",
+              "RelativeDocumentMoniker": "BookGate.Application\\DTOs\\LoginDTO.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.Application\\DTOs\\LoginDTO.cs",
+              "RelativeToolTip": "BookGate.Application\\DTOs\\LoginDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-07T05:27:36.013Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Views\\Book\\Index.cshtml",
+              "RelativeDocumentMoniker": "BookGate.API\\Views\\Book\\Index.cshtml",
+              "ToolTip": "C:\\BookGate\\BookGate.API\\Views\\Book\\Index.cshtml",
+              "RelativeToolTip": "BookGate.API\\Views\\Book\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHAAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-07T04:58:04.97Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "_Header.cshtml",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Views\\Shared\\_Header.cshtml",
+              "RelativeDocumentMoniker": "BookGate.API\\Views\\Shared\\_Header.cshtml",
+              "ToolTip": "C:\\BookGate\\BookGate.API\\Views\\Shared\\_Header.cshtml",
+              "RelativeToolTip": "BookGate.API\\Views\\Shared\\_Header.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAiwCgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-07T05:21:35.353Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "Auth.cs",
+              "DocumentMoniker": "C:\\BookGate\\BookGate.Domain\\Entities\\Auth.cs",
+              "RelativeDocumentMoniker": "BookGate.Domain\\Entities\\Auth.cs",
+              "ToolTip": "C:\\BookGate\\BookGate.Domain\\Entities\\Auth.cs",
+              "RelativeToolTip": "BookGate.Domain\\Entities\\Auth.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAiwA4AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T06:01:08.558Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Views\\CartItem\\Index.cshtml",
               "RelativeDocumentMoniker": "BookGate.API\\Views\\CartItem\\Index.cshtml",
@@ -602,12 +782,11 @@
               "RelativeToolTip": "BookGate.API\\Views\\CartItem\\Index.cshtml",
               "ViewState": "AgIAAAgAAAAAAAAAAAAUwCAAAABXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-12T03:23:23.626Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-12T03:23:23.626Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 43,
               "Title": "Login.cshtml",
               "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Views\\Auth\\Login.cshtml",
               "RelativeDocumentMoniker": "BookGate.API\\Views\\Auth\\Login.cshtml",
@@ -615,12 +794,11 @@
               "RelativeToolTip": "BookGate.API\\Views\\Auth\\Login.cshtml",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABYAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-05T09:19:06.082Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-05T09:19:06.082Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 41,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Views\\Book\\Create.cshtml",
               "RelativeDocumentMoniker": "BookGate.API\\Views\\Book\\Create.cshtml",
@@ -628,12 +806,11 @@
               "RelativeToolTip": "BookGate.API\\Views\\Book\\Create.cshtml",
               "ViewState": "AgIAALoAAAAAAAAAAAAAAKYAAABYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-06T08:36:20.138Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-06T08:36:20.138Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 44,
               "Title": "Register.cshtml",
               "DocumentMoniker": "C:\\BookGate\\BookGate.API\\Views\\Auth\\Register.cshtml",
               "RelativeDocumentMoniker": "BookGate.API\\Views\\Auth\\Register.cshtml",
@@ -641,12 +818,11 @@
               "RelativeToolTip": "BookGate.API\\Views\\Auth\\Register.cshtml",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-05T09:19:04.307Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-05T09:19:04.307Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 45,
               "Title": "CartItemProfile.cs",
               "DocumentMoniker": "C:\\BookGate\\BookGate.Application\\Mappings\\CartItemProfile.cs",
               "RelativeDocumentMoniker": "BookGate.Application\\Mappings\\CartItemProfile.cs",
@@ -658,7 +834,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 46,
               "Title": "OrderProfile.cs",
               "DocumentMoniker": "C:\\BookGate\\BookGate.Application\\Mappings\\OrderProfile.cs",
               "RelativeDocumentMoniker": "BookGate.Application\\Mappings\\OrderProfile.cs",
@@ -670,7 +846,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 47,
               "Title": "BookProfile.cs",
               "DocumentMoniker": "C:\\BookGate\\BookGate.Application\\Mappings\\BookProfile.cs",
               "RelativeDocumentMoniker": "BookGate.Application\\Mappings\\BookProfile.cs",
@@ -682,7 +858,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 48,
               "Title": "AuthProfile.cs",
               "DocumentMoniker": "C:\\BookGate\\BookGate.Application\\Mappings\\AuthProfile.cs",
               "RelativeDocumentMoniker": "BookGate.Application\\Mappings\\AuthProfile.cs",
@@ -694,19 +870,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "IOrderDetailRepository.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.Domain\\Interfaces\\IOrderDetailRepository.cs",
-              "RelativeDocumentMoniker": "BookGate.Domain\\Interfaces\\IOrderDetailRepository.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.Domain\\Interfaces\\IOrderDetailRepository.cs",
-              "RelativeToolTip": "BookGate.Domain\\Interfaces\\IOrderDetailRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T08:34:22.329Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 49,
               "Title": "OrderStatusService.cs",
               "DocumentMoniker": "C:\\BookGate\\BookGate.Application\\Services\\OrderStatusService.cs",
               "RelativeDocumentMoniker": "BookGate.Application\\Services\\OrderStatusService.cs",
@@ -718,7 +882,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 50,
               "Title": "hlncqzyr.sql",
               "DocumentMoniker": "C:\\BookGate\\BookGate.Infrastructure\\obj\\Debug\\net10.0\\hlncqzyr.sql",
               "RelativeDocumentMoniker": "BookGate.Infrastructure\\obj\\Debug\\net10.0\\hlncqzyr.sql",
@@ -729,7 +893,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 51,
               "Title": "zm0udxjb.sql",
               "DocumentMoniker": "C:\\BookGate\\BookGate.Infrastructure\\obj\\Debug\\net10.0\\zm0udxjb.sql",
               "RelativeDocumentMoniker": "BookGate.Infrastructure\\obj\\Debug\\net10.0\\zm0udxjb.sql",
@@ -740,7 +904,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 52,
               "Title": "CartItemService.cs",
               "DocumentMoniker": "C:\\BookGate\\BookGate.Application\\Services\\CartItemService.cs",
               "RelativeDocumentMoniker": "BookGate.Application\\Services\\CartItemService.cs",
@@ -752,19 +916,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "PublisherService.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.Application\\Services\\PublisherService.cs",
-              "RelativeDocumentMoniker": "BookGate.Application\\Services\\PublisherService.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.Application\\Services\\PublisherService.cs",
-              "RelativeToolTip": "BookGate.Application\\Services\\PublisherService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAwBIAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-06T09:41:27.94Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 53,
               "Title": "IOrderStatusRepository.cs",
               "DocumentMoniker": "C:\\BookGate\\BookGate.Domain\\Interfaces\\IOrderStatusRepository.cs",
               "RelativeDocumentMoniker": "BookGate.Domain\\Interfaces\\IOrderStatusRepository.cs",
@@ -776,7 +928,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 54,
               "Title": "ICartItemRepository.cs",
               "DocumentMoniker": "C:\\BookGate\\BookGate.Domain\\Interfaces\\ICartItemRepository.cs",
               "RelativeDocumentMoniker": "BookGate.Domain\\Interfaces\\ICartItemRepository.cs",
@@ -788,43 +940,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
-              "Title": "Order.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.Domain\\Entities\\Order.cs",
-              "RelativeDocumentMoniker": "BookGate.Domain\\Entities\\Order.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.Domain\\Entities\\Order.cs",
-              "RelativeToolTip": "BookGate.Domain\\Entities\\Order.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBEAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-11T03:45:23.003Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 45,
-              "Title": "OrderDetail.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.Domain\\Entities\\OrderDetail.cs",
-              "RelativeDocumentMoniker": "BookGate.Domain\\Entities\\OrderDetail.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.Domain\\Entities\\OrderDetail.cs",
-              "RelativeToolTip": "BookGate.Domain\\Entities\\OrderDetail.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAYwBQAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-11T03:45:54.607Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 46,
-              "Title": "UserRole.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.Domain\\Entities\\UserRole.cs",
-              "RelativeDocumentMoniker": "BookGate.Domain\\Entities\\UserRole.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.Domain\\Entities\\UserRole.cs",
-              "RelativeToolTip": "BookGate.Domain\\Entities\\UserRole.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-07T08:16:27.163Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 55,
               "Title": "IPublisherRepository.cs",
               "DocumentMoniker": "C:\\BookGate\\BookGate.Domain\\Interfaces\\IPublisherRepository.cs",
               "RelativeDocumentMoniker": "BookGate.Domain\\Interfaces\\IPublisherRepository.cs",
@@ -836,7 +952,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 56,
               "Title": "IBookRepository.cs",
               "DocumentMoniker": "C:\\BookGate\\BookGate.Domain\\Interfaces\\IBookRepository.cs",
               "RelativeDocumentMoniker": "BookGate.Domain\\Interfaces\\IBookRepository.cs",
@@ -848,19 +964,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
-              "Title": "Publisher.cs",
-              "DocumentMoniker": "C:\\BookGate\\BookGate.Domain\\Entities\\Publisher.cs",
-              "RelativeDocumentMoniker": "BookGate.Domain\\Entities\\Publisher.cs",
-              "ToolTip": "C:\\BookGate\\BookGate.Domain\\Entities\\Publisher.cs",
-              "RelativeToolTip": "BookGate.Domain\\Entities\\Publisher.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAIBJwBkAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-06T06:42:35.826Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 57,
               "Title": "IRepository.cs",
               "DocumentMoniker": "C:\\BookGate\\BookGate.Domain\\Interfaces\\IRepository.cs",
               "RelativeDocumentMoniker": "BookGate.Domain\\Interfaces\\IRepository.cs",
@@ -872,7 +976,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 58,
               "Title": "CartItem.cs",
               "DocumentMoniker": "C:\\BookGate\\BookGate.Domain\\Entities\\CartItem.cs",
               "RelativeDocumentMoniker": "BookGate.Domain\\Entities\\CartItem.cs",
@@ -884,7 +988,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 59,
               "Title": "IAuthRepository.cs",
               "DocumentMoniker": "C:\\BookGate\\BookGate.Domain\\Interfaces\\IAuthRepository.cs",
               "RelativeDocumentMoniker": "BookGate.Domain\\Interfaces\\IAuthRepository.cs",
@@ -896,7 +1000,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 60,
               "Title": "Book.cs",
               "DocumentMoniker": "C:\\BookGate\\BookGate.Domain\\Entities\\Book.cs",
               "RelativeDocumentMoniker": "BookGate.Domain\\Entities\\Book.cs",

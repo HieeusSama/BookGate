@@ -26,6 +26,8 @@ namespace BookGate.Domain.Entities
         [Column(TypeName = "decimal(18,2)")]
         public decimal ShippingFee { get; set; }
 
+        public string PaymentMethod { get; set; } = "COD";
+
         [Required]
         [StringLength(100)]
         public string City { get; set; } = string.Empty;

@@ -42,7 +42,7 @@ namespace BookGate.Application.DTOs
         [Required]
         [StringLength(20)]
         public string ReceiverPhone { get; set; } = string.Empty;
-
+        public string PaymentMethod { get; set; } = "COD";
         public string StatusName { get; set; } = string.Empty;
     }
 }

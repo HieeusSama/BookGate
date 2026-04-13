@@ -211,5 +211,36 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if (TempData["Message"] != null)
+    {
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Tuyệt vời!',
+                    text: '@Html.Raw(TempData["Message"])',
+                    confirmButtonColor: '#009dff',
+                    timer: 3000, // Tự động đóng sau 3 giây
+                    timerProgressBar: true
+                });
+            });
+        </script>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Rất tiếc!',
+                    text: '@Html.Raw(TempData["Error"])',
+                    confirmButtonColor: '#ff7675'
+                });
+            });
+        </script>
+    }
 </body>
 </html>

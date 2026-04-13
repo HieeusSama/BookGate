@@ -189,19 +189,33 @@
                         <input type="text" class="form-control form-control-custom shadow-none" name="StreetAddress" placeholder="Số nhà, tên đường..." required>
                     </div>
                 </div>
+                <div class="d-flex align-items-center gap-4 mb-3">
+                    <span class="fw-bold" style="font-size: 0.95rem;">Tổng Số Tiền <span class="fw-normal text-muted ms-1">(gồm VAT)</span></span>
+                    <span class="text-danger fw-bold fs-4">@totalAmount.ToString("N0") đ</span>
+                </div>
 
                 <div class="payment-info-box d-flex justify-content-between align-items-end mt-4">
-                    <div class="d-flex align-items-center gap-4">
-                        <span class="fw-bold" style="font-size: 0.95rem;">Tổng Số Tiền <span class="fw-normal text-muted ms-1">(gồm VAT)</span></span>
-                        <span class="text-danger fw-bold fs-4">@totalAmount.ToString("N0") đ</span>
+    
+                    <div>
+                        <label class="form-label-custom d-block mb-3 fw-bold">Phương thức thanh toán:</label>
+        
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="radio" name="PaymentMethod" id="cod" value="COD" checked>
+                            <label class="form-check-label" for="cod">Thanh toán khi nhận hàng</label>
+                        </div>
+        
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="PaymentMethod" id="vnpay" value="VNPAY">
+                            <label class="form-check-label" for="vnpay">
+                                Thanh toán bằng
+                                <img src="https://vnpay.vn/s1/statics.vnpay.vn/2023/6/0oxhzjmxbksr1686814746087.png" alt="VNPAY" style="height: 24px; margin-left: 5px;" />
+                            </label>
+                        </div>
                     </div>
 
                     <div class="text-end">
-                        <div class="mb-2 text-muted" style="font-size: 0.85rem;">
-                            <i class="bi bi-check2-circle text-success me-1"></i> Thanh toán khi nhận hàng
-                        </div>
                         <button type="submit" class="btn btn-checkout shadow-sm">
-                            Xác nhận thanh toán
+                            Xác nhận đặt hàng
                         </button>
                     </div>
                 </div>
