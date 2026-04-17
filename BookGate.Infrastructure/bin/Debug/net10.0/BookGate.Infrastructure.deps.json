@@ -317,7 +317,7 @@
           "Microsoft.Extensions.Logging": "10.0.3",
           "Microsoft.Extensions.Logging.Abstractions": "10.0.3",
           "Microsoft.Extensions.Options": "10.0.3",
-          "Microsoft.Extensions.Primitives": "10.0.3",
+          "Microsoft.Extensions.Primitives": "10.0.6",
           "Microsoft.VisualStudio.SolutionPersistence": "1.0.52",
           "Newtonsoft.Json": "13.0.3",
           "System.Composition": "9.0.0"
@@ -498,7 +498,7 @@
           "Microsoft.CodeAnalysis.Workspaces.MSBuild": "5.0.0",
           "Microsoft.EntityFrameworkCore.Relational": "10.0.3",
           "Microsoft.Extensions.Caching.Memory": "10.0.3",
-          "Microsoft.Extensions.Configuration.Abstractions": "10.0.3",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.6",
           "Microsoft.Extensions.DependencyModel": "10.0.3",
           "Microsoft.Extensions.Logging": "10.0.3",
           "Mono.TextTemplating": "3.0.0",
@@ -515,7 +515,7 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "10.0.3",
           "Microsoft.Extensions.Caching.Memory": "10.0.3",
-          "Microsoft.Extensions.Configuration.Abstractions": "10.0.3",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.6",
           "Microsoft.Extensions.Logging": "10.0.3"
         },
         "runtime": {
@@ -530,7 +530,7 @@
           "Microsoft.Data.SqlClient": "6.1.1",
           "Microsoft.EntityFrameworkCore.Relational": "10.0.3",
           "Microsoft.Extensions.Caching.Memory": "10.0.3",
-          "Microsoft.Extensions.Configuration.Abstractions": "10.0.3",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.6",
           "Microsoft.Extensions.Logging": "10.0.3"
         },
         "runtime": {
@@ -542,7 +542,7 @@
       },
       "Microsoft.Extensions.Caching.Abstractions/10.0.3": {
         "dependencies": {
-          "Microsoft.Extensions.Primitives": "10.0.3"
+          "Microsoft.Extensions.Primitives": "10.0.6"
         },
         "runtime": {
           "lib/net10.0/Microsoft.Extensions.Caching.Abstractions.dll": {
@@ -557,7 +557,7 @@
           "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.3",
           "Microsoft.Extensions.Logging.Abstractions": "10.0.3",
           "Microsoft.Extensions.Options": "10.0.3",
-          "Microsoft.Extensions.Primitives": "10.0.3"
+          "Microsoft.Extensions.Primitives": "10.0.6"
         },
         "runtime": {
           "lib/net10.0/Microsoft.Extensions.Caching.Memory.dll": {
@@ -566,14 +566,14 @@
           }
         }
       },
-      "Microsoft.Extensions.Configuration.Abstractions/10.0.3": {
+      "Microsoft.Extensions.Configuration.Abstractions/10.0.6": {
         "dependencies": {
-          "Microsoft.Extensions.Primitives": "10.0.3"
+          "Microsoft.Extensions.Primitives": "10.0.6"
         },
         "runtime": {
           "lib/net10.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
             "assemblyVersion": "10.0.0.0",
-            "fileVersion": "10.0.326.7603"
+            "fileVersion": "10.0.626.17701"
           }
         }
       },
@@ -631,7 +631,7 @@
       "Microsoft.Extensions.Options/10.0.3": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.3",
-          "Microsoft.Extensions.Primitives": "10.0.3"
+          "Microsoft.Extensions.Primitives": "10.0.6"
         },
         "runtime": {
           "lib/net10.0/Microsoft.Extensions.Options.dll": {
@@ -640,11 +640,11 @@
           }
         }
       },
-      "Microsoft.Extensions.Primitives/10.0.3": {
+      "Microsoft.Extensions.Primitives/10.0.6": {
         "runtime": {
           "lib/net10.0/Microsoft.Extensions.Primitives.dll": {
             "assemblyVersion": "10.0.0.0",
-            "fileVersion": "10.0.326.7603"
+            "fileVersion": "10.0.626.17701"
           }
         }
       },
@@ -931,7 +931,8 @@
       "BookGate.Application/1.0.0": {
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
-          "BookGate.Domain": "1.0.0"
+          "BookGate.Domain": "1.0.0",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.6"
         },
         "runtime": {
           "BookGate.Application.dll": {
@@ -1110,12 +1111,12 @@
       "path": "microsoft.extensions.caching.memory/10.0.3",
       "hashPath": "microsoft.extensions.caching.memory.10.0.3.nupkg.sha512"
     },
-    "Microsoft.Extensions.Configuration.Abstractions/10.0.3": {
+    "Microsoft.Extensions.Configuration.Abstractions/10.0.6": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-xVDHL0+SIgemfh95fTO9cGLe17TWv/ZP0n7m01z8X6pzt2DmQpucioWR/mYZA1sRlkWnkXzfl0JweLNWmE9WMg==",
-      "path": "microsoft.extensions.configuration.abstractions/10.0.3",
-      "hashPath": "microsoft.extensions.configuration.abstractions.10.0.3.nupkg.sha512"
+      "sha512": "sha512-a7bA7IT3ngIgcOMb/2MVH5CcfSxUCeQ6QXWS1Vt6oFpzLTH3U1+J2Xtc64Uw3whX9akYG8eR/UQeEzxo64zZLg==",
+      "path": "microsoft.extensions.configuration.abstractions/10.0.6",
+      "hashPath": "microsoft.extensions.configuration.abstractions.10.0.6.nupkg.sha512"
     },
     "Microsoft.Extensions.DependencyInjection/10.0.3": {
       "type": "package",
@@ -1159,12 +1160,12 @@
       "path": "microsoft.extensions.options/10.0.3",
       "hashPath": "microsoft.extensions.options.10.0.3.nupkg.sha512"
     },
-    "Microsoft.Extensions.Primitives/10.0.3": {
+    "Microsoft.Extensions.Primitives/10.0.6": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-GEcpTwo7sUoLGGNTqV1FZEuL+tTD9m81NX/mh099dqGNna07/UGZShKQNZRw4hv6nlliSUwYQgSYc7OR99Jufg==",
-      "path": "microsoft.extensions.primitives/10.0.3",
-      "hashPath": "microsoft.extensions.primitives.10.0.3.nupkg.sha512"
+      "sha512": "sha512-L8P21mqaG+CXvPheLndean/cHCOcItJqH8nx+0YQnK7wAiOR0G1IOC418ZSzTMD2D6Gmo0f2M5WR70XtpX2B8g==",
+      "path": "microsoft.extensions.primitives/10.0.6",
+      "hashPath": "microsoft.extensions.primitives.10.0.6.nupkg.sha512"
     },
     "Microsoft.Identity.Client/4.73.1": {
       "type": "package",

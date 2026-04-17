@@ -137,6 +137,11 @@ namespace BookGate.Infrastructure.Migrations
                     b.Property<DateTime?>("CompletedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("District")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<int>("Id")
                         .HasColumnType("int");
 

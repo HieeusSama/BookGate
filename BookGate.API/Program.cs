@@ -43,6 +43,7 @@ builder.Services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
 
 // --- TIÊM DEPENDENCY INJECTION (Service) ---
 builder.Services.AddScoped<PublisherService>();
+builder.Services.AddHttpClient<GhnService>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<BookService>();
 builder.Services.AddScoped<MemberBookService>();

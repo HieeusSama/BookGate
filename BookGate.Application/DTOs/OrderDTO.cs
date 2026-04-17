@@ -31,6 +31,8 @@ namespace BookGate.Application.DTOs
         [StringLength(100)]
         public string City { get; set; } = string.Empty;
 
+        public string District { get; set; } = string.Empty;
+
         [Required]
         [StringLength(100)]
         public string Ward { get; set; } = string.Empty;

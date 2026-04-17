@@ -685,10 +685,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Configuration.Abstractions/10.0.3": {
+      "Microsoft.Extensions.Configuration.Abstractions/10.0.6": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Primitives": "10.0.3"
+          "Microsoft.Extensions.Primitives": "10.0.6"
         },
         "compile": {
           "lib/net10.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
@@ -815,7 +815,7 @@
           "buildTransitive/net8.0/Microsoft.Extensions.Options.targets": {}
         }
       },
-      "Microsoft.Extensions.Primitives/10.0.3": {
+      "Microsoft.Extensions.Primitives/10.0.6": {
         "type": "package",
         "compile": {
           "lib/net10.0/Microsoft.Extensions.Primitives.dll": {
@@ -1277,7 +1277,8 @@
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
-          "BookGate.Domain": "1.0.0"
+          "BookGate.Domain": "1.0.0",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.6"
         },
         "compile": {
           "bin/placeholder/BookGate.Application.dll": {}
@@ -2782,10 +2783,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Configuration.Abstractions/10.0.3": {
-      "sha512": "xVDHL0+SIgemfh95fTO9cGLe17TWv/ZP0n7m01z8X6pzt2DmQpucioWR/mYZA1sRlkWnkXzfl0JweLNWmE9WMg==",
+    "Microsoft.Extensions.Configuration.Abstractions/10.0.6": {
+      "sha512": "a7bA7IT3ngIgcOMb/2MVH5CcfSxUCeQ6QXWS1Vt6oFpzLTH3U1+J2Xtc64Uw3whX9akYG8eR/UQeEzxo64zZLg==",
       "type": "package",
-      "path": "microsoft.extensions.configuration.abstractions/10.0.3",
+      "path": "microsoft.extensions.configuration.abstractions/10.0.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2806,7 +2807,7 @@
         "lib/net9.0/Microsoft.Extensions.Configuration.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.xml",
-        "microsoft.extensions.configuration.abstractions.10.0.3.nupkg.sha512",
+        "microsoft.extensions.configuration.abstractions.10.0.6.nupkg.sha512",
         "microsoft.extensions.configuration.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -3051,10 +3052,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Primitives/10.0.3": {
-      "sha512": "GEcpTwo7sUoLGGNTqV1FZEuL+tTD9m81NX/mh099dqGNna07/UGZShKQNZRw4hv6nlliSUwYQgSYc7OR99Jufg==",
+    "Microsoft.Extensions.Primitives/10.0.6": {
+      "sha512": "L8P21mqaG+CXvPheLndean/cHCOcItJqH8nx+0YQnK7wAiOR0G1IOC418ZSzTMD2D6Gmo0f2M5WR70XtpX2B8g==",
       "type": "package",
-      "path": "microsoft.extensions.primitives/10.0.3",
+      "path": "microsoft.extensions.primitives/10.0.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3075,7 +3076,7 @@
         "lib/net9.0/Microsoft.Extensions.Primitives.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
-        "microsoft.extensions.primitives.10.0.3.nupkg.sha512",
+        "microsoft.extensions.primitives.10.0.6.nupkg.sha512",
         "microsoft.extensions.primitives.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -3853,7 +3854,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.200/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",

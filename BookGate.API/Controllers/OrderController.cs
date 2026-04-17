@@ -16,12 +16,15 @@ namespace BookGate.API.Controllers
         private readonly OrderDetailService _orderDetailService;
         private readonly MemberBookService _memberBookService;
         private readonly IConfiguration _configuration;
-        public OrderController(OrderService service, OrderDetailService orderDetailService, CartItemService cartIteamService, MemberBookService memberBookService, IConfiguration configuration)
+        private readonly GhnService _ghnService;
+        public OrderController(OrderService service, OrderDetailService orderDetailService, CartItemService cartIteamService, MemberBookService memberBookService, IConfiguration configuration, GhnService ghnService)
         {
             _service = service;
             _orderDetailService = orderDetailService;
             _cartIteamService = cartIteamService;
             _memberBookService = memberBookService;
+            _configuration = configuration;
+            _ghnService = ghnService;
             _configuration = configuration;
         }
 
@@ -71,18 +74,15 @@ namespace BookGate.API.Controllers
                 if (string.IsNullOrEmpty(Id)) return RedirectToAction("Login", "Auth");
 
                 int userId = int.Parse(Id);
-                decimal shippingFee = 32000;
                 var newOrderId = Guid.NewGuid().ToString();
 
                 order.OrderId = newOrderId;
                 order.Id = userId;
-                DateTime timeNow = DateTime.UtcNow.AddHours(7);
-                order.OrderDate = timeNow;
-                order.ShippingFee = shippingFee;
+                order.OrderDate = DateTime.UtcNow.AddHours(7);
                 order.StatusId = "PENDING";
                 order.PaymentMethod = PaymentMethod;
 
-                // luong mua ngay
+                // --- LUỒNG MUA NGAY ---
                 if (!string.IsNullOrEmpty(bookId))
                 {
                     var book = await _memberBookService.GetById(bookId);
@@ -91,7 +91,13 @@ namespace BookGate.API.Controllers
                         TempData["Error"] = $"Sách '{book.Title}' chỉ còn {book.Quantity} quyển.";
                         return RedirectToAction("Index");
                     }
-                    order.TotalAmount = (book.SellingPrice * quantity) + shippingFee;
+
+                    // 1. Tính tiền sách chuẩn từ Database (để bảo mật, chống khách hack sửa giá HTML)
+                    decimal subTotal = book.SellingPrice * quantity;
+
+                    // 2. Lấy Tổng tiền từ giao diện (đã cộng phí ship GHN) để suy ra Phí ship
+                    // order.TotalAmount đã được tự động lấy từ thẻ input hidden trong HTML
+                    order.ShippingFee = order.TotalAmount - subTotal;
 
                     if (PaymentMethod == "VNPAY")
                     {
@@ -104,10 +110,16 @@ namespace BookGate.API.Controllers
                     }
                     await ProcessOrderDatabase(order, "BuyNow", bookId, quantity, userId);
                 }
+                // --- LUỒNG GIỎ HÀNG ---
                 else
                 {
                     var cartItems = await _cartIteamService.GetCartItemById(userId);
-                    order.TotalAmount = cartItems.Sum(x => x.SellingPrice * x.Quantity) + shippingFee;
+
+                    // 1. Tính tiền sách chuẩn
+                    decimal subTotal = cartItems.Sum(x => x.SellingPrice * x.Quantity);
+
+                    // 2. Suy ra Phí ship
+                    order.ShippingFee = order.TotalAmount - subTotal;
 
                     if (PaymentMethod == "VNPAY")
                     {
@@ -243,6 +255,40 @@ namespace BookGate.API.Controllers
                 ViewBag.PaymentMethod = orderInfo.PaymentMethod;
             }
             return View(order);
+        }
+
+        // Ship API - GHN
+        [HttpGet]
+        public async Task<IActionResult> GetProvinces()
+        {
+            var data = await _ghnService.GetProvincesAsync();
+            return Content(data, "application/json");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetDistricts(int provinceId)
+        {
+            var data = await _ghnService.GetDistrictsAsync(provinceId);
+            return Content(data, "application/json");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetWards(int districtId)
+        {
+            var data = await _ghnService.GetWardsAsync(districtId);
+            return Content(data, "application/json");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> CalculateFee(int districtId, string wardCode, int quantity)
+        {
+            // Giả sử trung bình 1 cuốn sách nặng 300 gram
+            int totalWeight = quantity * 300;
+
+            // Gọi sang GHN để tính phí thực tế
+            decimal fee = await _ghnService.CalculateShippingFeeAsync(districtId, wardCode, totalWeight);
+
+            return Json(new { fee = fee });
         }
     }
 }

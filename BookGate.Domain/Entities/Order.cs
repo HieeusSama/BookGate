@@ -34,6 +34,10 @@ namespace BookGate.Domain.Entities
 
         [Required]
         [StringLength(100)]
+        public string District { get; set; } = string.Empty;
+
+        [Required]
+        [StringLength(100)]
         public string Ward { get; set; } = string.Empty;
 
         [Required]
