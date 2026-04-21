@@ -51,6 +51,8 @@ builder.Services.AddScoped<CartItemService>();
 builder.Services.AddScoped<OrderService>();
 builder.Services.AddScoped<OrderStatusService>();
 builder.Services.AddScoped<OrderDetailService>();
+builder.Services.AddScoped<OrderDetailService>(); // Đây là code cũ của bạn
+builder.Services.AddHttpClient<BookGate.Application.Services.GeminiService>();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddOpenApi();

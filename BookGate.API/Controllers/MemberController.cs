@@ -11,10 +11,12 @@ namespace BookGate.API.Controllers
     {
         private readonly MemberBookService _service;
         private readonly CartItemService _cartItemService;
-        public MemberController(MemberBookService service, CartItemService cartitemservice)
+        private readonly GeminiService _geminiService;
+        public MemberController(MemberBookService service, CartItemService cartitemservice, GeminiService geminiService)
         {
             _service = service;
             _cartItemService = cartitemservice;
+            _geminiService = geminiService;
         }
 
         [HttpGet]
@@ -77,6 +79,34 @@ namespace BookGate.API.Controllers
             }
             var book = await _service.GetById(bookId);
             return View(book);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AskAI([FromBody] string message)
+        {
+            if (string.IsNullOrEmpty(message)) return BadRequest("Tin nhắn trống");
+
+            try
+            {
+                var allBooks = await _service.GetAll();
+
+                var availableBooks = allBooks.Take(50).Select(b => $"- Tên sách: '{b.Title}', Tác giả: {b.Author}, Giá: {b.SellingPrice:N0} VND").ToList();
+
+                string bookContextString = string.Join("\n", availableBooks);
+
+                if (string.IsNullOrEmpty(bookContextString))
+                {
+                    bookContextString = "Hiện tại cửa hàng đang cập nhật sách, tạm thời chưa có dữ liệu.";
+                }
+
+                string aiResponse = await _geminiService.ChatWithAI(message, bookContextString);
+
+                return Json(new { reply = aiResponse });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { reply = "Hệ thống đang bận, vui lòng thử lại sau: " + ex.Message });
+            }
         }
     }
 }
