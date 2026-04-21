@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BookGate.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d68d1b0a6cd9a6a361ccccf448be217c09c5e00a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+34adcf3c98d35c232fe56567c6c1268a73e6b429")]
 [assembly: System.Reflection.AssemblyProductAttribute("BookGate.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BookGate.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

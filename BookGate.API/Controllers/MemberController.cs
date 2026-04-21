@@ -72,11 +72,6 @@ namespace BookGate.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(string bookId)
         {
-            var Id = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (string.IsNullOrEmpty(Id))
-            {
-                return RedirectToAction("Login", "Auth");
-            }
             var book = await _service.GetById(bookId);
             return View(book);
         }

@@ -155,6 +155,22 @@
                 </div>
 
                 <div class="row mb-4 align-items-center">
+                    <div class="col-md-3">
+                        <label class="form-label-custom">Số điện thoại <span class="text-danger">*</span></label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="tel" class="form-control form-control-custom shadow-none"
+                               name="ReceiverPhone"
+                               placeholder="Ví dụ: 0912345678..."
+                               pattern="0[0-9]{9}"
+                               maxlength="10"
+                               title="Vui lòng nhập đúng số điện thoại Việt Nam (10 chữ số, bắt đầu bằng số 0)"
+                               oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                               required>
+                    </div>
+                </div>
+
+                <div class="row mb-4 align-items-center">
                     <div class="col-md-3"><label class="form-label-custom">Tỉnh/Thành Phố</label></div>
                     <div class="col-md-9">
                         <select class="form-select form-control-custom shadow-none" id="provinceSelect" required>
