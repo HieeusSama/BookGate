@@ -9,8 +9,10 @@
 > **BookGate** là một website quản lý bán hàng trực tuyến toàn diện dành cho cửa hàng sách. Dự án cung cấp nền tảng giúp khách hàng dễ dàng tìm kiếm, mua sắm sách, đồng thời cung cấp công cụ mạnh mẽ để quản trị viên (Admin) kiểm soát sản phẩm, kho hàng và đơn hàng một cách hiệu quả.
 
 🌐 **Live Demo:** [bookgate.tryasp.net](http://bookgate.tryasp.net/)  
-🌐 **Gmail tài khoản Quản trị viên:** admin@gmail.com
-🌐 **Mật khẩu tài khoản Quản trị viên:** 1111
+### 🔐 Tài khoản trải nghiệm (Demo Account)
+Để kiểm tra các tính năng quản trị, bạn có thể đăng nhập bằng tài khoản sau:
+* **Tài khoản (Email):** `admin@gmail.com`
+* **Mật khẩu:** `1111`
 👨‍💻 **Vị trí phát triển:** Full Stack Developer
 
 ---
