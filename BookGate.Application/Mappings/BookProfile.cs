@@ -20,6 +20,7 @@ namespace BookGate.Application.Mappings
 
             CreateMap<BookDTO, Book>();
             CreateMap<MemberBookDTO, Book>();
+
         }
     }
 }

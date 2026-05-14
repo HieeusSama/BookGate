@@ -26,7 +26,12 @@ namespace BookGate.API.Controllers
 
             if (!string.IsNullOrEmpty(searchString))
             {
-                allBooks = allBooks.Where(b => b.Title.ToLower().Contains(searchString.ToLower())).ToList();
+                string search = searchString.ToLower().Trim();
+
+                allBooks = allBooks.Where(b =>
+                    (b.Title != null && b.Title.ToLower().Contains(search)) ||
+                    (b.Author != null && b.Author.ToLower().Contains(search))
+                ).ToList();
             }
 
             int pageSize = 12;
