@@ -112,11 +112,6 @@
                         <div class="col">
                             <div class="book-card position-relative h-100 d-flex flex-column">
 
-                                <button class="btn-favorite position-absolute top-0 end-0 m-2 rounded-circle bg-white shadow-sm" title="Thêm vào yêu thích">
-                                    <i class="bi bi-heart text-danger fs-6"></i>
-                                    <i class="bi bi-heart-fill text-danger fs-6"></i>
-                                </button>
-
                                 <a asp-controller="Member" asp-action="Details" asp-route-bookId="@book.BookId" class="book-item flex-grow-1">
                                     <div class="book-cover">
                                         @if (!string.IsNullOrEmpty(book.FileUrl))

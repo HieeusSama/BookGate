@@ -12,8 +12,7 @@ namespace BookGate.API.Controllers
     {
         private readonly CartItemService _service;
         private readonly BookService _bookService;
-        private readonly OrderService _orderService;
-        private readonly OrderDetailService _orderDetailService;
+
         public CartItemController(CartItemService service, BookService bookService)
         {
             _service = service;
@@ -23,8 +22,11 @@ namespace BookGate.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var Id = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            int userId = int.Parse(Id);
+            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userIdString) || !int.TryParse(userIdString, out int userId))
+            {
+                return RedirectToAction("Login", "Auth");
+            }
             var cartitems = await _service.GetCartItemById(userId);
             return View(cartitems);
         }

@@ -1,6 +1,7 @@
-# Visual Studio folder
-.vs/
+appsettings.json
+appsettings.Development.json
 
-# Build folders
 [Bb]in/
 [Oo]bj/
+
+.vs/
