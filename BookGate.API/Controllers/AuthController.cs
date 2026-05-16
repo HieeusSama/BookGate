@@ -55,5 +55,11 @@ namespace BookGate.API.Controllers
             await _service.Register(auth);
             return RedirectToAction("Login");
         }
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Member");
+        }
     }
 }

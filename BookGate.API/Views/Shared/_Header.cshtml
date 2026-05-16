@@ -27,15 +27,25 @@
             <span class="d-none d-md-inline">@(User.Identity?.Name ?? "Khách")</span>
         </div>
         <div class="d-flex align-items-center gap-3">
-            <a asp-controller="CartItem" asp-action="Index" class="action-icon text-dark" title="Giỏ hàng">
-                <i class="bi bi-cart2 fs-5"></i>
-            </a>
-            <a asp-controller="OrderStatus" asp-action="IndexMember" class="action-icon text-dark" title="Đơn hàng">
-                <i class="bi bi-truck fs-5 text-primary"></i>
-            </a>
-            <a asp-controller="Auth" asp-action="Login" class="action-icon text-dark" title="Đăng xuất">
-                <i class="bi bi-box-arrow-right fs-5"></i>
-            </a>
+            @if (User.Identity != null && User.Identity.IsAuthenticated)
+            {
+                <!-- Đã đăng nhập: Hiện Giỏ hàng, Đơn hàng, Đăng xuất -->
+                <a asp-controller="CartItem" asp-action="Index" class="action-icon text-dark" title="Giỏ hàng">
+                    <i class="bi bi-cart2 fs-5"></i>
+                </a>
+                <a asp-controller="OrderStatus" asp-action="IndexMember" class="action-icon text-dark" title="Đơn hàng">
+                    <i class="bi bi-truck fs-5"></i>
+                </a>
+                <a asp-controller="Auth" asp-action="Logout" class="action-icon text-dark" title="Đăng xuất">
+                    <i class="bi bi-box-arrow-right fs-5"></i>
+                </a>
+            }
+            else
+            {
+                <!-- Chưa đăng nhập: Hiện nút Đăng nhập và Đăng ký -->
+                <a asp-controller="Auth" asp-action="Login" class="btn btn-outline-dark btn-sm rounded-pill px-3 fw-bold">Đăng nhập</a>
+                <a asp-controller="Auth" asp-action="Register" class="btn btn-dark btn-sm rounded-pill px-3 fw-bold">Đăng ký</a>
+            }
         </div>
     </div>
 </header>
