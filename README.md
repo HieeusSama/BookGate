@@ -1,4 +1,4 @@
-# 📚 BookGate - Nền Tảng Bán Sách & Quản Lý Cửa Hàng Trực Tuyến
+# 📚 THIẾT KẾ VÀ PHÁT TRIỂN WEBSITE THƯƠNG MẠI ĐIỆN TỬ QUẢN LÝ BÁN SÁCH BOOKGATE
 
 [![.NET](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)](https://dotnet.microsoft.com/)
 [![ASP.NET Core MVC](https://img.shields.io/badge/ASP.NET_Core_MVC-512BD4?style=for-the-badge&logo=blazor&logoColor=white)](https://dotnet.microsoft.com/apps/aspnet/mvc)
@@ -9,10 +9,21 @@
 > **BookGate** là một website quản lý bán hàng trực tuyến toàn diện dành cho cửa hàng sách. Dự án cung cấp nền tảng giúp khách hàng dễ dàng tìm kiếm, mua sắm sách, đồng thời cung cấp công cụ mạnh mẽ để quản trị viên (Admin) kiểm soát sản phẩm, kho hàng và đơn hàng một cách hiệu quả.
 
 🌐 **Live Demo:** [bookgate.tryasp.net](http://bookgate.tryasp.net/)  
-### 🔐 Tài khoản trải nghiệm (Demo Account)
+
+### 🔐 Tài khoản trải nghiệm (Demo & Sandbox Accounts)
+
+**1. Tài khoản Quản trị (Admin Account)**
 Để kiểm tra các tính năng quản trị, bạn có thể đăng nhập bằng tài khoản sau:
 * **Tài khoản (Email):** `admin@gmail.com`
 * **Mật khẩu:** `1111`
+
+**2. Tài khoản Thanh toán VNPay (Sandbox)**
+Để trải nghiệm luồng thanh toán VNPay trên môi trường thử nghiệm, vui lòng sử dụng thông tin thẻ sau khi Checkout:
+* **Ngân hàng:** NCB
+* **Số thẻ:** `9704198526191432198`
+* **Tên chủ thẻ:** `NGUYEN VAN A`
+* **Ngày phát hành:** `07/15`
+* **Mật khẩu OTP:** `123456`
 
 👨‍💻 **Vị trí phát triển:** Full Stack Developer
 
