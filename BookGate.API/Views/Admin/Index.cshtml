@@ -1,0 +1,412 @@
+﻿@using BookGate.Application.DTOs
+@model IEnumerable<BookDTO>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Gate - Dashboard</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <style>
+        :root {
+            --bg-color: #f4f7fc;
+            --surface-color: #ffffff;
+            --text-main: #1e1e2d;
+            --text-muted: #8b92a5;
+            --primary-color: #2b3445;
+            --active-bg: #f1f3f9;
+            --border-radius: 16px;
+        }
+
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Đã trả về phông chữ gốc */
+            background-color: var(--bg-color); 
+            color: var(--text-main); 
+            overflow-x: hidden;
+            margin: 0;
+        }
+
+        /* Layout Container */
+        .app-wrapper {
+            display: flex;
+            min-height: 100vh;
+            padding: 20px;
+            gap: 24px;
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            width: 240px;
+            background: var(--surface-color);
+            border-radius: var(--border-radius);
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            position: sticky;
+            top: 20px;
+            height: calc(100vh - 40px);
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-decoration: none;
+            margin-bottom: 40px;
+            padding-left: 8px;
+        }
+
+        .brand-logo i {
+            color: #f5b041;
+            font-size: 1.5rem;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .nav-item.active {
+            background-color: var(--active-bg);
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .nav-item:hover:not(.active) {
+            color: var(--text-main);
+            background-color: rgba(0,0,0,0.02);
+        }
+
+        .nav-item i { font-size: 1.2rem; }
+        .logout-link { margin-top: auto; color: #e74c3c !important; }
+
+        /* --- MAIN CONTENT --- */
+        .main-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Header (Search & Profile) */
+        .top-header {
+            background: var(--surface-color);
+            border-radius: var(--border-radius);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: var(--bg-color);
+            padding: 10px 20px;
+            border-radius: 50px;
+            width: 400px;
+            gap: 12px;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 100%;
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+
+        .profile-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .icon-btn {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            border: 1px solid #e5e7eb;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        /* Content Area Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 24px;
+            align-items: start;
+        }
+
+        /* Center: Books List */
+        .book-section {
+            background: var(--surface-color);
+            border-radius: var(--border-radius);
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+
+        .filter-pills {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .pill {
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            background: var(--bg-color);
+            text-decoration: none;
+        }
+        .pill.active { background: var(--primary-color); color: #fff; }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr)); 
+            gap: 20px;
+        }
+
+        .book-card {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            min-width: 0; 
+        }
+
+        .book-card img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 2 / 3; 
+            object-fit: cover; 
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            margin-bottom: 12px;
+            transition: transform 0.2s;
+        }
+
+        .book-card:hover img { transform: translateY(-4px); }
+        .book-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 2px; line-height: 1.3; }
+        .book-author { font-size: 0.8rem; color: var(--text-muted); }
+
+        /* --- RIGHT PANEL: ORDER STATUS STATS --- */
+        .right-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .status-card {
+            background: var(--surface-color);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .status-card:hover {
+            transform: translateY(-2px);
+            border-color: #e5e7eb;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .status-icon {
+            width: 50px; height: 50px;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        /* Pastel Colors for icons */
+        .bg-pending { background: #fff3cd; color: #f5b041; }
+        .bg-awaiting { background: #d1ecf1; color: #17a2b8; }
+        .bg-shipping { background: #e2e3e5; color: #383d41; }
+        .bg-books { background: #d4edda; color: #28a745; }
+
+        .status-info h4 { margin: 0; font-size: 1.5rem; font-weight: 700; color: var(--text-main); }
+        .status-info span { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+    </style>
+</head>
+<body>
+
+    <div class="app-wrapper">
+        
+        <aside class="sidebar">
+            <a asp-controller="Admin" asp-action="Index" class="brand-logo">
+                <i class="bi bi-book-half"></i> Book Gate
+            </a>
+            
+            <ul class="nav-menu">
+                <li>
+                    <a href="#" class="nav-item active">
+                        <i class="bi bi-house-door"></i> Tổng quan
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Book" asp-action="Index" class="nav-item">
+                        <i class="bi bi-journal-text"></i> Quản lý sách
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="OrderStatus" asp-action="IndexAdmin" class="nav-item">
+                        <i class="bi bi-box-seam"></i> Đơn hàng
+                    </a>
+                </li>
+                <li class="logout-link">
+                    <a asp-controller="Auth" asp-action="Logout" class="nav-item logout-link">
+                        <i class="bi bi-box-arrow-left"></i> Đăng xuất
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="main-wrapper">
+            
+            <header class="top-header">
+                <div>
+                    <h5 class="mb-0 fw-bold text-dark d-none d-md-block">Dashboard</h5>
+                </div>
+                
+                <div class="profile-actions ms-auto">
+                    
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=2b3445&color=fff" width="40" height="40" class="rounded-circle" alt="User">
+                </div>
+            </header>
+
+            <div class="content-grid">
+                
+                <div class="book-section">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div class="filter-pills">
+                            <a href="#" class="pill active">Mới cập nhật</a>
+                            @* <a href="#" class="pill">Thịnh hành</a> *@
+                        </div>
+                        <a asp-controller="Book" asp-action="Index" class="text-decoration-none text-muted small fw-semibold">Xem tất cả <i class="bi bi-chevron-right"></i></a>
+                    </div>
+
+                    <div class="book-grid">
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var book in Model)
+                            {
+                                <div class="book-card">
+                                    <img src="@(string.IsNullOrEmpty(book.FileUrl) ? "https://via.placeholder.com/150x210?text=No+Cover" : book.FileUrl)" alt="@book.Title">
+                
+                                    <div class="book-title text-truncate" title="@book.Title">@book.Title</div>
+                                    <div class="book-author text-truncate" title="@book.Author">@book.Author</div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div style="grid-column: span 5;" class="text-center text-muted py-4">
+                                <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+                                Chưa có dữ liệu sách trong hệ thống.
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="right-panel">
+                    <div>
+                        <h5 class="section-title">Trạng thái đơn hàng</h5>
+                        <p class="text-muted small mb-3">Cập nhật lúc này</p>
+                    </div>
+
+                    <a asp-controller="OrderStatus" asp-action="IndexAdmin" asp-route-status="PENDING" class="status-card">
+                        <div class="status-icon bg-pending">
+                            <i class="bi bi-hourglass-split"></i>
+                        </div>
+                        <div class="status-info">
+                            <span>Chờ xác nhận</span>
+                            <h4>@ViewBag.PendingOrders</h4>
+                        </div>
+                    </a>
+
+                    <a asp-controller="OrderStatus" asp-action="IndexAdmin" asp-route-status="AWAITING_SHIPMENT" class="status-card">
+                        <div class="status-icon bg-awaiting">
+                            <i class="bi bi-box-seam"></i>
+                        </div>
+                        <div class="status-info">
+                            <span>Chờ giao hàng</span>
+                            <h4>@ViewBag.AwaitingShipment</h4>
+                        </div>
+                    </a>
+
+                    <a asp-controller="OrderStatus" asp-action="IndexAdmin" asp-route-status="SHIPPING" class="status-card">
+                        <div class="status-icon bg-shipping">
+                            <i class="bi bi-truck"></i>
+                        </div>
+                        <div class="status-info">
+                            <span>Đang giao</span>
+                            <h4>@ViewBag.ShippingOrders</h4>
+                        </div>
+                    </a>
+
+                    <div class="mt-2">
+                        <h5 class="section-title">Kho dữ liệu</h5>
+                    </div>
+
+                    <a asp-controller="Book" asp-action="Index" class="status-card">
+                        <div class="status-icon bg-books">
+                            <i class="bi bi-journal-bookmark"></i>
+                        </div>
+                        <div class="status-info">
+                            <span>Tổng đầu sách</span>
+                            <h4>@ViewBag.TotalBooks</h4>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

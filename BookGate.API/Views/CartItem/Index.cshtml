@@ -403,5 +403,29 @@
             });
         });
     </script>
+    @if (TempData["Error"] != null)
+    {
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Toastify({
+                    text: "@Html.Raw(TempData["Error"])", // Lấy đúng câu báo lỗi từ Controller
+                    duration: 5000, // Hiển thị 5 giây để khách hàng kịp đọc xem sách nào bị thiếu
+                    close: true,
+                    gravity: "bottom",
+                    position: "right",
+                    style: {
+                        background: "#dc3545", // Màu đỏ cảnh báo
+                        borderRadius: "8px",
+                        fontFamily: "Inter, sans-serif",
+                        fontSize: "14px",
+                        fontWeight: "500"
+                    }
+                }).showToast();
+            });
+        </script>
+    }
 </body>
 </html>

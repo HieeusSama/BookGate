@@ -3,7 +3,7 @@
 @{
     Layout = null;
     var orderDate = ViewBag.OrderDate;
-    decimal shippingFee = 32000;
+    decimal shippingFee = Convert.ToDecimal(ViewBag.ShippingFee ?? 0);
     decimal subTotal = Model?.Sum(x => x.UnitPrice * x.Quantity) ?? 0;
     decimal totalAmount = subTotal + shippingFee;
     string PaymentMethod = ViewBag.PaymentMethod ?? "Thanh toán khi nhận hàng (COD)";
@@ -74,9 +74,8 @@
     </style>
 </head>
 <body>
-    <partial name="_Header" />
-
     <div class="container mb-5">
+        <partial name="_Header" />
         <div class="d-flex justify-content-between align-items-end mb-4">
             <div>
                 <h4 class="page-title mb-0">Chi tiết đơn hàng</h4>

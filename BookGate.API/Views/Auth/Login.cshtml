@@ -210,24 +210,9 @@
                 <div class="login-box">
                     <h2>Đăng nhập</h2>
 
-                    @* <div class="d-grid">
-                        <button class="btn btn-social btn-light">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Google_Favicon_2025.svg/960px-Google_Favicon_2025.svg.png" width="18" alt="Google">
-                            Đăng nhập bằng Google
-                        </button>
-                        <button class="btn btn-social btn-light">
-                            <i class="bi bi-apple"></i>
-                            Đăng nhập bằng Apple
-                        </button>
-                    </div>
-
-                    <div class="divider">
-                        <span>Hoặc</span>
-                    </div> *@
-
                     <form asp-action="Login" method="post">
                         @Html.AntiForgeryToken()
-                        @* <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2 border-0 bg-danger bg-opacity-10" style="font-size: 0.85rem;" role="alert"></div> *@
+                        
                         
                         <div class="mb-3">
                             <label asp-for="Email" class="form-label fw-semibold" style="font-size: 0.85rem;">Email</label>
@@ -297,7 +282,7 @@
                 {
                     <text>
                     Toastify({
-                        text: "@error",            // Lấy nội dung lỗi từ Controller (VD: "Sai tài khoản hoặc mật khẩu")
+                        text: "@Html.Raw(error)",           // Lấy nội dung lỗi từ Controller (VD: "Sai tài khoản hoặc mật khẩu")
                         duration: 3500,            // Thời gian hiển thị (3.5 giây)
                         close: true,               // Hiển thị nút X để tắt
                         gravity: "bottom",         // Hiển thị ở dưới (bottom) hoặc trên (top)

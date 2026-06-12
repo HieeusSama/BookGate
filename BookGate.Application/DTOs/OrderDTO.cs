@@ -18,6 +18,8 @@ namespace BookGate.Application.DTOs
         [Required]
         public string StatusId { get; set; } = string.Empty;
 
+        [Required(ErrorMessage = "Vui lòng nhập Họ và tên.")]
+        public string Fullname { get; set; } = string.Empty;
         public DateTime OrderDate { get; set; }
         public DateTime? CompletedDate { get; set; }
 
@@ -27,21 +29,22 @@ namespace BookGate.Application.DTOs
         [Column(TypeName = "decimal(18,2)")]
         public decimal ShippingFee { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vui lòng nhập Tỉnh/Thành phố.")]
         [StringLength(100)]
         public string City { get; set; } = string.Empty;
 
+        [Required(ErrorMessage = "Vui lòng nhập Quận/Huyện.")]
         public string District { get; set; } = string.Empty;
 
-        [Required]
+        [Required(ErrorMessage = "Vui lòng nhập Phường/Xã.")]
         [StringLength(100)]
         public string Ward { get; set; } = string.Empty;
 
-        [Required]
+        [Required(ErrorMessage = "Vui lòng nhập Địa chỉ giao hành.")]
         [StringLength(255)]
         public string StreetAddress { get; set; } = string.Empty;
 
-        [Required]
+        [Required(ErrorMessage = "Vui lòng nhập Số điện thoại.")]
         [StringLength(20)]
         public string ReceiverPhone { get; set; } = string.Empty;
         public string PaymentMethod { get; set; } = "COD";

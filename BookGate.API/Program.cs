@@ -51,7 +51,7 @@ builder.Services.AddScoped<CartItemService>();
 builder.Services.AddScoped<OrderService>();
 builder.Services.AddScoped<OrderStatusService>();
 builder.Services.AddScoped<OrderDetailService>();
-builder.Services.AddScoped<OrderDetailService>(); // Đây là code cũ của bạn
+builder.Services.AddScoped<OrderDetailService>();
 builder.Services.AddHttpClient<BookGate.Application.Services.GeminiService>();
 
 builder.Services.AddControllersWithViews();
@@ -60,9 +60,6 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
-// ==========================================
-// THỨ TỰ MIDDLEWARE (Rất quan trọng, không đổi thứ tự này)
-// ==========================================
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
@@ -71,9 +68,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseRouting(); // Bắt buộc phải có dòng này trước Session
+app.UseRouting();
 
-// 2. GỌI SESSION TRƯỚC KHI AUTHENTICATION
 app.UseSession();
 
 app.UseAuthentication();

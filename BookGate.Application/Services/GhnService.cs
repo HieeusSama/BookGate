@@ -14,12 +14,7 @@ namespace BookGate.Application.Services
         {
             _httpClient = httpClient;
             _configuration = configuration;
-
-            // Gắn sẵn Token vào mọi request gửi đi GHN
             _httpClient.DefaultRequestHeaders.Add("Token", _configuration["GHN:Token"]);
-
-            // Đảm bảo BaseUrl trong appsettings.json có dấu "/" ở cuối
-            // Ví dụ: "https://dev-online-gateway.ghn.vn/shiip/public-api/"
             string baseUrl = _configuration["GHN:BaseUrl"];
             if (!baseUrl.EndsWith("/")) baseUrl += "/";
 

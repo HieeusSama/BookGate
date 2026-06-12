@@ -46,13 +46,10 @@ namespace BookGate.API.Controllers
         {
             int pageSize = 5;
 
-            // 1. Lấy toàn bộ sách
             var allBooks = await _service.GetAll();
 
-            // 2. Lọc theo từ khóa tìm kiếm (nếu có)
             if (!string.IsNullOrEmpty(searchTerm))
             {
-                // Chuyển từ khóa về chữ thường để tìm kiếm không phân biệt hoa/thường
                 var lowerSearchTerm = searchTerm.ToLower();
 
                 allBooks = allBooks.Where(b =>
@@ -62,20 +59,17 @@ namespace BookGate.API.Controllers
                 ).ToList();
             }
 
-            // 3. Tính toán tổng số trang dựa trên danh sách ĐÃ LỌC
             int totalBooks = allBooks.Count();
             int totalPages = totalBooks > 0 ? (int)Math.Ceiling(totalBooks / (double)pageSize) : 0;
 
-            // 4. Lấy danh sách sách của trang hiện tại
             var booksOnPage = allBooks
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToList();
 
-            // 5. Truyền thông tin sang View
             ViewBag.CurrentPage = page;
             ViewBag.TotalPages = totalPages;
-            ViewBag.SearchTerm = searchTerm; // Truyền lại từ khóa để giữ trên ô input và gắn vào link phân trang
+            ViewBag.SearchTerm = searchTerm;
 
             return View(booksOnPage);
         }

@@ -92,11 +92,8 @@ namespace BookGate.API.Controllers
                         return RedirectToAction("Index");
                     }
 
-                    // 1. Tính tiền sách chuẩn từ Database (để bảo mật, chống khách hack sửa giá HTML)
                     decimal subTotal = book.SellingPrice * quantity;
 
-                    // 2. Lấy Tổng tiền từ giao diện (đã cộng phí ship GHN) để suy ra Phí ship
-                    // order.TotalAmount đã được tự động lấy từ thẻ input hidden trong HTML
                     order.ShippingFee = order.TotalAmount - subTotal;
 
                     if (PaymentMethod == "VNPAY")
@@ -115,10 +112,23 @@ namespace BookGate.API.Controllers
                 {
                     var cartItems = await _cartIteamService.GetCartItemById(userId);
 
-                    // 1. Tính tiền sách chuẩn
+                    // THÊM MỚI: KIỂM TRA SỐ LƯỢNG TỒN KHO TRƯỚC KHI ĐẶT HÀNG
+                    foreach (var item in cartItems)
+                    {
+                        var bookInCart = await _memberBookService.GetById(item.BookId);
+
+                        // Nếu số lượng người dùng muốn mua lớn hơn số lượng trong kho
+                        if (bookInCart.Quantity < item.Quantity)
+                        {
+                            // Báo lỗi và chuyển hướng người dùng quay lại trang Giỏ hàng để họ điều chỉnh
+                            TempData["Error"] = $"Sách '{bookInCart.Title}' chỉ còn {bookInCart.Quantity} quyển. Vui lòng cập nhật lại giỏ hàng.";
+                            return RedirectToAction("Index", "CartItem");
+                        }
+                    }
+
+                    // Nếu tất cả sách đều đủ số lượng thì mới tiến hành tính toán
                     decimal subTotal = cartItems.Sum(x => x.SellingPrice * x.Quantity);
 
-                    // 2. Suy ra Phí ship
                     order.ShippingFee = order.TotalAmount - subTotal;
 
                     if (PaymentMethod == "VNPAY")
@@ -166,7 +176,7 @@ namespace BookGate.API.Controllers
             return Redirect(vnpay.CreateRequestUrl(_configuration["VnPay:Url"], _configuration["VnPay:HashSecret"]));
         }
 
-        // thanh toan xong
+        // --- LUỒNG THANH TOÁN XONG VNPAY CALLBACK ---
         [HttpGet]
         public async Task<IActionResult> PaymentCallback()
         {
@@ -215,9 +225,6 @@ namespace BookGate.API.Controllers
             }
             return RedirectToAction("Index", "Member");
         }
-
-        // --- HÀM GỘP CHUNG LOGIC LƯU DATABASE VÀ TRỪ KHO ---
-        // Hàm này gom lại để không phải viết code lưu DB 2 lần ở 2 chỗ khác nhau
         private async Task ProcessOrderDatabase(OrderDTO order, string type, string bookId, int quantity, int userId)
         {
             await _service.Add(order);
@@ -229,7 +236,7 @@ namespace BookGate.API.Controllers
                 book.Quantity -= quantity;
                 await _memberBookService.Update(book);
             }
-            else // Cart
+            else
             {
                 var cartItems = await _cartIteamService.GetCartItemById(userId);
                 foreach (var item in cartItems)
@@ -244,7 +251,7 @@ namespace BookGate.API.Controllers
         }
     
         [HttpGet]
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> DetailsMember(string id)
         {
             var order = await _orderDetailService.GetOrderDetailById(id);
             var orderInfo = await _service.GetById(id);
@@ -253,6 +260,22 @@ namespace BookGate.API.Controllers
             {
                 ViewBag.OrderDate = orderInfo.OrderDate;
                 ViewBag.PaymentMethod = orderInfo.PaymentMethod;
+                ViewBag.ShippingFee = orderInfo.ShippingFee;
+            }
+            return View(order);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DetailsAdmin(string id)
+        {
+            var order = await _orderDetailService.GetOrderDetailById(id);
+            var orderInfo = await _service.GetById(id);
+
+            if (orderInfo != null)
+            {
+                ViewBag.OrderDate = orderInfo.OrderDate;
+                ViewBag.PaymentMethod = orderInfo.PaymentMethod;
+                ViewBag.ShippingFee = orderInfo.ShippingFee;
             }
             return View(order);
         }
@@ -282,10 +305,9 @@ namespace BookGate.API.Controllers
         [HttpGet]
         public async Task<IActionResult> CalculateFee(int districtId, string wardCode, int quantity)
         {
-            // Giả sử trung bình 1 cuốn sách nặng 300 gram
+            //300 gram mooix quyển sách
             int totalWeight = quantity * 300;
 
-            // Gọi sang GHN để tính phí thực tế
             decimal fee = await _ghnService.CalculateShippingFeeAsync(districtId, wardCode, totalWeight);
 
             return Json(new { fee = fee });

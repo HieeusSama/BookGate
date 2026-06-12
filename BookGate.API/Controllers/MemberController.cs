@@ -52,25 +52,29 @@ namespace BookGate.API.Controllers
         [HttpGet]
         public async Task<IActionResult> CreateCartItem(string bookId)
         {
-            var Id = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (string.IsNullOrEmpty(Id))
+            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userIdString))
             {
                 return RedirectToAction("Login", "Auth");
             }
-            int userId = int.Parse(Id);
-            CartItemDTO cartItem = new CartItemDTO
-            {
-                BookId = bookId,
-                Id = userId,
-                Quantity = 1,
-            };
-            await _cartItemService.Add(cartItem);
-            string referer = Request.Headers["Referer"].ToString();
 
+            if (int.TryParse(userIdString, out int userId))
+            {
+                CartItemDTO cartItem = new CartItemDTO
+                {
+                    BookId = bookId,
+                    Id = userId, 
+                    Quantity = 1
+                };
+
+                await _cartItemService.Add(cartItem);
+            }
+            string referer = Request.Headers["Referer"].ToString();
             if (!string.IsNullOrEmpty(referer))
             {
                 return Redirect(referer);
             }
+
             return RedirectToAction("Index");
         }
 

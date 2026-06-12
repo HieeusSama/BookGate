@@ -33,10 +33,31 @@ namespace BookGate.Application.Services
 
         public async Task<CartItemDTO> Add(CartItemDTO cartItemDto)
         {
-            var cartItemEntity = _mapper.Map<CartItem>(cartItemDto);
-            cartItemEntity.CartItemId = Guid.NewGuid().ToString();
-            await _repo.Add(cartItemEntity);
-            return _mapper.Map<CartItemDTO>(cartItemEntity);
+            var currentCartItems = await _repo.GetCartItemById(cartItemDto.Id);
+            var existingItem = currentCartItems.FirstOrDefault(c => c.BookId == cartItemDto.BookId);
+
+            if (existingItem != null)
+            {
+                int quantityToAdd = cartItemDto.Quantity > 0 ? cartItemDto.Quantity : 1;
+
+                existingItem.Quantity += quantityToAdd;
+                await _repo.Update(existingItem);
+
+                return _mapper.Map<CartItemDTO>(existingItem);
+            }
+            else
+            {
+                var cartItemEntity = _mapper.Map<CartItem>(cartItemDto);
+                cartItemEntity.CartItemId = Guid.NewGuid().ToString();
+                if (cartItemEntity.Quantity <= 0)
+                {
+                    cartItemEntity.Quantity = 1;
+                }
+
+                await _repo.Add(cartItemEntity);
+
+                return _mapper.Map<CartItemDTO>(cartItemEntity);
+            }
         }
 
         public async Task<CartItemDTO> Update(CartItemDTO cartIteam)

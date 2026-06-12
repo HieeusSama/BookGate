@@ -24,7 +24,7 @@ namespace BookGate.API.Controllers
             var user = await _service.Login(auth);
             if (user == null)
             {
-                ModelState.AddModelError("", "Sai tai khoan hoac mat khau");
+                ModelState.AddModelError("", "Sai tài khoản hoặc mật khẩu");
                 return View();
             }
             var claims = new List<Claim>
@@ -43,7 +43,7 @@ namespace BookGate.API.Controllers
 
             if (user.Role == 0)
             {
-                return RedirectToAction("Index", "Book");
+                return RedirectToAction("Index", "Admin");
             }
 
             return RedirectToAction("Index", "Member");

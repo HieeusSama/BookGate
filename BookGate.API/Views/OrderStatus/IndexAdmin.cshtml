@@ -11,253 +11,285 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Gate - Quản lý đơn hàng</title>
 
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #333;
-            background-color: #f8f9fa; /* Nền xám nhẹ giống trang Sách */
+        :root {
+            --bg-color: #f4f7fc;
+            --surface-color: #ffffff;
+            --text-main: #1e1e2d;
+            --text-muted: #8b92a5;
+            --primary-color: #2b3445;
+            --active-bg: #f1f3f9;
+            --border-radius: 16px;
+            --blue-accent: #009dff;
         }
 
-        /* Nút Tạo/Thêm */
-        .btn-custom-blue {
-            background-color: #009dff;
-            color: white;
-            border: none;
-            padding: 8px 24px;
-            font-weight: 500;
-        }
-        .btn-custom-blue:hover {
-            background-color: #0081d6;
-            color: white;
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: var(--bg-color); 
+            color: var(--text-main); 
+            overflow-x: hidden;
+            margin: 0;
         }
 
-        /* Nút hành động Đơn hàng */
-        .btn-outline-info-custom { color: #00a3ff; border-color: #00a3ff; background: transparent; }
-        .btn-outline-info-custom:hover { background-color: #00a3ff; color: white; }
-        .btn-outline-danger-custom { color: #e74c3c; border-color: #e74c3c; background: transparent; }
-        .btn-outline-danger-custom:hover { background-color: #e74c3c; color: white; }
-        .btn-outline-success-custom { color: #20c997; border-color: #20c997; background: transparent; }
-        .btn-outline-success-custom:hover { background-color: #20c997; color: white; }
+        /* --- LAYOUT TỔNG --- */
+        .app-wrapper { display: flex; min-height: 100vh; padding: 20px; gap: 24px; }
 
-        /* Khung ảnh giả lập cho đơn hàng */
-        .order-icon-placeholder {
-            width: 140px;
-            height: 190px;
-            background-color: #e2e8f0;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            overflow: hidden;
+        /* --- SIDEBAR --- */
+        .sidebar {
+            width: 240px; background: var(--surface-color); border-radius: var(--border-radius);
+            padding: 24px 16px; display: flex; flex-direction: column;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02); position: sticky; top: 20px; height: calc(100vh - 40px);
         }
-        .order-icon-placeholder i {
-            font-size: 3.5rem;
-            color: #a0aec0;
+        .brand-logo { display: flex; align-items: center; gap: 12px; font-size: 1.25rem; font-weight: 700; color: var(--text-main); text-decoration: none; margin-bottom: 40px; padding-left: 8px; }
+        .brand-logo i { color: #f5b041; font-size: 1.5rem; }
+        .nav-menu { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+        .nav-item { display: flex; align-items: center; gap: 16px; padding: 12px 16px; border-radius: 12px; color: var(--text-muted); text-decoration: none; font-weight: 500; transition: all 0.2s ease; }
+        .nav-item.active { background-color: var(--active-bg); color: var(--text-main); font-weight: 600; }
+        .nav-item:hover:not(.active) { color: var(--text-main); background-color: rgba(0,0,0,0.02); }
+        .nav-item i { font-size: 1.2rem; }
+        .logout-link { margin-top: auto; color: #e74c3c !important; }
+
+        /* --- MAIN CONTENT & HEADER --- */
+        .main-wrapper { flex: 1; display: flex; flex-direction: column; gap: 24px; }
+        .top-header { background: var(--surface-color); border-radius: var(--border-radius); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+        .profile-actions { display: flex; align-items: center; gap: 20px; }
+        .icon-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid #e5e7eb; display: flex; align-items: center; justify-content: center; color: var(--text-main); text-decoration: none; font-size: 1.1rem; }
+
+        /* --- QUẢN LÝ ĐƠN HÀNG SPECIFIC --- */
+        .filter-section { background: var(--surface-color); border-radius: 12px; padding: 16px 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); margin-bottom: 24px; }
+        .filter-label { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; display: block; }
+        .filter-input { border: 1px solid #e2e8f0; border-radius: 8px; height: 42px; background-color: #f8fafc; font-size: 0.9rem; box-shadow: none; transition: 0.2s; }
+        .filter-input:focus { border-color: var(--blue-accent); background-color: #fff; box-shadow: 0 0 0 3px rgba(0, 157, 255, 0.1); }
+        
+        .admin-order-card { background: var(--surface-color); border-radius: var(--border-radius); box-shadow: 0 4px 20px rgba(0,0,0,0.02); border: 1px solid transparent; transition: all 0.2s ease; }
+        .admin-order-card:hover { border-color: #e5e7eb; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+
+        .order-icon-box {
+            width: 80px; height: 80px;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--blue-accent);
+            font-size: 2rem;
         }
 
-        /* Header Search */
-        .search-input { border: none; outline: none; box-shadow: none; font-size: 0.9rem; }
-        .search-container {
-            display: flex; align-items: center; background: white;
-            padding: 5px 15px; border-radius: 20px; border: 1px solid #ddd;
-        }
+        .text-label { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+        .text-value { font-size: 0.95rem; font-weight: 500; color: var(--text-main); }
+        .price-text { color: #ef4444; font-weight: 700; font-size: 1.1rem; }
 
-        /* Typography cho Card */
-        .text-label { font-size: 0.85rem; font-weight: 600; margin-bottom: 2px; }
-        .text-value { font-size: 0.9rem; color: #555; }
-        .price-text { color: #e74c3c; font-weight: 700; font-size: 1rem; }
+        /* Nút Action */
+        .btn-action-outline { border-radius: 50px; font-weight: 600; font-size: 0.85rem; padding: 6px 20px; transition: 0.2s; }
+        .btn-action-outline-primary { color: var(--blue-accent); border: 1px solid var(--blue-accent); background: transparent; }
+        .btn-action-outline-primary:hover { background: var(--blue-accent); color: #fff; }
+        .btn-action-outline-success { color: #10b981; border: 1px solid #10b981; background: transparent; }
+        .btn-action-outline-success:hover { background: #10b981; color: #fff; }
+        .btn-action-outline-danger { color: #ef4444; border: 1px solid #ef4444; background: transparent; }
+        .btn-action-outline-danger:hover { background: #ef4444; color: #fff; }
+        .btn-action-gray { color: #475569; background: #e2e8f0; border: none; }
+        .btn-action-gray:hover { background: #cbd5e1; color: #1e293b; }
 
-        /* Bộ lọc */
-        .filter-label { font-size: 0.75rem; color: #6c757d; margin-bottom: 0; position: absolute; top: 5px; left: 12px; }
-        .filter-input { padding-top: 20px; padding-bottom: 4px; border-radius: 8px; height: 50px; background-color: white; }
-        .filter-wrapper { position: relative; }
-
-        .footer-section {
-            margin-top: 100px;
-            padding-top: 50px;
-            border-top: 1px solid #eaeaea;
-        }
+        /* Badge Trạng thái */
+        .status-badge { padding: 6px 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; display: inline-block; }
+        .bg-status-pending { background: #fef3c7; color: #d97706; }
+        .bg-status-shipping { background: #e0f2fe; color: #0284c7; }
+        .bg-status-completed { background: #dcfce7; color: #16a34a; }
+        .bg-status-cancelled { background: #fee2e2; color: #dc2626; }
     </style>
 </head>
 <body>
 
-    <div class="container my-4">
-        <!-- Header -->
-        <header class="d-flex justify-content-between align-items-center py-2 mb-5">
-            <div class="search-container col-4">
-                <i class="bi bi-search text-muted me-2 fs-5"></i>
-                <input type="text" class="search-input w-100" placeholder="Tìm kiếm đơn hàng...">
-            </div>
-            <div class="col-4 text-center">
-                <h5 class="mb-0 fw-bold text-primary">Book Gate</h5>
-            </div>
-            <div class="col-4 text-end">
-                <i class="bi bi-bell fs-5"></i>
-            </div>
-        </header>
-
-        <!-- Filter Section -->
-        <form method="get" asp-action="IndexAdmin" id="filterForm" class="row gx-2 mb-4 align-items-center">
-            <div class="col-md-3">
-                <div class="filter-wrapper border rounded bg-white shadow-sm">
-                    <label class="filter-label">Mã đơn hàng</label>
-                    <input type="text" name="searchId" value="@ViewBag.SearchId" 
-                           class="form-control border-0 filter-input" placeholder="Nhập mã...">
-                </div>
-            </div>
-
-            <!-- Ô chọn trạng thái: Chọn xong tự tìm luôn -->
-            <div class="col-md-3">
-                <div class="filter-wrapper border rounded bg-white shadow-sm">
-                    <label class="filter-label">Trạng thái</label>
-                    <select name="status" class="form-select border-0 filter-input shadow-none" 
-                            onchange="this.form.submit()"> <!-- TỰ SUBMIT KHI CHỌN -->
-                        <option value="">Tất cả trạng thái</option>
-                        <option value="PENDING" selected="@(ViewBag.CurrentStatus == "PENDING")">Chờ xác nhận</option>
-                        <option value="AWAITING_SHIPMENT" selected="@(ViewBag.CurrentStatus == "AWAITING_SHIPMENT")">Chờ giao hàng</option>
-                        <option value="SHIPPING" selected="@(ViewBag.CurrentStatus == "SHIPPING")">Đang giao hàng</option>
-                        <option value="COMPLETED" selected="@(ViewBag.CurrentStatus == "COMPLETED")">Đã hoàn thành</option>
-                        <option value="CANCELLED" selected="@(ViewBag.CurrentStatus == "CANCELLED")">Đã hủy</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-md-auto">
-                <button type="submit" class="btn btn-white border shadow-sm rounded px-3" style="height: 50px;">
-                    <i class="bi bi-search text-muted"></i> Lọc
-                </button>
-            </div>
-        </form>
-
-        <!-- Danh sách Đơn hàng -->
-        @if (Model != null && Model.Any())
-        {
-            foreach (var item in Model)
-            {
-                <div class="card border-0 shadow-sm mb-4 position-relative">
-                    <div class="card-body p-4 d-flex align-items-start">
-
-                        <!-- Icon giả lập cho Đơn hàng -->
-                        <div class="order-icon-placeholder me-4 flex-shrink-0 shadow-sm">
-                            <i class="bi bi-receipt-cutoff"></i>
-                        </div>
-
-                        <!-- Thông tin Đơn hàng -->
-                        <div class="flex-grow-1 py-1">
-                            <h4 class="fw-bold mb-3">Mã đơn hàng @item.OrderId</h4>
-
-                            <div class="row w-100 mb-4 pe-5">
-                                <div class="col-4 mb-3">
-                                    <div class="text-label">Địa chỉ nhận hàng</div>
-                                    <div class="text-value">@item.StreetAddress, @item.Ward, @item.City</div>
-                                </div>
-                                <div class="col-4 mb-3">
-                                    <div class="text-label">Số điện thoại</div>
-                                    <div class="text-value">@item.ReceiverPhone</div>
-                                </div>
-                                <div class="col-4 mb-3">
-                                    <div class="text-label">Ngày đặt hàng</div>
-                                    <div class="text-value">@item.OrderDate.ToString("dd/MM/yyyy HH:mm")</div>
-                                </div>
-
-                                <div class="col-4 mb-3">
-                                    <div class="text-label">Trạng thái</div>
-                                    <div class="text-value fw-bold 
-                                        @(item.StatusId == "COMPLETED" ? "text-success" : 
-                                          item.StatusId == "CANCELLED" ? "text-danger" : "text-primary")">
-                                        @item.StatusName
-                                    </div>
-                                </div>
-                                <div class="col-4 mb-3">
-                                    <div class="text-label">Phí vận chuyển</div>
-                                    <div class="text-value">@item.ShippingFee.ToString("N0") đ</div>
-                                </div>
-                                <div class="col-4 mb-3">
-                                    <div class="text-label">Tổng tiền</div>
-                                    <div class="text-value price-text">@item.TotalAmount.ToString("N0") đ</div>
-                                </div>
-                            </div>
-
-                            <!-- Nhóm Nút Xử lý Động dựa trên StatusId -->
-                            <!-- Nhóm Nút Xử lý Động dựa trên StatusId -->
-                            <div class="d-flex gap-2">
-    
-                                @if (item.StatusId == "PENDING")
-                                {
-                                    <form asp-controller="OrderStatus" asp-action="UpdateStatus" method="post" class="d-inline">
-                                        <input type="hidden" name="orderId" value="@item.OrderId" />
-                                        <input type="hidden" name="newStatus" value="AWAITING_SHIPMENT" />
-                                        <button type="submit" class="btn btn-outline-info-custom rounded-pill px-4 py-1 fw-bold fs-6">Xác nhận</button>
-                                    </form>
+    <div class="app-wrapper">
         
-                                    <a asp-controller="Order" asp-action="Details" asp-route-id="@item.OrderId" class="btn btn-outline-info-custom rounded-pill px-4 py-1 fw-bold fs-6 text-decoration-none">Xem đơn hàng</a>
+        <aside class="sidebar">
+            <a asp-controller="Admin" asp-action="Index" class="brand-logo">
+                <i class="bi bi-book-half"></i> Book Gate
+            </a>
+            
+            <ul class="nav-menu">
+                <li>
+                    <a asp-controller="Admin" asp-action="Index" class="nav-item">
+                        <i class="bi bi-house-door"></i> Tổng quan
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Book" asp-action="Index" class="nav-item">
+                        <i class="bi bi-journal-text"></i> Quản lý sách
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="OrderStatus" asp-action="IndexAdmin" class="nav-item active">
+                        <i class="bi bi-box-seam"></i> Đơn hàng
+                    </a>
+                </li>
+                <li class="logout-link">
+                    <a asp-controller="Auth" asp-action="Logout" class="nav-item logout-link">
+                        <i class="bi bi-box-arrow-left"></i> Đăng xuất
+                    </a>
+                </li>
+            </ul>
+        </aside>
 
-                                    <form asp-controller="OrderStatus" asp-action="UpdateStatus" method="post" class="d-inline" onsubmit="return confirm('Bạn chắc chắn muốn hủy đơn hàng này?');">
-                                        <input type="hidden" name="orderId" value="@item.OrderId" />
-                                        <input type="hidden" name="newStatus" value="CANCELLED" />
-                                        <button type="submit" class="btn btn-outline-danger-custom rounded-pill px-4 py-1 fw-bold fs-6">Hủy</button>
-                                    </form>
-                                }
-                                else if (item.StatusId == "AWAITING_SHIPMENT")
-                                {
-                                    // Trạng thái: AWAITING_SHIPMENT (Chờ giao hàng)
-                                    <form asp-controller="OrderStatus" asp-action="UpdateStatus" method="post" class="d-inline">
-                                        <input type="hidden" name="orderId" value="@item.OrderId" />
-                                        <input type="hidden" name="newStatus" value="SHIPPING" />
-                                        <button type="submit" class="btn btn-outline-info-custom rounded-pill px-4 py-1 fw-bold fs-6">Giao hàng</button>
-                                    </form>
+        <main class="main-wrapper">
+            
+            <header class="top-header">
+                <div>
+                    <h5 class="mb-0 fw-bold text-dark d-none d-md-block">Trung tâm xử lý</h5>
+                </div>
+                
+                <div class="profile-actions ms-auto">
 
-                                    <a asp-controller="Order" asp-action="Details" asp-route-id="@item.OrderId" class="btn btn-outline-info-custom rounded-pill px-4 py-1 fw-bold fs-6 text-decoration-none">Xem đơn hàng</a>
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=2b3445&color=fff" width="40" height="40" class="rounded-circle" alt="User">
+                </div>
+            </header>
 
-                                    <form asp-controller="OrderStatus" asp-action="UpdateStatus" method="post" class="d-inline" onsubmit="return confirm('Bạn chắc chắn muốn hủy đơn hàng này?');">
-                                        <input type="hidden" name="orderId" value="@item.OrderId" />
-                                        <input type="hidden" name="newStatus" value="CANCELLED" />
-                                        <button type="submit" class="btn btn-outline-danger-custom rounded-pill px-4 py-1 fw-bold fs-6">Hủy</button>
-                                    </form>
-                                }
-                                else if (item.StatusId == "SHIPPING")
-                                {
-                                    // Trạng thái: SHIPPING (Đang giao hàng)
-                                    <form asp-controller="OrderStatus" asp-action="UpdateStatus" method="post" class="d-inline">
-                                        <input type="hidden" name="orderId" value="@item.OrderId" />
-                                        <input type="hidden" name="newStatus" value="COMPLETED" />
-                                        <button type="submit" class="btn btn-outline-success-custom rounded-pill px-4 py-1 fw-bold fs-6">Hoàn thành</button>
-                                    </form>
+            <div>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4 class="fw-bold mb-0">Quản lý Đơn hàng</h4>
+                </div>
 
-                                    <a asp-controller="Order" asp-action="Details" asp-route-id="@item.OrderId" class="btn btn-outline-info-custom rounded-pill px-4 py-1 fw-bold fs-6 text-decoration-none">Xem đơn hàng</a>
-                                }
-                                else
-                                {
-                                    // Trạng thái: COMPLETED hoặc CANCELLED
-                                    <a asp-controller="Order" asp-action="Details" asp-route-id="@item.OrderId" class="btn btn-outline-info-custom rounded-pill px-4 py-1 fw-bold fs-6 text-decoration-none">Xem đơn hàng</a>
-                                }
-
-                            </div>
+                <div class="filter-section">
+                    <form method="get" asp-action="IndexAdmin" id="filterForm" class="row gx-3 align-items-end">
+                        <div class="col-md-4 mb-3 mb-md-0">
+                            <label class="filter-label">Tìm theo Mã đơn hàng</label>
+                            <input type="text" name="searchId" value="@ViewBag.SearchId" class="form-control filter-input" placeholder="Nhập mã đơn hàng...">
                         </div>
 
-                    </div>
-                </div>
-            }
-        }
-        else
-        {
-            <div class="text-center py-5 text-muted bg-white rounded shadow-sm">
-                <i class="bi bi-box2-heart fs-1 mb-3 d-block text-secondary"></i>
-                <h5>Chưa có đơn hàng nào</h5>
-                <p>Không tìm thấy dữ liệu đơn hàng trong hệ thống.</p>
-            </div>
-        }
+                        <div class="col-md-4 mb-3 mb-md-0">
+                            <label class="filter-label">Lọc theo Trạng thái</label>
+                            <select name="status" class="form-select filter-input" onchange="this.form.submit()">
+                                <option value="">Tất cả trạng thái</option>
+                                <option value="PENDING" selected="@(ViewBag.CurrentStatus == "PENDING")">Chờ xác nhận</option>
+                                <option value="AWAITING_SHIPMENT" selected="@(ViewBag.CurrentStatus == "AWAITING_SHIPMENT")">Chờ giao hàng</option>
+                                <option value="SHIPPING" selected="@(ViewBag.CurrentStatus == "SHIPPING")">Đang giao hàng</option>
+                                <option value="COMPLETED" selected="@(ViewBag.CurrentStatus == "COMPLETED")">Đã hoàn thành</option>
+                                <option value="CANCELLED" selected="@(ViewBag.CurrentStatus == "CANCELLED")">Đã hủy</option>
+                            </select>
+                        </div>
 
-        <!-- Footer -->
-        <footer class="footer-section pb-4">
-            <div class="d-flex justify-content-between text-muted" style="font-size: 0.85rem;">
-                <div>Copyright © 2026. BookGate. All rights reserved.</div>
+                        <div class="col-md-auto">
+                            <button type="submit" class="btn btn-primary" style="height: 42px; border-radius: 8px; font-weight: 500; background-color: var(--blue-accent); border: none;">
+                                <i class="bi bi-funnel me-1"></i> Áp dụng
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var item in Model)
+                    {
+                        string badgeClass = "bg-secondary text-white";
+                        if(item.StatusId == "PENDING" || item.StatusId == "AWAITING_SHIPMENT") badgeClass = "bg-status-pending";
+                        if(item.StatusId == "SHIPPING") badgeClass = "bg-status-shipping";
+                        if(item.StatusId == "COMPLETED") badgeClass = "bg-status-completed";
+                        if(item.StatusId == "CANCELLED") badgeClass = "bg-status-cancelled";
+
+                        <div class="admin-order-card mb-4 position-relative p-4">
+                            <div class="d-flex align-items-start gap-4">
+                                
+                                <div class="order-icon-box flex-shrink-0">
+                                    <i class="bi bi-receipt-cutoff"></i>
+                                </div>
+
+                                <div class="flex-grow-1">
+                                    <div class="d-flex justify-content-between align-items-center mb-3 pe-2">
+                                        <h5 class="fw-bold mb-0" style="font-size: 1.2rem; color: var(--text-main);">Đơn hàng #@item.OrderId</h5>
+                                        <div class="status-badge @badgeClass">@item.StatusName</div>
+                                    </div>
+
+                                    <div class="row w-100 mb-4">
+                                        <div class="col-md-4 col-sm-6 mb-3">
+                                            <div class="text-label">Khách hàng</div>
+                                            <div class="text-value">@item.ReceiverPhone</div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6 mb-3">
+                                            <div class="text-label">Ngày đặt hàng</div>
+                                            <div class="text-value">@item.OrderDate.ToString("dd/MM/yyyy HH:mm")</div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-12 mb-3">
+                                            <div class="text-label">Địa chỉ giao hàng</div>
+                                            <div class="text-value text-truncate" title="@item.StreetAddress, @item.Ward, @item.City">
+                                                @item.StreetAddress, @item.Ward, @item.City
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6 mb-3">
+                                            <div class="text-label">Phí vận chuyển</div>
+                                            <div class="text-value">@item.ShippingFee.ToString("N0") đ</div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6 mb-3">
+                                            <div class="text-label">Tổng tiền thanh toán</div>
+                                            <div class="price-text">@item.TotalAmount.ToString("N0") đ</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex gap-2">
+                                        <a asp-controller="Order" asp-action="DetailsAdmin" asp-route-id="@item.OrderId" class="btn btn-action-outline btn-action-gray">
+                                            <i class="bi bi-eye me-1"></i> Xem chi tiết
+                                        </a>
+
+                                        @if (item.StatusId == "PENDING")
+                                        {
+                                            <form asp-controller="OrderStatus" asp-action="UpdateStatus" method="post" class="d-inline">
+                                                <input type="hidden" name="orderId" value="@item.OrderId" />
+                                                <input type="hidden" name="newStatus" value="AWAITING_SHIPMENT" />
+                                                <button type="submit" class="btn btn-action-outline btn-action-outline-primary">Xác nhận đơn</button>
+                                            </form>
+                                            <form asp-controller="OrderStatus" asp-action="UpdateStatus" method="post" class="d-inline" onsubmit="return confirm('Bạn chắc chắn muốn hủy đơn hàng này?');">
+                                                <input type="hidden" name="orderId" value="@item.OrderId" />
+                                                <input type="hidden" name="newStatus" value="CANCELLED" />
+                                                <button type="submit" class="btn btn-action-outline btn-action-outline-danger">Hủy đơn</button>
+                                            </form>
+                                        }
+                                        else if (item.StatusId == "AWAITING_SHIPMENT")
+                                        {
+                                            <form asp-controller="OrderStatus" asp-action="UpdateStatus" method="post" class="d-inline">
+                                                <input type="hidden" name="orderId" value="@item.OrderId" />
+                                                <input type="hidden" name="newStatus" value="SHIPPING" />
+                                                <button type="submit" class="btn btn-action-outline btn-action-outline-primary">Giao hàng</button>
+                                            </form>
+                                            <form asp-controller="OrderStatus" asp-action="UpdateStatus" method="post" class="d-inline" onsubmit="return confirm('Bạn chắc chắn muốn hủy đơn hàng này?');">
+                                                <input type="hidden" name="orderId" value="@item.OrderId" />
+                                                <input type="hidden" name="newStatus" value="CANCELLED" />
+                                                <button type="submit" class="btn btn-action-outline btn-action-outline-danger">Hủy đơn</button>
+                                            </form>
+                                        }
+                                        else if (item.StatusId == "SHIPPING")
+                                        {
+                                            <form asp-controller="OrderStatus" asp-action="UpdateStatus" method="post" class="d-inline">
+                                                <input type="hidden" name="orderId" value="@item.OrderId" />
+                                                <input type="hidden" name="newStatus" value="COMPLETED" />
+                                                <button type="submit" class="btn btn-action-outline btn-action-outline-success">Hoàn thành</button>
+                                            </form>
+                                        }
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="text-center py-5 bg-white rounded shadow-sm" style="border-radius: 16px !important;">
+                        <i class="bi bi-box2-heart mb-3 d-block" style="font-size: 3rem; color: #cbd5e1;"></i>
+                        <h5 class="fw-semibold text-dark">Chưa có đơn hàng nào</h5>
+                        <p class="text-muted">Không tìm thấy dữ liệu đơn hàng phù hợp với bộ lọc.</p>
+                    </div>
+                }
+
+                <footer class="mt-auto pt-4 border-top" style="border-color: #e2e8f0 !important;">
+                    <div class="text-muted" style="font-size: 0.85rem;">
+                        Copyright © 2026. BookGate. All rights reserved.
+                    </div>
+                </footer>
+
             </div>
-        </footer>
+        </main>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

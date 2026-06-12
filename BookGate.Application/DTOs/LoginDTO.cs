@@ -7,10 +7,11 @@ namespace BookGate.Application.DTOs
 {
     public class LoginDTO
     {
-        [Required]
+        [Required(ErrorMessage = "Vui lòng nhập Email.")]
         [EmailAddress]
         public string Email { get; set; } = string.Empty;
-        [Required]
+
+        [Required(ErrorMessage = "Vui lòng nhập mật khẩu.")]
         public string Password { get; set; } = string.Empty;
 
     }

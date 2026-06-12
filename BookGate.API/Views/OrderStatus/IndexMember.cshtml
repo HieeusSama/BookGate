@@ -15,7 +15,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1e272e; !important}
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1e272e;
+        }
         .hero-banner { background-color: #e2e8f0; height: 280px; border-radius: 4px; display: flex; align-items: center; justify-content: center; margin-bottom: 50px; margin-top: 10px; }
         .section-header { display: flex; align-items: baseline; margin-bottom: 20px; }
         .section-header h5 { font-weight: 700; font-size: 1rem; text-transform: uppercase; margin-bottom: 0; letter-spacing: 0.5px; }
@@ -168,7 +172,7 @@
     
                                 @if (item.StatusId == "PENDING")
                                 {
-                                    <a asp-controller="Order" asp-action="Details" asp-route-id="@item.OrderId" class="btn btn-outline-info-custom rounded-pill px-4 py-1 fw-bold fs-6 text-decoration-none">Xem đơn hàng</a>
+                                    <a asp-controller="Order" asp-action="DetailsMember" asp-route-id="@item.OrderId" class="btn btn-outline-info-custom rounded-pill px-4 py-1 fw-bold fs-6 text-decoration-none">Xem đơn hàng</a>
 
                                     <form asp-controller="OrderStatus" asp-action="UpdateStatusMember" method="post" class="d-inline" onsubmit="return confirm('Bạn chắc chắn muốn hủy đơn hàng này?');">
                                         <input type="hidden" name="orderId" value="@item.OrderId" />
@@ -186,11 +190,11 @@
                                 }
                                 else if (item.StatusId == "SHIPPING")
                                 {
-                                    <a asp-controller="Order" asp-action="Details" asp-route-id="@item.OrderId" class="btn btn-outline-info-custom rounded-pill px-4 py-1 fw-bold fs-6 text-decoration-none">Xem đơn hàng</a>
+                                    <a asp-controller="Order" asp-action="DetailsMember" asp-route-id="@item.OrderId" class="btn btn-outline-info-custom rounded-pill px-4 py-1 fw-bold fs-6 text-decoration-none">Xem đơn hàng</a>
                                 }
                                 else
                                 {
-                                    <a asp-controller="Order" asp-action="Details" asp-route-id="@item.OrderId" class="btn btn-outline-info-custom rounded-pill px-4 py-1 fw-bold fs-6 text-decoration-none">Xem đơn hàng</a>
+                                    <a asp-controller="Order" asp-action="DetailsMember" asp-route-id="@item.OrderId" class="btn btn-outline-info-custom rounded-pill px-4 py-1 fw-bold fs-6 text-decoration-none">Xem đơn hàng</a>
                                 }
 
                             </div>
