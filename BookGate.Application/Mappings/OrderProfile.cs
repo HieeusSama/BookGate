@@ -4,7 +4,6 @@ using BookGate.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using BookGate.Domain.Entities;
 
 namespace BookGate.Application.Mappings
 {

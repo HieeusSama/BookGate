@@ -25,16 +25,16 @@ namespace BookGate.Application.Services
             return _mapper.Map<List<MemberBookDTO>>(books);
         }
 
-        public async Task<BookDTO?> GetById(string id)
+        public async Task<MemberBookDTO> GetById(string id)
         {
             var book = await _repo.GetById(id);
-            return _mapper.Map<BookDTO>(book);
+            return _mapper.Map<MemberBookDTO>(book);
         }
-        public async Task<BookDTO> Update(BookDTO book)
+        public async Task<MemberBookDTO> Update(MemberBookDTO book)
         {
             var bookEntity = _mapper.Map<Book>(book);
             await _repo.Update(bookEntity);
-            return _mapper.Map<BookDTO>(bookEntity);
+            return _mapper.Map<MemberBookDTO>(bookEntity);
         }
     }
 }

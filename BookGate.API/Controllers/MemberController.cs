@@ -1,7 +1,6 @@
 ﻿using Azure;
 using BookGate.Application.DTOs;
 using BookGate.Application.Services;
-using BookGate.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 

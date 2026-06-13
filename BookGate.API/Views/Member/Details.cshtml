@@ -1,8 +1,8 @@
-﻿@model BookGate.Application.DTOs.BookDTO
+﻿@model BookGate.Application.DTOs.MemberBookDTO
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = null;
-    var publisherName = string.IsNullOrEmpty(Model.PublisherName) ? "Đang cập nhật" : Model.PublisherName;
+    string publisherName = string.IsNullOrEmpty(Model.PublisherName) ? "Đang cập nhật" : Model.PublisherName;
 }
 
 <!DOCTYPE html>

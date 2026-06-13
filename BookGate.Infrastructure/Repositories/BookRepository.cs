@@ -17,9 +17,9 @@ namespace BookGate.Infrastructure.Repositories
         public async Task<Book?> GetById(string id)
         {
             return await _context.Books
-                .Include(b => b.Publisher)
-                .AsNoTracking()
-                .FirstOrDefaultAsync(b => b.BookId == id);
+               .Include(b => b.Publisher)
+               .AsNoTracking()
+               .FirstOrDefaultAsync(b => b.BookId == id);
         }
         new public async Task Update(Book book)
         {
