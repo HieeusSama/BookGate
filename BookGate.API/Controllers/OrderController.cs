@@ -41,9 +41,7 @@ namespace BookGate.API.Controllers
             {
                 var book = await _memberBookService.GetById(bookId);
                 decimal subTotal = book.SellingPrice * quantity;
-                decimal shippingFee = 32000;
-                decimal total = subTotal + shippingFee;
-                ViewBag.TotalAmount = total;
+                ViewBag.TotalAmount = subTotal;
                 ViewBag.BookId = bookId;
                 ViewBag.Quantity = quantity;
                 return View();
@@ -57,9 +55,8 @@ namespace BookGate.API.Controllers
                 }
 
                 decimal subTotal = cartItems.Sum(x => x.SellingPrice * x.Quantity);
-                decimal shippingFee = 32000;
-                decimal total = subTotal + shippingFee;
-                ViewBag.TotalAmount = total;
+
+                ViewBag.TotalAmount = subTotal;
 
                 return View();
             }
@@ -112,21 +109,17 @@ namespace BookGate.API.Controllers
                 {
                     var cartItems = await _cartIteamService.GetCartItemById(userId);
 
-                    // THÊM MỚI: KIỂM TRA SỐ LƯỢNG TỒN KHO TRƯỚC KHI ĐẶT HÀNG
                     foreach (var item in cartItems)
                     {
                         var bookInCart = await _memberBookService.GetById(item.BookId);
 
-                        // Nếu số lượng người dùng muốn mua lớn hơn số lượng trong kho
                         if (bookInCart.Quantity < item.Quantity)
                         {
-                            // Báo lỗi và chuyển hướng người dùng quay lại trang Giỏ hàng để họ điều chỉnh
                             TempData["Error"] = $"Sách '{bookInCart.Title}' chỉ còn {bookInCart.Quantity} quyển. Vui lòng cập nhật lại giỏ hàng.";
                             return RedirectToAction("Index", "CartItem");
                         }
                     }
 
-                    // Nếu tất cả sách đều đủ số lượng thì mới tiến hành tính toán
                     decimal subTotal = cartItems.Sum(x => x.SellingPrice * x.Quantity);
 
                     order.ShippingFee = order.TotalAmount - subTotal;

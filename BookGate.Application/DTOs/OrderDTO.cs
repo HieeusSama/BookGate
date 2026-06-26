@@ -18,7 +18,6 @@ namespace BookGate.Application.DTOs
         [Required]
         public string StatusId { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Vui lòng nhập Họ và tên.")]
         public string Fullname { get; set; } = string.Empty;
         public DateTime OrderDate { get; set; }
         public DateTime? CompletedDate { get; set; }
