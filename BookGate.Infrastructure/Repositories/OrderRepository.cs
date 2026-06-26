@@ -43,7 +43,10 @@ namespace BookGate.Infrastructure.Repositories
         }
         new public async Task<Order?> GetById(object id)
         {
-            return await _context.Orders.AsNoTracking().FirstOrDefaultAsync(x => x.OrderId == id);
+            return await _context.Orders.AsNoTracking()
+                .Include(o => o.OrderStatus)
+                .Include(o => o.Auth) 
+                .FirstOrDefaultAsync(x => x.OrderId == id);
         }
         public async Task<IEnumerable<Order?>> GetAllOrderById(int id)
         {

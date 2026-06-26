@@ -3,6 +3,7 @@
 @{
     Layout = null;
     var orderDate = ViewBag.OrderDate;
+    string customerName = ViewBag.CustomerName ?? "Không rõ";
     decimal shippingFee = Convert.ToDecimal(ViewBag.ShippingFee ?? 0);
     decimal subTotal = Model?.Sum(x => x.UnitPrice * x.Quantity) ?? 0;
     decimal totalAmount = subTotal + shippingFee;
@@ -211,7 +212,12 @@
                     <div class="col-lg-4">
                         <div class="detail-card">
                             <div class="card-title-custom">Thông tin thanh toán</div>
-                            
+
+                            <div class="mb-3 border-bottom pb-3">
+                                <div class="info-label">Khách hàng</div>
+                                <div class="info-value text-primary">@customerName</div>
+                            </div>
+
                             <div class="mb-4">
                                 <div class="info-label">Ngày đặt hàng</div>
                                 <div class="info-value">@orderDate</div>

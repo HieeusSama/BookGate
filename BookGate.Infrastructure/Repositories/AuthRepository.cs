@@ -17,5 +17,10 @@ namespace BookGate.Infrastructure.Repositories
         {
             return await _context.Auths.FirstOrDefaultAsync(a => a.Email == email && a.Password == password);
         }
+
+        public async Task<bool> CheckEmailExistsAsync(string email)
+        {
+            return await _context.Auths.AnyAsync(a => a.Email.ToLower() == email.ToLower());
+        }
     }
 }

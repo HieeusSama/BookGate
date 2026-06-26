@@ -9,5 +9,6 @@ namespace BookGate.Domain.Interfaces
     public interface IAuthRepository : IRepository<Auth>
     {
         Task<Auth?> Login(string email, string password);
+        Task<bool> CheckEmailExistsAsync(string email);
     }
 }

@@ -31,6 +31,11 @@ namespace BookGate.Application.Services
             return user;
         }
 
+        public async Task<bool> IsEmailRegistered(string email)
+        {
+            return await _repo.CheckEmailExistsAsync(email);
+        }
+
         public async Task<RegisterDTO> Register(RegisterDTO auth)
         {
             var authEntity = _mapper.Map<Auth>(auth);

@@ -258,6 +258,7 @@ namespace BookGate.API.Controllers
 
             if (orderInfo != null)
             {
+                ViewBag.CustomerName = orderInfo?.Fullname;
                 ViewBag.OrderDate = orderInfo.OrderDate;
                 ViewBag.PaymentMethod = orderInfo.PaymentMethod;
                 ViewBag.ShippingFee = orderInfo.ShippingFee;
@@ -273,10 +274,12 @@ namespace BookGate.API.Controllers
 
             if (orderInfo != null)
             {
+                ViewBag.CustomerName = orderInfo?.Fullname;
                 ViewBag.OrderDate = orderInfo.OrderDate;
                 ViewBag.PaymentMethod = orderInfo.PaymentMethod;
                 ViewBag.ShippingFee = orderInfo.ShippingFee;
             }
+
             return View(order);
         }
 

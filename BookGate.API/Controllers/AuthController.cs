@@ -52,7 +52,20 @@ namespace BookGate.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterDTO auth)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(auth);
+            }
+
+            bool isEmailExist = await _service.IsEmailRegistered(auth.Email);
+            if (isEmailExist)
+            {
+                ModelState.AddModelError("Email", "Email này đã được đăng ký. Vui lòng sử dụng email khác.");
+                return View(auth);
+            }
+
             await _service.Register(auth);
+            TempData["SuccessMessage"] = "Đăng ký thành công! Vui lòng đăng nhập.";
             return RedirectToAction("Login");
         }
         [HttpGet]

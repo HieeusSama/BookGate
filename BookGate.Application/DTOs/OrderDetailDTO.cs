@@ -26,5 +26,6 @@ namespace BookGate.Application.DTOs
         [Column(TypeName = "decimal(18,2)")]
         public decimal UnitPrice { get; set; }
 
+        
     }
 }

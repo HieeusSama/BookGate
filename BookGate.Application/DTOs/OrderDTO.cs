@@ -49,5 +49,6 @@ namespace BookGate.Application.DTOs
         public string ReceiverPhone { get; set; } = string.Empty;
         public string PaymentMethod { get; set; } = "COD";
         public string StatusName { get; set; } = string.Empty;
+
     }
 }
