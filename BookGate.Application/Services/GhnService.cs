@@ -58,10 +58,10 @@ namespace BookGate.Application.Services
                 var payload = new
                 {
                     shop_id = int.Parse(_configuration["GHN:ShopId"]),
-                    from_district_id = 3440, // Ví dụ ID Quận Nam Từ Liêm (kho của bạn)
-                    to_district_id = toDistrictId, // Khách chọn
-                    to_ward_code = toWardCode,     // Khách chọn
-                    weight = weightInGrams,        // Khối lượng sách
+                    from_district_id = 3440,
+                    to_district_id = toDistrictId, 
+                    to_ward_code = toWardCode, 
+                    weight = weightInGrams, 
                     service_type_id = 2            // Loại dịch vụ: 2 = Đi chuẩn
                 };
 
@@ -91,10 +91,10 @@ namespace BookGate.Application.Services
             }
             catch
             {
-                // Nếu có lỗi kết nối mạng hoặc lỗi định dạng, bỏ qua và lấy phí mặc định
+
             }
 
-            return 32000; // Phí ship dự phòng nếu API GHN bị lỗi
+            return 32000; 
         }
     }
 }

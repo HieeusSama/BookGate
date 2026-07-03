@@ -39,7 +39,7 @@ namespace BookGate.API.Controllers
             {
                 orders = await _service.GetOrdersWithFilter(null, searchId, status);
             }
-
+            orders = orders.OrderByDescending(o => o.OrderDate).ToList();
             ViewBag.SearchId = searchId;
             ViewBag.CurrentStatus = status;
 
@@ -66,6 +66,7 @@ namespace BookGate.API.Controllers
             }
 
             // 4. Giữ lại giá trị để hiển thị lên Form lọc (Search Box & Select)
+            orders = orders.OrderByDescending(o => o.OrderDate).ToList();
             ViewBag.SearchId = searchId;
             ViewBag.CurrentStatus = status;
 

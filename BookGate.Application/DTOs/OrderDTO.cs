@@ -12,10 +12,8 @@ namespace BookGate.Application.DTOs
         [Key]
         public string OrderId { get; set; } = string.Empty;
 
-        [Required]
         public int Id { get; set; }
 
-        [Required]
         public string StatusId { get; set; } = string.Empty;
 
         public string Fullname { get; set; } = string.Empty;
@@ -39,7 +37,7 @@ namespace BookGate.Application.DTOs
         [StringLength(100)]
         public string Ward { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Vui lòng nhập Địa chỉ giao hành.")]
+        [Required(ErrorMessage = "Vui lòng nhập Địa chỉ giao hàng.")]
         [StringLength(255)]
         public string StreetAddress { get; set; } = string.Empty;
 

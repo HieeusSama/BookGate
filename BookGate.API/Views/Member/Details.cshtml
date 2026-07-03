@@ -219,10 +219,7 @@
         });
 
         function muaNgay(idSach) {
-        // 1. Lấy con số hiện tại ở trong ô nhập số lượng
             let soLuong = document.getElementById('qtyInput').value;
-        
-            // 2. Chuyển hướng trình duyệt sang trang Order kèm theo id sách và số lượng
             window.location.href = `/Order/Index?bookId=${idSach}&quantity=${soLuong}`;
     }
     </script>

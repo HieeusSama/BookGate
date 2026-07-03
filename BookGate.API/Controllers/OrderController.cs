@@ -63,8 +63,17 @@ namespace BookGate.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CheckOut(OrderDTO order, string bookId, int quantity = 1, string PaymentMethod = "COD")
+        public async Task<IActionResult> CheckOut(OrderDTO order, string? bookId, int quantity = 1, string PaymentMethod = "COD")
         {
+            ModelState.Remove(nameof(order.Id));
+            ModelState.Remove(nameof(order.OrderId));
+            ModelState.Remove(nameof(order.StatusId));
+            ModelState.Remove(nameof(quantity));
+
+            if (!ModelState.IsValid)
+            {
+                return View("Index", order);
+            }
             try
             {
                 var Id = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -79,15 +88,9 @@ namespace BookGate.API.Controllers
                 order.StatusId = "PENDING";
                 order.PaymentMethod = PaymentMethod;
 
-                // --- LUỒNG MUA NGAY ---
                 if (!string.IsNullOrEmpty(bookId))
                 {
                     var book = await _memberBookService.GetById(bookId);
-                    if (book.Quantity < quantity)
-                    {
-                        TempData["Error"] = $"Sách '{book.Title}' chỉ còn {book.Quantity} quyển.";
-                        return RedirectToAction("Index");
-                    }
 
                     decimal subTotal = book.SellingPrice * quantity;
 
@@ -104,7 +107,6 @@ namespace BookGate.API.Controllers
                     }
                     await ProcessOrderDatabase(order, "BuyNow", bookId, quantity, userId);
                 }
-                // --- LUỒNG GIỎ HÀNG ---
                 else
                 {
                     var cartItems = await _cartIteamService.GetCartItemById(userId);
@@ -272,7 +274,6 @@ namespace BookGate.API.Controllers
                 ViewBag.PaymentMethod = orderInfo.PaymentMethod;
                 ViewBag.ShippingFee = orderInfo.ShippingFee;
             }
-
             return View(order);
         }
 
@@ -301,7 +302,6 @@ namespace BookGate.API.Controllers
         [HttpGet]
         public async Task<IActionResult> CalculateFee(int districtId, string wardCode, int quantity)
         {
-            //300 gram mooix quyển sách
             int totalWeight = quantity * 300;
 
             decimal fee = await _ghnService.CalculateShippingFeeAsync(districtId, wardCode, totalWeight);

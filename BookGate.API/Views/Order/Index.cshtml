@@ -2,7 +2,6 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = null;
-    // Lấy tổng tiền đã tính toán từ Controller
     decimal totalAmount = ViewBag.TotalAmount ?? 0;
 }
 
@@ -24,7 +23,6 @@
             color: #1e272e;
         }
 
-        /* HEADER GIỐNG TRANG GIỎ HÀNG */
         .navbar-custom {
             padding: 20px 0;
             background-color: #fff;
@@ -62,7 +60,7 @@
 
         .form-control-custom {
             border: 1px solid #dee2e6;
-            border-radius: 50px; /* Bo tròn pill dạng thiết kế */
+            border-radius: 50px;
             padding: 12px 25px;
             font-size: 0.95rem;
             color: #2d3436;
@@ -140,25 +138,25 @@
             <h4 class="mb-5 fw-bold text-uppercase" style="letter-spacing: 1px; font-size: 1.1rem;">ĐỊA CHỈ GIAO HÀNG</h4>
 
             <form asp-controller="Order" asp-action="CheckOut" method="post">
-                @* Hidden fields nếu cần thiết *@
+
                 <input type="hidden" name="bookId" value="@ViewBag.BookId" />
                 <input type="hidden" name="quantity" value="@ViewBag.Quantity" />
                 <input type="hidden" name="TotalAmount" value="@totalAmount" />
-
 
                 <div class="row mb-4 align-items-center">
                     <div class="col-md-3">
                         <label class="form-label-custom">Số điện thoại <span class="text-danger">*</span></label>
                     </div>
+
                     <div class="col-md-9">
-                        <input type="tel" class="form-control form-control-custom shadow-none"
-                               name="ReceiverPhone"
-                               placeholder="Ví dụ: 0912345678..."
+                        <input asp-for="ReceiverPhone"
+                               class="form-control form-control-custom shadow-none"
+                               placeholder="Ví dụ: 0912345678"
                                pattern="0[0-9]{9}"
                                maxlength="10"
-                               title="Vui lòng nhập đúng số điện thoại Việt Nam (10 chữ số, bắt đầu bằng số 0)"
-                               oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-                               required>
+                               oninput="this.value=this.value.replace(/[^0-9]/g,'')" />
+
+                        <span asp-validation-for="ReceiverPhone" class="text-danger"></span>
                     </div>
                 </div>
 
@@ -168,7 +166,8 @@
                         <select class="form-select form-control-custom shadow-none" id="provinceSelect" required>
                             <option value="">-- Chọn Tỉnh/Thành --</option>
                         </select>
-                        <input type="hidden" name="City" id="hiddenCity" />
+                        <input asp-for="City" type="hidden" id="hiddenCity" />
+                        <span asp-validation-for="City" class="text-danger"></span>
                     </div>
                 </div>
 
@@ -178,6 +177,8 @@
                         <select class="form-select form-control-custom shadow-none" id="districtSelect" required disabled>
                             <option value="">-- Chọn Quận/Huyện --</option>
                         </select>
+                        <input asp-for="District" type="hidden" id="hiddenDistrict" />
+                        <span asp-validation-for="District" class="text-danger"></span>
                     </div>
                 </div>
 
@@ -187,7 +188,8 @@
                         <select class="form-select form-control-custom shadow-none" id="wardSelect" required disabled>
                             <option value="">-- Chọn Phường/Xã --</option>
                         </select>
-                        <input type="hidden" name="Ward" id="hiddenWard" />
+                        <input asp-for="Ward" type="hidden" id="hiddenWard" />
+                        <span asp-validation-for="Ward" class="text-danger"></span>
                     </div>
                 </div>
 
@@ -196,7 +198,12 @@
                         <label class="form-label-custom">Địa chỉ nhận hàng</label>
                     </div>
                     <div class="col-md-9">
-                        <input type="text" class="form-control form-control-custom shadow-none" name="StreetAddress" placeholder="Số nhà, tên đường..." required>
+                        <input asp-for="StreetAddress"
+                               class="form-control form-control-custom shadow-none"
+                               placeholder="Số nhà, tên đường..." />
+
+                        <span asp-validation-for="StreetAddress"
+                              class="text-danger"></span>
                     </div>
                 </div>
 
@@ -282,114 +289,115 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    $.validator.setDefaults({ ignore: "" });
+
+    document.addEventListener("DOMContentLoaded", function () {
         const provinceSelect = document.getElementById("provinceSelect");
         const districtSelect = document.getElementById("districtSelect");
         const wardSelect = document.getElementById("wardSelect");
         
         const hiddenCity = document.getElementById("hiddenCity");
-        const hiddenWard = document.getElementById("hiddenWard");
-
         const hiddenDistrict = document.getElementById("hiddenDistrict");
+        const hiddenWard = document.getElementById("hiddenWard");
         
         const shippingFeeDisplay = document.getElementById("shippingFeeDisplay");
         const totalAmountDisplay = document.getElementById("totalAmountDisplay");
-        const inputTotalAmount = document.querySelector('input[name="TotalAmount"]');
+        const inputTotalAmount = document.querySelector('input[name="TotalAmount"]'); //
         
-
         const subTotal = parseFloat(inputTotalAmount.value);
         
-        // Quantity để tính khối lượng (Lấy từ ViewBag bạn đã truyền)
         const quantity = @(ViewBag.Quantity ?? 1);
-
-        // 1. Tải danh sách Tỉnh/Thành khi vừa mở trang (ĐÃ SỬA URL)
         fetch('@Url.Action("GetProvinces", "Order")')
             .then(res => res.json())
-                .then(data => {
-                if(data.code === 200) {
+            .then(data => {
+                if (data.code === 200) {
                     data.data.forEach(p => {
-                    provinceSelect.innerHTML += `<option value="${p.ProvinceID}">${p.ProvinceName}</option>`;
-                });
-            }
-        });
+                        provinceSelect.innerHTML += `<option value="${p.ProvinceID}">${p.ProvinceName}</option>`;
+                    });
+                }
+            });
 
         // 2. Khi chọn Tỉnh -> Tải Quận/Huyện
         provinceSelect.addEventListener("change", function () {
-        hiddenCity.value = this.options[this.selectedIndex].text; // Lưu tên Tỉnh để gửi về C#
-        districtSelect.innerHTML = '<option value="">-- Chọn Quận/Huyện --</option>';
-        wardSelect.innerHTML = '<option value="">-- Chọn Phường/Xã --</option>';
-        districtSelect.disabled = true;
-        wardSelect.disabled = true;
+            hiddenCity.value = this.options[this.selectedIndex].text;
+            $(hiddenCity).valid(); // Xóa lỗi đỏ khi đã chọn Tỉnh
 
-        if (this.value) {
-        // ĐÃ SỬA URL
-        fetch(`@Url.Action("GetDistricts", "Order")?provinceId=${this.value}`)
-        .then(res => res.json())
-        .then(data => {
-        if(data.code === 200) {
-        data.data.forEach(d => {
-        districtSelect.innerHTML += `<option value="${d.DistrictID}">${d.DistrictName}</option>`;
-        });
-        districtSelect.disabled = false;
-        }
-        });
-        }
+            districtSelect.innerHTML = '<option value="">-- Chọn Quận/Huyện --</option>';
+            wardSelect.innerHTML = '<option value="">-- Chọn Phường/Xã --</option>';
+            districtSelect.disabled = true;
+            wardSelect.disabled = true;
+
+            if (this.value) {
+                fetch(`@Url.Action("GetDistricts", "Order")?provinceId=${this.value}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.code === 200) {
+                            data.data.forEach(d => {
+                                districtSelect.innerHTML += `<option value="${d.DistrictID}">${d.DistrictName}</option>`;
+                            });
+                            districtSelect.disabled = false;
+                        }
+                    });
+            }
         });
 
         // 3. Khi chọn Huyện -> Tải Phường/Xã
         districtSelect.addEventListener("change", function () {
-        // Lưu tên Quận/Huyện để gửi về Database
-        if(hiddenDistrict) hiddenDistrict.value = this.options[this.selectedIndex].text;
+            // Lưu tên Quận/Huyện để gửi về Database
+            if (hiddenDistrict) {
+                hiddenDistrict.value = this.options[this.selectedIndex].text;
+                $(hiddenDistrict).valid();
+            }
 
-        wardSelect.innerHTML = '<option value="">-- Chọn Phường/Xã --</option>';
-        wardSelect.disabled = true;
+            wardSelect.innerHTML = '<option value="">-- Chọn Phường/Xã --</option>';
+            wardSelect.disabled = true;
 
-        if (this.value) {
-        // ĐÃ SỬA URL
-        fetch(`@Url.Action("GetWards", "Order")?districtId=${this.value}`)
-        .then(res => res.json())
-        .then(data => {
-        if(data.code === 200) {
-        data.data.forEach(w => {
-        wardSelect.innerHTML += `<option value="${w.WardCode}">${w.WardName}</option>`;
-        });
-        wardSelect.disabled = false;
-        }
-        });
-        }
+            if (this.value) {
+                fetch(`@Url.Action("GetWards", "Order")?districtId=${this.value}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.code === 200) {
+                            data.data.forEach(w => {
+                                wardSelect.innerHTML += `<option value="${w.WardCode}">${w.WardName}</option>`;
+                            });
+                            wardSelect.disabled = false;
+                        }
+                    });
+            }
         });
 
         // 4. Khi chọn Phường/Xã -> GỌI API GHN TÍNH PHÍ SHIP
         wardSelect.addEventListener("change", function () {
-        const wardText = this.options[this.selectedIndex].text;
-        hiddenWard.value = wardText; // Chỉ lưu tên Phường (vì Quận đã lưu ở bước trên rồi)
+            const wardText = this.options[this.selectedIndex].text;
+            hiddenWard.value = wardText; // Chỉ lưu tên Phường
+            $(hiddenWard).valid(); // Xóa lỗi đỏ khi đã chọn Xã
 
-        const districtId = districtSelect.value;
-        const wardCode = this.value;
+            const districtId = districtSelect.value;
+            const wardCode = this.value;
 
-        if (districtId && wardCode) {
-        // Hiển thị trạng thái đang tính
-        shippingFeeDisplay.innerText = "Đang tính...";
+            if (districtId && wardCode) {
+                // Hiển thị trạng thái đang tính
+                shippingFeeDisplay.innerText = "Đang tính...";
                 
-        // ĐÃ SỬA URL
-        fetch(`@Url.Action("CalculateFee", "Order")?districtId=${districtId}&wardCode=${wardCode}&quantity=${quantity}`)
-        .then(res => res.json())
-        .then(data => {
-        const fee = data.fee;
-        const finalTotal = subTotal + fee;
+                fetch(`@Url.Action("CalculateFee", "Order")?districtId=${districtId}&wardCode=${wardCode}&quantity=${quantity}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        const fee = data.fee;
+                        const finalTotal = subTotal + fee;
 
-        // Cập nhật lên màn hình
-        shippingFeeDisplay.innerText = fee.toLocaleString('vi-VN');
-        totalAmountDisplay.innerText = finalTotal.toLocaleString('vi-VN') + " đ";
+                        // Cập nhật lên màn hình
+                        shippingFeeDisplay.innerText = fee.toLocaleString('vi-VN');
+                        totalAmountDisplay.innerText = finalTotal.toLocaleString('vi-VN') + " đ";
                         
-        // Cập nhật vào thẻ input ẩn để gửi về Form Post
-        inputTotalAmount.value = finalTotal;
+                        // Cập nhật vào thẻ input ẩn để gửi về Form Post
+                        inputTotalAmount.value = finalTotal;
+                    });
+            }
         });
-        }
-        });
-        });
-    </script>
+    });
+</script>
 </body>
 </html>

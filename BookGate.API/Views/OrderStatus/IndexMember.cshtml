@@ -78,11 +78,14 @@
         .filter-input { padding-top: 20px; padding-bottom: 4px; border-radius: 8px; height: 50px; background-color: white; }
         .filter-wrapper { position: relative; }
 
-        .footer-section {
-            margin-top: 100px;
-            padding-top: 50px;
-            border-top: 1px solid #eaeaea;
-        }
+        /* Footer Styles (Đã cập nhật giống Trang chủ) */
+        footer { margin-top: 80px; padding: 60px 0 30px; border-top: 1px solid #f1f2f6; }
+        .footer-logo i { font-size: 2rem; color: #1e272e; }
+        .footer-title { font-weight: 700; color: #ff7675; margin-bottom: 1.5rem; font-size: 0.9rem; text-transform: uppercase; }
+        .footer-links { list-style: none; padding: 0; margin: 0; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #1e272e; text-decoration: none; font-size: 0.9rem; }
+        .footer-links a:hover { color: #ff7675; }
     </style>
 </head>
 <body>
@@ -97,13 +100,11 @@
                 </div>
             </div>
 
-            <!-- Ô chọn trạng thái: Chọn xong tự tìm luôn -->
             <div class="col-md-3">
                 <div class="filter-wrapper border rounded bg-white shadow-sm">
                     <label class="filter-label">Trạng thái</label>
                     <select name="status" class="form-select border-0 filter-input shadow-none" 
-                            onchange="this.form.submit()"> <!-- TỰ SUBMIT KHI CHỌN -->
-                        <option value="">Tất cả trạng thái</option>
+                            onchange="this.form.submit()"> <option value="">Tất cả trạng thái</option>
                         <option value="PENDING" selected="@(ViewBag.CurrentStatus == "PENDING")">Chờ xác nhận</option>
                         <option value="AWAITING_SHIPMENT" selected="@(ViewBag.CurrentStatus == "AWAITING_SHIPMENT")">Chờ giao hàng</option>
                         <option value="SHIPPING" selected="@(ViewBag.CurrentStatus == "SHIPPING")">Đang giao hàng</option>
@@ -120,7 +121,6 @@
             </div>
         </form>
 
-        <!-- Danh sách Đơn hàng -->
         @if (Model != null && Model.Any())
         {
             foreach (var item in Model)
@@ -128,12 +128,10 @@
                 <div class="card border-0 shadow-sm mb-4 position-relative">
                     <div class="card-body p-4 d-flex align-items-start">
 
-                        <!-- Icon giả lập cho Đơn hàng -->
                         <div class="order-icon-placeholder me-4 flex-shrink-0 shadow-sm">
                             <i class="bi bi-receipt-cutoff"></i>
                         </div>
 
-                        <!-- Thông tin Đơn hàng -->
                         <div class="flex-grow-1 py-1">
                             <h4 class="fw-bold mb-3">Mã đơn hàng @item.OrderId</h4>
 
@@ -169,7 +167,7 @@
                                 </div>
                             </div>
                             <div class="d-flex gap-2">
-    
+ 
                                 @if (item.StatusId == "PENDING")
                                 {
                                     <a asp-controller="Order" asp-action="DetailsMember" asp-route-id="@item.OrderId" class="btn btn-outline-info-custom rounded-pill px-4 py-1 fw-bold fs-6 text-decoration-none">Xem đơn hàng</a>
@@ -213,43 +211,46 @@
             </div>
         }
 
-        <!-- Footer -->
         <footer>
-            <div class="row g-4">
-                <div class="col-lg-4 pe-lg-5 mb-4 mb-lg-0">
-                    <div class="footer-logo mb-3"><i class="bi bi-book"></i></div>
-                    <p class="text-muted" style="font-size: 0.85rem; line-height: 1.6;">
-                        Book Gate là nền tảng đọc sách trực tuyến hàng đầu, mang đến cho bạn không gian khám phá tri thức vô tận.
-                    </p>
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-4 pe-lg-5 mb-4 mb-lg-0">
+                        <div class="footer-logo mb-3">
+                            <i class="bi bi-book"></i>
+                        </div>
+                        <p class="text-muted" style="font-size: 0.85rem; line-height: 1.6;">
+                            Book Gate là nền tảng đọc sách trực tuyến hàng đầu, mang đến cho bạn không gian khám phá tri thức vô tận.
+                        </p>
+                    </div>
+                    <div class="col-lg-2 d-none d-lg-block"></div>
+                    <div class="col-6 col-lg-2">
+                        <h6 class="footer-title">Khám phá</h6>
+                        <ul class="footer-links">
+                            <li><a href="#">Về chúng tôi</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-lg-2">
+                        <h6 class="footer-title">Trợ giúp</h6>
+                        <ul class="footer-links">
+                            <li><a href="#">Hỗ trợ</a></li>
+                            <li><a href="#">Liên hệ</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-10 col-lg-2 mt-lg-0">
+                        <h6 class="footer-title">Theo dõi</h6>
+                        <ul class="footer-links">
+                            <li><a href="#"><i class="bi bi-facebook me-2"></i> Facebook</a></li>
+                            <li><a href="#"><i class="bi bi-instagram me-2"></i> Instagram</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="col-lg-2 d-none d-lg-block"></div>
-                <div class="col-6 col-lg-2">
-                    <h6 class="footer-title">Khám phá</h6>
-                    <ul class="footer-links">
-                        <li><a href="#">Về chúng tôi</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-lg-2">
-                    <h6 class="footer-title">Trợ giúp</h6>
-                    <ul class="footer-links">
-                        <li><a href="#">Hỗ trợ</a></li>
-                        <li><a href="#">Liên hệ</a></li>
-                    </ul>
-                </div>
-                <div class="col-12 col-lg-2 mt-lg-0">
-                    <h6 class="footer-title">Theo dõi</h6>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="bi bi-facebook me-2"></i> Facebook</a></li>
-                        <li><a href="#"><i class="bi bi-instagram me-2"></i> Instagram</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-5 pt-4 border-top" style="font-size: 0.8rem; color: #a4b0be;">
-                <p class="mb-2 mb-md-0">Copyright © 2026 BookGate. All rights reserved.</p>
-                <div class="d-flex gap-3">
-                    <a href="#" class="text-decoration-none text-muted">Điều khoản</a>
-                    <a href="#" class="text-decoration-none text-muted">Bảo mật</a>
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-5 pt-4 border-top" style="font-size: 0.8rem; color: #a4b0be;">
+                    <p class="mb-2 mb-md-0">Copyright © 2026 BookGate. All rights reserved.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-decoration-none text-muted">Điều khoản</a>
+                        <a href="#" class="text-decoration-none text-muted">Bảo mật</a>
+                    </div>
                 </div>
             </div>
         </footer>
